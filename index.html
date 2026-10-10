@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6f5f0">
+  <meta name="description" content="在有画面的小故事里复习六级词汇。原创双语故事、词汇发音、语境测验和间隔复习。">
+  <title>词间 Wordscene · 把单词放进故事里</title>
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="upgrade.css">
+  <script src="dictionary.js" defer></script>
+  <script src="chapters.js" defer></script>
+  <script src="expanded-stories.js" defer></script>
+  <script src="data.js" defer></script>
+  <script src="app.js" defer></script>
+  <script src="learning.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#main">跳到主要内容</a>
+  <header class="site-header">
+    <a class="brand" href="#library" aria-label="词间首页"><span class="brand-symbol">w<span>•</span></span><span>词间 <small>WORDSCENE</small></span></a>
+    <nav aria-label="主导航">
+      <a href="#library" data-nav="library">故事书架</a>
+      <a href="#review" data-nav="review">今日复习 <span id="nav-due" class="nav-badge">0</span></a>
+      <a href="#notebook" data-nav="notebook">完整词库</a>
+      <a href="#progress" data-nav="progress">学习足迹</a>
+    </nav>
+    <button class="daily-pill" id="goal-button" aria-label="设置每日学习目标"><span class="sun-icon">✳</span> 每天一点，慢慢记住 <span>↗</span></button>
+  </header>
+  <main id="main" tabindex="-1"></main>
+  <footer class="site-footer"><a href="#library" class="footer-brand">词间 <span>Wordscene</span></a><span>让单词有画面，让复习有回声。</span><button id="about-button">关于词间</button></footer>
+  <dialog id="word-dialog" aria-labelledby="word-title"><div id="word-content"></div></dialog>
+  <dialog id="utility-dialog" aria-labelledby="utility-title"><div id="utility-content"></div></dialog>
+  <div id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
