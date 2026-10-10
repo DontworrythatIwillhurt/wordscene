@@ -1,0 +1,68 @@
+[
+  {
+    "story": "expansion-b-040",
+    "lemma": "invention",
+    "surface": "invention’s",
+    "exchange": "s:inventions"
+  },
+  {
+    "story": "expansion-b-054",
+    "lemma": "magician",
+    "surface": "magician’s",
+    "exchange": "s:magicians"
+  },
+  {
+    "story": "expansion-b-055",
+    "lemma": "majesty",
+    "surface": "majesty’s",
+    "exchange": "s:majesties"
+  },
+  {
+    "story": "expansion-b-055",
+    "lemma": "mansion",
+    "surface": "mansion’s",
+    "exchange": "s:mansions"
+  },
+  {
+    "story": "expansion-b-057",
+    "lemma": "mast",
+    "surface": "mast’s",
+    "exchange": "s:masts/p:masted"
+  },
+  {
+    "story": "expansion-b-068",
+    "lemma": "negro",
+    "surface": "“negro”",
+    "exchange": "s:negros"
+  },
+  {
+    "story": "expansion-b-072",
+    "lemma": "observer",
+    "surface": "observer’s",
+    "exchange": "s:observers"
+  },
+  {
+    "story": "expansion-b-088",
+    "lemma": "planet",
+    "surface": "planet’s",
+    "exchange": "s:planets"
+  },
+  {
+    "story": "expansion-b-092",
+    "lemma": "pope",
+    "surface": "pope’s",
+    "exchange": "s:popes"
+  },
+  {
+    "story": "expansion-c-014",
+    "lemma": "relegate",
+    "surface": "be relegated",
+    "exchange": "d:relegated/p:relegated/i:relegating/3:relegates"
+  },
+  {
+    "story": "expansion-c-027",
+    "lemma": "seventeen",
+    "surface": "seventeenth",
+    "exchange": ""
+  }
+]

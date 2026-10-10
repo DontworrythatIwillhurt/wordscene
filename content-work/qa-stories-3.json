@@ -1,0 +1,10 @@
+{
+  "storyCount": 75,
+  "targetWordCount": 1997,
+  "coveredTargetCount": 1997,
+  "uncovered": [],
+  "unknownMarkers": [],
+  "paragraphMismatches": [],
+  "reviewedOwn": "All 75 stories; grammatical surfaces and 14 concrete cross-review corrections applied; context glossary overrides corrected.",
+  "crossReview": "Read English and Chinese of expansion-b-001 through expansion-b-076. Sent concrete findings to stories_two; did not edit another agent file."
+}

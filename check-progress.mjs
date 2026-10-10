@@ -1,0 +1,11 @@
+import {readFile} from 'node:fs/promises';
+import vm from 'node:vm';
+import assert from 'node:assert/strict';
+const box=vm.createContext({});
+for(const name of ['dictionary.js','chapters.js','expanded-stories.js','data.js'])vm.runInContext(await readFile(new URL('dist/'+name,import.meta.url),'utf8'),box);
+const d=vm.runInContext('({STORIES,BUILTIN_WORDS,COVERAGE})',box);
+for(const s of d.STORIES)for(const w of s.words)assert(w.example.includes(w.surface),`Missing surface: ${s.id}/${w.id}`);
+assert.equal(vm.runInContext(`maskSurface('The witness said he saw the thief.','he')`,box),'The witness said ________ saw the thief.');
+assert.equal(vm.runInContext(`maskSurface('A gate was damaged.','a')`,box),'________ gate was damaged.');
+assert.equal(vm.runInContext(`maskSurface('They met at 3 p.m. near the platform.','p.m.')`,box),'They met at 3 ________ near the platform.');
+console.log(JSON.stringify({stories:d.STORIES.length,coverage:d.COVERAGE,contextChecksPassed:true},null,2));
