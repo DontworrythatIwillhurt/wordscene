@@ -2,29 +2,31 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#f6f5f0">
   <meta name="description" content="在有画面的小故事里复习六级词汇。原创双语故事、词汇发音、语境测验和间隔复习。">
   <title>词间 Wordscene · 把单词放进故事里</title>
   <link rel="icon" href="icon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="upgrade.css">
+  <link rel="stylesheet" href="mobile.css">
   <script src="dictionary.js" defer></script>
   <script src="chapters.js" defer></script>
   <script src="expanded-stories.js" defer></script>
   <script src="data.js" defer></script>
   <script src="app.js" defer></script>
   <script src="learning.js" defer></script>
+  <script src="mobile.js" defer></script>
 </head>
 <body>
   <a class="skip" href="#main">跳到主要内容</a>
   <header class="site-header">
     <a class="brand" href="#library" aria-label="词间首页"><span class="brand-symbol">w<span>•</span></span><span>词间 <small>WORDSCENE</small></span></a>
     <nav aria-label="主导航">
-      <a href="#library" data-nav="library">故事书架</a>
-      <a href="#review" data-nav="review">今日复习 <span id="nav-due" class="nav-badge">0</span></a>
-      <a href="#notebook" data-nav="notebook">完整词库</a>
-      <a href="#progress" data-nav="progress">学习足迹</a>
+      <a href="#library" data-nav="library"><svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v15M12 6C9 3 4 4 3 5v14c3-2 6-2 9 1 3-3 6-3 9-1V5c-3-2-6-2-9 1Z"/></svg><span>故事书架</span></a>
+      <a href="#review" data-nav="review"><svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8a9 9 0 1 1-1 8M4 3v5h5M12 7v5l3 2"/></svg><span>今日复习</span><span id="nav-due" class="nav-badge">0</span></a>
+      <a href="#notebook" data-nav="notebook"><svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h13v18H6a3 3 0 0 1 0-6h13M6 3a3 3 0 0 0-3 3v12M8 7h7M8 11h5"/></svg><span>完整词库</span></a>
+      <a href="#progress" data-nav="progress"><svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V13h4v7M10 20V9h4v11M16 20V4h4v16M3 20h18"/></svg><span>学习足迹</span></a>
     </nav>
     <button class="daily-pill" id="goal-button" aria-label="设置每日学习目标"><span class="sun-icon">✳</span> 每天一点，慢慢记住 <span>↗</span></button>
   </header>
