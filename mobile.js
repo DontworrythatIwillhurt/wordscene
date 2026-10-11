@@ -59,7 +59,17 @@
     const editable=document.activeElement?.matches('input:not([type="file"]),textarea');
     const visibleHeight=window.visualViewport?.height||window.innerHeight;
     if(!editable)restingHeight=window.innerHeight;
+    document.documentElement.style.setProperty('--vvh',visibleHeight+'px');
     document.body.classList.toggle('keyboard-open',Boolean(editable&&restingHeight-visibleHeight>150));
+    if(editable&&restingHeight-visibleHeight>120){
+      const target=document.activeElement;
+      setTimeout(()=>{
+        if(!target||typeof target.scrollIntoView!=='function')return;
+        try{target.scrollIntoView({block:'center',inline:'nearest',behavior:'smooth'});}catch(_){
+          try{target.scrollIntoView(true);}catch(__){}
+        }
+      },50);
+    }
   }
   document.addEventListener('focusin',syncKeyboard);
   document.addEventListener('focusout',()=>setTimeout(syncKeyboard,80));

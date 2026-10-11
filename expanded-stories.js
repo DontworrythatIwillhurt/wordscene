@@ -1,5 +1,5 @@
 /* Original bilingual expansion. Source: content-work/stories-{1,2,3}.json. */
-const EXPANDED_STORIES = [
+var EXPANDED_STORIES = [
   {
     "id": "expansion-a-001",
     "title": "禁术渡船",
@@ -41769,3 +41769,4 @@ const EXPANDED_STORIES = [
     ]
   }
 ];
+globalThis.EXPANDED_STORIES=EXPANDED_STORIES;
