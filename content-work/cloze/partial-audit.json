@@ -1,0 +1,25 @@
+[
+  {
+    "group": 1,
+    "count": 60,
+    "duplicates": [],
+    "wordDiff": [],
+    "paragraphMismatch": []
+  },
+  {
+    "group": 2,
+    "count": 50,
+    "duplicates": [],
+    "wordDiff": [],
+    "paragraphMismatch": [
+      "expansion-b-005:1"
+    ]
+  },
+  {
+    "group": 3,
+    "count": 40,
+    "duplicates": [],
+    "wordDiff": [],
+    "paragraphMismatch": []
+  }
+]

@@ -3,3 +3,5 @@ browser-*.js
 *.tar.gz
 *.zip
 node_modules/
+dist-backup-20261011-224056/
+dist-new.zip

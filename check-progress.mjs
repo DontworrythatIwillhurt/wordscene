@@ -2,7 +2,7 @@ import {readFile} from 'node:fs/promises';
 import vm from 'node:vm';
 import assert from 'node:assert/strict';
 const box=vm.createContext({});
-for(const name of ['dictionary.js','chapters.js','expanded-stories.js','data.js'])vm.runInContext(await readFile(new URL('dist/'+name,import.meta.url),'utf8'),box);
+for(const name of ['dictionary.js','chapters.js','expanded-stories.js','cloze-stories.js','data.js'])vm.runInContext(await readFile(new URL('dist/'+name,import.meta.url),'utf8'),box);
 const d=vm.runInContext('({STORIES,BUILTIN_WORDS,COVERAGE})',box);
 for(const s of d.STORIES)for(const w of s.words)assert(w.example.includes(w.surface),`Missing surface: ${s.id}/${w.id}`);
 assert.equal(vm.runInContext(`maskSurface('The witness said he saw the thief.','he')`,box),'The witness said ________ saw the thief.');
