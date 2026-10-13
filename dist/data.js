@@ -208,6 +208,23 @@ let BUILTIN_INDEX=new Map();
 let CONTEXTUAL_IDS=new Set();
 let COVERAGE={reference:0,contextual:0,storyUnique:0,total:0,coveredTotal:0};
 const WORDSCENE_DATA_STATE={dictionary:false,cultivation:false,mystery:false,shell:false};
+const WORDSCENE_CORE_WORDS=(typeof WORDSCENE_CORE_VOCAB!=='undefined'?WORDSCENE_CORE_VOCAB:[]).map(([id,pos,meaning,hasDictionary,levelMask])=>({id,word:id,pos,meaning,dictionaryMeaning:meaning,hasDictionary,levels:[...(levelMask&1?['四级基础']:[]),...(levelMask&2?['六级']:[])],phrase:'',example:'',source:hasDictionary?'六级词库':'小说补充词'}));
+const WORDSCENE_CORE_INDEX=new Map(WORDSCENE_CORE_WORDS.map(w=>[w.id,w]));
+const WORDSCENE_KNOWN_STORIES=new Set(typeof WORDSCENE_OLD_STORY_IDS!=='undefined'?WORDSCENE_OLD_STORY_IDS:[]);
+function isKnownWordsceneStory(id){return STORY_INDEX.has(id)||WORDSCENE_KNOWN_STORIES.has(id);}
+const WORDSCENE_DICTIONARY_PARTS=new Map();
+const WORDSCENE_DETAIL_IDS=new Set();
+function applyWordsceneDictionaryPayload(payload){
+  if(!payload||!Number.isInteger(payload.bucket)||!Array.isArray(payload.words))return;
+  WORDSCENE_DICTIONARY_PARTS.set(payload.bucket,payload.words);
+  for(const word of payload.words){
+    if(!word||!BUILTIN_INDEX.has(word.id))continue;
+    dictionaryMap.set(word.id,word);
+    WORDSCENE_DETAIL_IDS.add(word.id);
+    const current=BUILTIN_INDEX.get(word.id);Object.assign(current,word,{meaning:current.meaning||word.meaning,dictionaryMeaning:word.dictionaryMeaning||word.meaning});
+  }
+  if(typeof refreshWordIndex==='function')refreshWordIndex();
+}
 
 function wordsceneHasFullBundle(){
   return typeof DICTIONARY_WORDS!=='undefined' && DICTIONARY_WORDS && DICTIONARY_WORDS.length
@@ -216,7 +233,7 @@ function wordsceneHasFullBundle(){
 }
 
 function assembleWordsceneData(expandedStories, clozeStories, dictionaryWords){
-  const dictWords=dictionaryWords||[];
+  const dictWords=dictionaryWords?.length?dictionaryWords:WORDSCENE_CORE_WORDS;
   dictionaryMap=new Map(dictWords.map(w=>[w.id,w]));
   const clozeRevisions=new Map((clozeStories||[]).map(story=>[story.id,story.cn]));
   const coreRaw=[...STORY_DATA,...additionalStories];
@@ -285,16 +302,16 @@ function assembleWordsceneData(expandedStories, clozeStories, dictionaryWords){
   BUILTIN_INDEX=new Map(BUILTIN_WORDS.map(w=>[w.id,w]));
   CONTEXTUAL_IDS=new Set(STORY_WORDS.map(w=>w.id));
   const catalogCov=typeof WORDSCENE_CATALOG!=='undefined'?WORDSCENE_CATALOG?.meta?.coverage:null;
-  COVERAGE={reference:dictWords.length||catalogCov?.reference||0,contextual:dictWords.length?dictWords.filter(w=>CONTEXTUAL_IDS.has(w.id)).length:(catalogCov?.contextual||CONTEXTUAL_IDS.size),storyUnique:CONTEXTUAL_IDS.size,total:Math.max(BUILTIN_WORDS.length,catalogCov?.total||0),coveredTotal:dictWords.length?BUILTIN_WORDS.filter(w=>CONTEXTUAL_IDS.has(w.id)).length:(catalogCov?.coveredTotal||CONTEXTUAL_IDS.size)};
+  COVERAGE={reference:dictionaryWords?.length||catalogCov?.reference||WORDSCENE_CORE_WORDS.filter(w=>w.hasDictionary).length,contextual:dictionaryWords?.length?dictionaryWords.filter(w=>CONTEXTUAL_IDS.has(w.id)).length:(catalogCov?.contextual||CONTEXTUAL_IDS.size),storyUnique:CONTEXTUAL_IDS.size,total:Math.max(BUILTIN_WORDS.length,catalogCov?.total||0),coveredTotal:BUILTIN_WORDS.filter(w=>CONTEXTUAL_IDS.has(w.id)).length};
   WORDSCENE_DATA_STATE.shell=STORIES.some(s=>s._shell);
-  WORDSCENE_DATA_STATE.dictionary=dictWords.length>0;
+  WORDSCENE_DATA_STATE.dictionary=Boolean(dictionaryWords?.length);
 }
 
 function assembleFromCatalog(){
   if(typeof WORDSCENE_CATALOG==='undefined'||!WORDSCENE_CATALOG?.stories?.length)return false;
   const cat=WORDSCENE_CATALOG;
   STORIES=cat.stories.map(entry=>{
-    const words=(entry.wordIds||[]).map(id=>({id,word:id,meaning:'',pos:'',phrase:'',example:'',surface:id,context:entry.excerpt||'',storyId:entry.id,source:entry.title}));
+    const words=(entry.wordIds||[]).map(id=>({...WORDSCENE_CORE_INDEX.get(id),id,word:id,phrase:'',example:'',surface:id,context:entry.excerpt||'',storyId:entry.id,source:entry.title}));
     return {
       id:entry.id,title:entry.title,englishTitle:entry.englishTitle,category:entry.category,tag:entry.tag,
       color:entry.color,symbol:entry.symbol,mood:entry.mood,number:entry.number,
@@ -303,7 +320,8 @@ function assembleFromCatalog(){
     };
   });
   STORY_WORDS=[].concat(...STORIES.map(s=>s.words));
-  const merged=new Map(EXTRA_WORDS.map(w=>[w.id,{...w}]));
+  const merged=new Map(WORDSCENE_CORE_WORDS.map(w=>[w.id,{...w}]));
+  for(const w of EXTRA_WORDS)if(!merged.has(w.id))merged.set(w.id,{...w});
   for(const w of STORY_WORDS){const old=merged.get(w.id)||{};merged.set(w.id,{...old,...w,dictionaryMeaning:old.dictionaryMeaning||old.meaning||w.meaning,storyIds:[...new Set([...(old.storyIds||[]),w.storyId])]});}
   BUILTIN_WORDS=[...merged.values()];
   STORY_INDEX=new Map(STORIES.map(s=>[s.id,s]));
@@ -331,7 +349,9 @@ if(wordsceneHasFullBundle()){
 }else if(!assembleFromCatalog()){
   STORIES=[];
   STORY_WORDS=[];
-  BUILTIN_WORDS=EXTRA_WORDS.slice();
+  const seed=new Map(WORDSCENE_CORE_WORDS.map(w=>[w.id,{...w}]));
+  EXTRA_WORDS.forEach(w=>{if(!seed.has(w.id))seed.set(w.id,w);});
+  BUILTIN_WORDS=[...seed.values()];
   STORY_INDEX=new Map();
   BUILTIN_INDEX=new Map(BUILTIN_WORDS.map(w=>[w.id,w]));
   CONTEXTUAL_IDS=new Set();

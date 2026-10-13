@@ -1,6 +1,7 @@
 import {readFile,writeFile,mkdir,readdir,unlink} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
 import {transform} from 'esbuild';
+import vm from 'node:vm';
 
 const dist=file=>new URL('./dist/'+file,import.meta.url);
 const sha12=buffer=>createHash('sha256').update(buffer).digest('hex').slice(0,12);
@@ -61,6 +62,7 @@ async function generateSerialIndex(novels){
 }
 
 async function generateSerialChapters(novels){
+  const revision=sha12((await readFile(dist('serial-data.js'),'utf8'))+'|chapter-format-v2');
   const dir=new URL('./dist/serial-chapters/',import.meta.url);
   await mkdir(dir,{recursive:true});
   const existing=await readdir(dir);
@@ -70,6 +72,7 @@ async function generateSerialChapters(novels){
     for(const chapter of book.chapters){
       const payload='(function(payload){if(typeof applySerialChapterPayload==="function")applySerialChapterPayload(payload);else (window.SERIAL_CHAPTER_QUEUE||(window.SERIAL_CHAPTER_QUEUE=[])).push(payload);})('+JSON.stringify({
         id:chapter.id,
+        version:revision,
         book:book.id,
         cn:chapter.cn||[],
         en:chapter.en||[]
@@ -91,9 +94,22 @@ const novels=await loadNovels();
 const serialIndex=await generateSerialIndex(novels);
 const serialChapters=await generateSerialChapters(novels);
 
+// Minimal complete vocabulary keeps progress valid before optional data arrives.
+const dataBox=vm.createContext({console});
+for(const file of ['dictionary.js','chapters.js','expanded-stories.js','cloze-stories.js','data.js'])vm.runInContext(await readFile(dist(file),'utf8'),dataBox);
+const seed=vm.runInContext('BUILTIN_WORDS.map(w=>[w.id,w.pos||"",w.dictionaryMeaning||w.meaning||"",dictionaryMap.has(w.id),((w.levels||[]).includes("四级基础")?1:0)|((w.levels||[]).includes("六级")?2:0)])',dataBox);
+const oldStoryIds=vm.runInContext('STORIES.map(s=>s.id)',dataBox);
+await writeFile(dist('vocabulary-core.js'),'var WORDSCENE_CORE_VOCAB=[\n'+seed.map(row=>JSON.stringify(row)).join(',\n')+'\n];\nvar WORDSCENE_OLD_STORY_IDS='+JSON.stringify(oldStoryIds)+';\n');
+const dictionaryWords=vm.runInContext('DICTIONARY_WORDS',dataBox);
+const buckets=Array.from({length:64},()=>[]);
+function bucketId(id){let hash=0;for(const c of id)hash=(Math.imul(hash,31)+c.charCodeAt(0))>>>0;return hash%64;}
+dictionaryWords.forEach(word=>buckets[bucketId(word.id)].push(word));
+await mkdir(dist('dictionary-parts/'),{recursive:true});
+for(let index=0;index<64;index++)await writeFile(dist('dictionary-parts/'+index+'.js'),'applyWordsceneDictionaryPayload('+JSON.stringify({bucket:index,words:buckets[index]})+');\n');
+
 const runtimeFiles=[
-  'serial-index.js','compatibility.js','chapters.js','data.js','app.js','learning.js','skills.js','cloze.js',
-  'listening.js','listening-practice.js','practice-training.js','serial.js','mobile.js','loader.js'
+  'serial-index.js','vocabulary-core.js','compatibility.js','chapters.js','data.js','app.js','learning.js','skills.js','cloze.js',
+  'listening.js','listening-practice.js','practice-training.js','serial.js','mobile.js','chapter-cache.js','loader.js'
 ];
 const source=(await Promise.all(runtimeFiles.map(file=>readFile(dist(file),'utf8')))).join('\n;\n');
 const result=await transform(source,{target:['es2017','chrome60'],charset:'utf8',minifyWhitespace:false,minifyIdentifiers:false,minifySyntax:false,legalComments:'inline'});
@@ -109,7 +125,8 @@ const versions={};
 for(const file of hashedFiles)versions[file]=sha12(await readFile(dist(file)));
 versions['stories-cultivation.js']=sha12(await readFile(dist('data/stories-cultivation.js')));
 versions['stories-mystery.js']=sha12(await readFile(dist('data/stories-mystery.js')));
-versions['serial-chapters']=versions['serial-data.js'];
+versions['serial-chapters']=sha12((await readFile(dist('serial-data.js'),'utf8'))+'|chapter-format-v2');
+versions['dictionary-parts']=versions['dictionary.js'];
 
 let html=await readFile(dist('index.html'),'utf8');
 html=html.replace(

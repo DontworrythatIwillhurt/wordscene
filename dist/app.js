@@ -17,8 +17,8 @@ function cleanState(raw){
   const ids=new Set([...BUILTIN_WORDS,...s.custom].map(w=>w.id));
   if(raw.words&&typeof raw.words==='object') for(const [id,p] of Object.entries(raw.words)) if(ids.has(id)&&p&&Number.isInteger(p.stage)&&p.stage>=0&&p.stage<=4&&typeof p.due==='string') s.words[id]={stage:p.stage,due:p.due,last:p.last||'',attempts:Number(p.attempts)||0};
   if(Array.isArray(raw.favorites)) s.favorites=[...new Set(raw.favorites.filter(id=>ids.has(id)))];
-  if(Array.isArray(raw.completed)) s.completed=raw.completed.filter(id=>STORIES.some(st=>st.id===id));
-  if(STORIES.some(st=>st.id===raw.lastStory)) s.lastStory=raw.lastStory;
+  if(Array.isArray(raw.completed)) s.completed=raw.completed.filter(isKnownWordsceneStory);
+  if(isKnownWordsceneStory(raw.lastStory)) s.lastStory=raw.lastStory;
   if(raw.activity&&typeof raw.activity==='object') for(const [date,list] of Object.entries(raw.activity)) if(/^\d{4}-\d{2}-\d{2}$/.test(date)&&Array.isArray(list)) s.activity[date]=[...new Set(list.filter(id=>ids.has(id)))];
   if(raw.notes&&typeof raw.notes==='object') s.notes=Object.fromEntries(Object.entries(raw.notes).filter(([id,n])=>ids.has(id)&&typeof n==='string').map(([id,n])=>[id,n.slice(0,500)]));
   s.preferences={english:Boolean(raw.preferences?.english)};
