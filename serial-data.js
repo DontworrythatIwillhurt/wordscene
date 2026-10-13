@@ -1,5 +1,5 @@
 /* Complete continuous novels: all 6164 built-in IDs occur in CN and corresponding EN story bodies. */
-const SERIAL_NOVELS=[
+var SERIAL_NOVELS=[
   {
     "id": "mountain-ledger",
     "title": "山契",

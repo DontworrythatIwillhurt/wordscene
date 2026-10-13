@@ -1,12 +1,35 @@
 /* Two continuous novels and low-pressure recall tied to their actual scenes. */
-const SERIAL_BOOK_INDEX=new Map(SERIAL_NOVELS.map(b=>[b.id,b]));
-const SERIAL_CHAPTER_INDEX=new Map();
-SERIAL_NOVELS.forEach(book=>book.chapters.forEach((chapter,index)=>SERIAL_CHAPTER_INDEX.set(chapter.id,{...chapter,book,index,number:index+1,category:book.category})));
-const SERIAL_TOTAL_CHAPTERS=SERIAL_CHAPTER_INDEX.size;
-const SERIAL_WORD_CHAPTERS=new Map();
-SERIAL_CHAPTER_INDEX.forEach(chapter=>storySlots(chapter).forEach(term=>{if(!SERIAL_WORD_CHAPTERS.has(term.id))SERIAL_WORD_CHAPTERS.set(term.id,[]);SERIAL_WORD_CHAPTERS.get(term.id).push({id:chapter.id,book:chapter.book.id,title:chapter.title,bookTitle:chapter.book.title,number:chapter.number,paragraph:chapter.cn.findIndex(p=>p.includes('[['+term.id+'|')),meaning:term.meaning});}));
-const SERIAL_COVERED_IDS=new Set(SERIAL_WORD_CHAPTERS.keys());
-const serialTerms=chapter=>storySlots(chapter);
+let SERIAL_BOOK_INDEX=new Map();
+let SERIAL_CHAPTER_INDEX=new Map();
+let SERIAL_TOTAL_CHAPTERS=0;
+let SERIAL_WORD_CHAPTERS=new Map();
+let SERIAL_COVERED_IDS=new Set();
+function serialBooks(){
+  if(typeof SERIAL_NOVELS!=='undefined'&&SERIAL_NOVELS&&SERIAL_NOVELS.length)return SERIAL_NOVELS;
+  if(typeof SERIAL_INDEX!=='undefined'&&SERIAL_INDEX&&SERIAL_INDEX.length)return SERIAL_INDEX;
+  return [];
+}
+function serialTerms(chapter){
+  if(Array.isArray(chapter.cn)&&chapter.cn.some(p=>String(p).includes('[[')))return storySlots(chapter);
+  return (chapter.wordIds||[]).map(id=>({id,meaning:(chapter.wordMeanings&&chapter.wordMeanings[id])||''}));
+}
+function buildSerialIndexes(){
+  const books=serialBooks();
+  SERIAL_BOOK_INDEX=new Map(books.map(b=>[b.id,b]));
+  SERIAL_CHAPTER_INDEX=new Map();
+  books.forEach(book=>book.chapters.forEach((chapter,index)=>SERIAL_CHAPTER_INDEX.set(chapter.id,{...chapter,book,index,number:index+1,category:book.category})));
+  SERIAL_TOTAL_CHAPTERS=SERIAL_CHAPTER_INDEX.size;
+  SERIAL_WORD_CHAPTERS=new Map();
+  SERIAL_CHAPTER_INDEX.forEach(chapter=>{
+    serialTerms(chapter).forEach(term=>{
+      if(!SERIAL_WORD_CHAPTERS.has(term.id))SERIAL_WORD_CHAPTERS.set(term.id,[]);
+      const paragraph=Array.isArray(chapter.cn)?chapter.cn.findIndex(p=>p.includes('[['+term.id+'|')):-1;
+      SERIAL_WORD_CHAPTERS.get(term.id).push({id:chapter.id,book:chapter.book.id,title:chapter.title,bookTitle:chapter.book.title,number:chapter.number,paragraph,meaning:term.meaning});
+    });
+  });
+  SERIAL_COVERED_IDS=new Set(SERIAL_WORD_CHAPTERS.keys());
+}
+buildSerialIndexes();
 const serialFlatten=(rows,fn)=>rows.reduce((all,row,index)=>all.concat(fn(row,index)),[]);
 function serialFormatEnglish(text){return text.split(/(\[\[.*?\]\])/g).map(part=>{if(!part.startsWith('[['))return esc(part);const [id,surface]=part.slice(2,-2).split('|');return `<button class="word-inline" data-word="${esc(id)}" lang="en">${esc(surface||id)}</button>`;}).join('');}
 let serialGame=null,serialSpeechGeneration=0,serialAudioActive=false,serialUtterance=null;
@@ -52,10 +75,13 @@ function serialBookCard(book,index){
 }
 const libraryBeforeSerial=library;
 library=function(){
-  const chapter=SERIAL_CHAPTER_INDEX.get(state.serial.lastChapter)||SERIAL_CHAPTER_INDEX.get(SERIAL_NOVELS[0].chapters[0].id);
-  const coreWords=new Set(serialFlatten(SERIAL_NOVELS,b=>serialFlatten(b.chapters,c=>serialTerms(c).map(t=>t.id))));
+  const books=serialBooks();
+  if(!books.length){main.dataset.view='serial';main.innerHTML='<section class="startup-panel"><h1>正在打开故事书架…</h1><p>目录还在加载，请稍候。</p></section>';applyPreferences();return;}
+  const chapter=SERIAL_CHAPTER_INDEX.get(state.serial.lastChapter)||SERIAL_CHAPTER_INDEX.get(books[0].chapters[0].id);
+  const coreWords=new Set(serialFlatten(books,b=>serialFlatten(b.chapters,c=>serialTerms(c).map(t=>t.id))));
+  const totalWords=(typeof SERIAL_INDEX_META!=='undefined'&&SERIAL_INDEX_META.words)||COVERAGE.total||BUILTIN_WORDS.length||coreWords.size;
   main.dataset.view='serial';
-  main.innerHTML=`<section class="serial-hero"><div><div class="serial-kicker">WORDSCENE · A STORY TO REMEMBER</div><h1>读到下一章，<br>也记住<em>下一个词。</em></h1><p>一纸山契，牵出被藏起的旧账。<br>一张船票，带你走进第七码头的雨夜。<br>让人物、线索和转折，成为单词的记忆。</p><div class="hero-actions"><a class="button" href="#serial/${chapter.book.id}/${chapter.id}">${state.serial.lastChapter?'接着上次的剧情':'开始我的故事'} <span>↗</span></a><a class="text-link" href="#practice">去剧情闯关 →</a></div></div><div class="serial-art" aria-hidden="true"><small>THE WORDSCENE COLLECTION</small><strong>山契<br><span>第七码头</span></strong><div class="serial-seal">词间</div><p>故事有下一章<br>记忆有回响</p><span class="serial-spine">READ · RECALL · RETURN</span></div></section><section class="serial-rewards" aria-label="学习概览"><div><strong>02</strong><span>原创连续小说</span></div><div><strong>${SERIAL_TOTAL_CHAPTERS}</strong><span>剧情章节</span></div><div><strong>${state.serial.completed.length}</strong><span>已经读完的章节</span></div></section><div class="serial-section-title"><div class="serial-kicker">CHOOSE YOUR STORY</div><h2>今夜，翻开哪一本？</h2><p>同一组人物，同一条主线。按顺序读，伏笔才有回声。</p></div><section class="serial-shelf">${SERIAL_NOVELS.map(serialBookCard).join('')}</section><section class="serial-entry"><div><div class="serial-kicker">RECALL IN THE SCENE</div><h2>记住线索，再往前走。</h2><p>认出关键词、填回关键动作，或听英文找线索。每次八个词，不设倒计时。</p></div><a class="button secondary" href="#practice">进入剧情闯关 →</a></section><section class="serial-archive-note"><h2>跟着长篇，走过完整词库。</h2><p>长篇正文覆盖 ${coreWords.size} / ${BUILTIN_WORDS.length} 词（${(coreWords.size / BUILTIN_WORDS.length * 100).toFixed(1)}%）。${coreWords.size===BUILTIN_WORDS.length?'所有内置词都能在主线剧情及对应英文里找到。':'尚有词汇正在写入后续剧情。'}旧笔记、书签和学习记录继续保留；原短篇可作为额外语境阅读。</p><a class="text-link" href="#archive">打开拓展语境 →</a> <a class="text-link" href="#notebook">查看完整词库 →</a></section>`;
+  main.innerHTML=`<section class="serial-hero"><div><div class="serial-kicker">WORDSCENE · A STORY TO REMEMBER</div><h1>读到下一章，<br>也记住<em>下一个词。</em></h1><p>一纸山契，牵出被藏起的旧账。<br>一张船票，带你走进第七码头的雨夜。<br>让人物、线索和转折，成为单词的记忆。</p><div class="hero-actions"><a class="button" href="#serial/${chapter.book.id}/${chapter.id}">${state.serial.lastChapter?'接着上次的剧情':'开始我的故事'} <span>↗</span></a><a class="text-link" href="#practice">去剧情闯关 →</a></div></div><div class="serial-art" aria-hidden="true"><small>THE WORDSCENE COLLECTION</small><strong>山契<br><span>第七码头</span></strong><div class="serial-seal">词间</div><p>故事有下一章<br>记忆有回响</p><span class="serial-spine">READ · RECALL · RETURN</span></div></section><section class="serial-rewards" aria-label="学习概览"><div><strong>02</strong><span>原创连续小说</span></div><div><strong>${SERIAL_TOTAL_CHAPTERS}</strong><span>剧情章节</span></div><div><strong>${state.serial.completed.length}</strong><span>已经读完的章节</span></div></section><div class="serial-section-title"><div class="serial-kicker">CHOOSE YOUR STORY</div><h2>今夜，翻开哪一本？</h2><p>同一组人物，同一条主线。按顺序读，伏笔才有回声。</p></div><section class="serial-shelf">${books.map(serialBookCard).join('')}</section><section class="serial-entry"><div><div class="serial-kicker">RECALL IN THE SCENE</div><h2>记住线索，再往前走。</h2><p>认出关键词、填回关键动作，或听英文找线索。每次八个词，不设倒计时。</p></div><a class="button secondary" href="#practice">进入剧情闯关 →</a></section><section class="serial-archive-note"><h2>跟着长篇，走过完整词库。</h2><p>长篇正文覆盖 ${coreWords.size} / ${totalWords} 词（${totalWords?(coreWords.size / totalWords * 100).toFixed(1):'0'}%）。${coreWords.size===totalWords?'所有内置词都能在主线剧情及对应英文里找到。':'尚有词汇正在写入后续剧情。'}旧笔记、书签和学习记录继续保留；原短篇可作为额外语境阅读。</p><a class="text-link" href="#archive">打开拓展语境 →</a> <a class="text-link" href="#notebook">查看完整词库 →</a></section>`;
   applyPreferences();
 };
 function serialBookPage(id){
@@ -67,6 +93,10 @@ function serialNotFound(){main.innerHTML='<section class="empty-state"><h2>这�
 let serialReadView='read',serialReadId='';
 function serialRead(id,view){
   const chapter=SERIAL_CHAPTER_INDEX.get(id);if(!chapter){serialNotFound();return;}
+  if(!Array.isArray(chapter.cn)||!chapter.cn.length){
+    if(typeof ensureSerialFullData==='function'){ensureSerialFullData().then(()=>serialRead(id,view)).catch(()=>serialNotFound());return;}
+    serialNotFound();return;
+  }
   if(serialReadId!==id){serialReadId=id;serialReadView='read';}if(view)serialReadView=view;
   const session=ensureCloze(chapter);clozeView=serialReadView;const exercise=serialReadView==='exercise';
   state.serial.lastChapter=id;save();main.dataset.view='serial';clozeParagraph.index=0;
@@ -82,12 +112,18 @@ trainingHome=function(){return serialJourneyMenu()+`<details class="serial-exam-
 const trainingHeaderBeforeSerial=trainingHeader;
 trainingHeader=function(section){if(section==='home')return '<div class="page-heading"><div class="serial-kicker">WORDSCENE · RECALL THE STORY</div><h1>沿着线索，把词想起来。</h1><p>故事读过了，记忆也可以有一段旅程。</p></div>';return trainingHeaderBeforeSerial(section);};
 function serialJourneyMenu(){
-  const last=SERIAL_CHAPTER_INDEX.get(state.serial.lastChapter)||SERIAL_CHAPTER_INDEX.get(SERIAL_NOVELS[0].chapters[0].id);
-  return `<section class="serial-entry"><div><div class="serial-kicker">YOUR NEXT SCENE</div><h2>${esc(last.book.title)} · ${esc(last.title)}</h2><p>认出线索 → 拼回动作 → 听出关键词。每轮八个词，答错可以再试，没有倒计时。</p></div><a class="button" href="#practice/journey/${last.id}">进入这一章 →</a></section><div class="serial-section-title"><h2>想回到哪段剧情？</h2><p>先读章节，再闯关，画面会帮你想起英文。</p></div><section class="serial-shelf">${SERIAL_NOVELS.map(book=>`<section class="serial-map"><h2>${esc(book.title)}</h2><div class="serial-journey-links">${serialVolumeDirectory(book,true)}</div></section>`).join('')}</section>`;
+  const books=serialBooks();
+  if(!books.length)return '<section class="startup-panel"><h1>正在打开剧情闯关…</h1><p>目录还在加载，请稍候。</p></section>';
+  const last=SERIAL_CHAPTER_INDEX.get(state.serial.lastChapter)||SERIAL_CHAPTER_INDEX.get(books[0].chapters[0].id);
+  return `<section class="serial-entry"><div><div class="serial-kicker">YOUR NEXT SCENE</div><h2>${esc(last.book.title)} · ${esc(last.title)}</h2><p>认出线索 → 拼回动作 → 听出关键词。每轮八个词，答错可以再试，没有倒计时。</p></div><a class="button" href="#practice/journey/${last.id}">进入这一章 →</a></section><div class="serial-section-title"><h2>想回到哪段剧情？</h2><p>先读章节，再闯关，画面会帮你想起英文。</p></div><section class="serial-shelf">${books.map(book=>`<section class="serial-map"><h2>${esc(book.title)}</h2><div class="serial-journey-links">${serialVolumeDirectory(book,true)}</div></section>`).join('')}</section>`;
 }
 function serialGameSlots(chapter){return serialFlatten(chapter.cn,(p,paragraph)=>wordsceneMatches(p,/\[\[([^|\]]+)\|([^\]]+)\]\]/g).map(m=>({id:m[1],meaning:m[2],paragraph})));}
 function serialGameStart(id,mode='choice',retry=false){
   const chapter=SERIAL_CHAPTER_INDEX.get(id);if(!chapter){serialNotFound();return;}
+  if(!Array.isArray(chapter.cn)||!chapter.cn.length){
+    if(typeof ensureSerialFullData==='function'){ensureSerialFullData().then(()=>serialGameStart(id,mode,retry)).catch(()=>serialNotFound());return;}
+    serialNotFound();return;
+  }
   const allowed=['choice','spell','listen'];if(!allowed.includes(mode))mode='choice';serialStopAudio();
   let items=retry&&serialGame?.id===id&&serialGame.wrong.length?serialGame.wrong.map(item=>({...item})):shuffle(serialGameSlots(chapter)).slice(0,8);
   serialGame={id,mode,items,index:0,correct:0,wrong:[],answer:'',answered:false,revealed:false,heard:false,options:[],finished:false,committed:false};serialGamePage(id);scrollTrainingStart();
@@ -151,10 +187,11 @@ updateNav=function(){updateNavBeforeSerial();const route=location.hash.split('/'
 const renderBeforeSerial=render;
 render=function(){
   const [route,book,id]=location.hash.slice(1).split('/');serialStopAudio();delete main.dataset.view;
-  if(route==='serial'||route==='archive'||route==='practice'&&book==='journey'){
+  if(!route||route==='library'||route==='serial'||route==='archive'||route==='practice'&&book==='journey'){
     clearInterval(trainingClock);listeningStop();wordDialog.close();utilityDialog.close();document.body.classList.remove('focus-mode');
-    if(route==='serial'){const c=SERIAL_CHAPTER_INDEX.get(id);if(id){if(c?.book.id===book)serialRead(id);else serialNotFound();}else serialBookPage(book);}
-    else if(route==='archive'){libraryBeforeSerial();main.querySelector('.hero h1').innerHTML='熟悉的词，<br>再遇见<em>新语境。</em>';main.querySelector('.hero p').innerHTML='这里保留完整词汇覆盖的短篇语境。<br>连续主线小说在故事书架，旧学习记录可以继续使用。';main.querySelector('#shelf-heading').textContent='拓展语境';}
+    if(!route||route==='library')library();
+    else if(route==='serial'){const c=SERIAL_CHAPTER_INDEX.get(id);if(id){if(c?.book.id===book)serialRead(id);else serialNotFound();}else serialBookPage(book);}
+    else if(route==='archive'){libraryBeforeSerial();const heroTitle=main.querySelector('.hero h1'),heroCopy=main.querySelector('.hero p'),shelf=main.querySelector('#shelf-heading');if(heroTitle)heroTitle.innerHTML='熟悉的词，<br>再遇见<em>新语境。</em>';if(heroCopy)heroCopy.innerHTML='这里保留完整词汇覆盖的短篇语境。<br>连续主线小说在故事书架，旧学习记录可以继续使用。';if(shelf)shelf.textContent='拓展语境';}
     else serialGamePage(id);
     updateNav();return;
   }renderBeforeSerial();if(route==='units')serialEnhanceVocabularyLinks();
@@ -170,10 +207,12 @@ wordModal=function(id){
   const reference=refs.find(r=>r.id===current?.id)||refs[0],chapter=reference&&SERIAL_CHAPTER_INDEX.get(reference.id);
   if(!reference||!chapter)return;
   wordDialog.querySelector('.context-box')?.remove();
-  wordDialog.querySelector('.word-meaning')?.insertAdjacentHTML('beforebegin',`<div class="context-box"><small>${esc(chapter.book.title)} · 第 ${chapter.number} 章 · ${esc(chapter.title)}</small><p>${esc(chapter.cn[reference.paragraph].replace(/\[\[([^|\]]+)\|([^\]]+)\]\]/g,(_,key,meaning)=>key===id?clozeExpected(key)+'（'+meaning+'）':meaning))}</p></div>`);
-  const meaning=wordDialog.querySelector('.word-meaning');if(meaning)meaning.textContent=reference.meaning;
-  const example=wordDialog.querySelector('.word-example');if(example)example.textContent=listeningPlain(chapter.en[reference.paragraph]);
-  if(clozeExpected(id)!==id){const title=wordDialog.querySelector('.english-title');if(title)title.textContent=clozeExpected(id);meaning?.insertAdjacentHTML('afterend',`<p class="practice-label">请记标准拼写 ${esc(clozeExpected(id))}。</p>`);}
+  if(Array.isArray(chapter.cn)&&reference.paragraph>=0&&chapter.cn[reference.paragraph]){
+    wordDialog.querySelector('.word-meaning')?.insertAdjacentHTML('beforebegin',`<div class="context-box"><small>${esc(chapter.book.title)} · 第 ${chapter.number} 章 · ${esc(chapter.title)}</small><p>${esc(chapter.cn[reference.paragraph].replace(/\[\[([^|\]]+)\|([^\]]+)\]\]/g,(_,key,meaning)=>key===id?clozeExpected(key)+'（'+meaning+'）':meaning))}</p></div>`);
+    const meaning=wordDialog.querySelector('.word-meaning');if(meaning&&reference.meaning)meaning.textContent=reference.meaning;
+    const example=wordDialog.querySelector('.word-example');if(example&&Array.isArray(chapter.en))example.textContent=listeningPlain(chapter.en[reference.paragraph]||'');
+  }
+  if(clozeExpected(id)!==id){const title=wordDialog.querySelector('.english-title');if(title)title.textContent=clozeExpected(id);wordDialog.querySelector('.word-meaning')?.insertAdjacentHTML('afterend',`<p class="practice-label">请记标准拼写 ${esc(clozeExpected(id))}。</p>`);}
   wordDialog.querySelector('.word-source')?.insertAdjacentHTML('beforebegin',`<details class="serial-word-sources" open><summary>在连续长篇里遇见这个词 · ${refs.length} 章</summary><div class="related-story-links">${refs.slice(0,12).map(r=>`<a href="#serial/${r.book}/${r.id}">《${esc(r.bookTitle)}》· 第 ${r.number} 章 · ${esc(r.title)} ↗</a>`).join('')}</div></details>`);
 };
 function serialEnhanceVocabularyLinks(){

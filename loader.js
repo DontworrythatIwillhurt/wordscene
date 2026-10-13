@@ -1,4 +1,4 @@
-/* Lazy-load dictionary and story bodies via classic script tags (works on file://). */
+/* Lazy-load dictionary, novels, stories and practice packs via classic script tags. */
 (function(){
   var assetVersions=window.WORDSCENE_ASSET_VERSIONS||{};
   var pending={};
@@ -63,10 +63,107 @@
     return true;
   }
 
+  function markReady(){
+    bootFinished=true;
+    var panel=document.getElementById('startup-panel');
+    if(panel&&panel.parentNode)panel.remove();
+    if(typeof wordsceneMarkReady==='function')wordsceneMarkReady();
+  }
+
+  function prefetch(path){
+    var link=document.createElement('link');
+    link.rel='prefetch';
+    link.as='script';
+    link.href=versioned(path);
+    document.head.appendChild(link);
+  }
+
+  window.ensureCatalogData=function(){
+    if(typeof WORDSCENE_CATALOG!=='undefined'&&WORDSCENE_CATALOG&&WORDSCENE_CATALOG.stories&&WORDSCENE_CATALOG.stories.length){
+      if(!(STORIES&&STORIES.length)&&typeof assembleFromCatalog==='function')assembleFromCatalog();
+      return Promise.resolve();
+    }
+    showDataLoading('正在打开拓展语境…');
+    return loadScript('catalog.js').then(function(){
+      if(typeof assembleFromCatalog==='function')assembleFromCatalog();
+      refreshIndexes();
+      hideDataLoading();
+    }).catch(function(error){
+      hideDataLoading();
+      toast&&toast(error.message||'目录加载失败');
+      throw error;
+    });
+  };
+
+  window.ensureSerialIndex=function(){
+    if(typeof SERIAL_INDEX!=='undefined'&&SERIAL_INDEX&&SERIAL_INDEX.length){
+      if(typeof buildSerialIndexes==='function')buildSerialIndexes();
+      return Promise.resolve();
+    }
+    showDataLoading('正在打开故事书架…');
+    return loadScript('serial-index.js').then(function(){
+      if(typeof buildSerialIndexes==='function')buildSerialIndexes();
+      hideDataLoading();
+    }).catch(function(error){
+      hideDataLoading();
+      toast&&toast(error.message||'书架加载失败');
+      throw error;
+    });
+  };
+
+  window.ensureSerialFullData=function(){
+    var books=typeof SERIAL_NOVELS!=='undefined'?SERIAL_NOVELS:null;
+    if(books&&books.length&&books[0].chapters&&books[0].chapters[0]&&Array.isArray(books[0].chapters[0].cn)){
+      if(typeof buildSerialIndexes==='function')buildSerialIndexes();
+      return Promise.resolve();
+    }
+    showDataLoading('正在打开长篇正文…');
+    return loadScript('serial-data.js').then(function(){
+      if(typeof buildSerialIndexes==='function')buildSerialIndexes();
+      hideDataLoading();
+    }).catch(function(error){
+      hideDataLoading();
+      toast&&toast(error.message||'长篇正文加载失败');
+      throw error;
+    });
+  };
+
+  window.ensureTrainingData=function(){
+    if(typeof CONTEXT_PRACTICE!=='undefined'&&CONTEXT_PRACTICE&&CONTEXT_PRACTICE.length){
+      if(typeof buildTrainingIndexes==='function')buildTrainingIndexes();
+      return Promise.resolve();
+    }
+    showDataLoading('正在加载实战练习…');
+    return loadScript('training-data.js').then(function(){
+      if(typeof buildTrainingIndexes==='function')buildTrainingIndexes();
+      hideDataLoading();
+    }).catch(function(error){
+      hideDataLoading();
+      toast&&toast(error.message||'练习内容加载失败');
+      throw error;
+    });
+  };
+
+  window.ensureListeningQuestions=function(){
+    if(typeof LISTENING_QUESTIONS!=='undefined'&&LISTENING_QUESTIONS&&LISTENING_QUESTIONS.length){
+      if(typeof buildListeningQuestionIndex==='function')buildListeningQuestionIndex();
+      return Promise.resolve();
+    }
+    showDataLoading('正在加载听力题…');
+    return loadScript('listening-questions.js').then(function(){
+      if(typeof buildListeningQuestionIndex==='function')buildListeningQuestionIndex();
+      hideDataLoading();
+    }).catch(function(error){
+      hideDataLoading();
+      toast&&toast(error.message||'听力题加载失败');
+      throw error;
+    });
+  };
+
   window.ensureStoryData=function(storyId){
     var story=typeof getStory==='function'?getStory(storyId):STORY_INDEX.get(storyId);
     var category=story&&story.category;
-    if(!category&&WORDSCENE_CATALOG){
+    if(!category&&typeof WORDSCENE_CATALOG!=='undefined'&&WORDSCENE_CATALOG){
       var entry=WORDSCENE_CATALOG.stories.find(function(s){return s.id===storyId;});
       category=entry&&entry.category;
     }
@@ -78,8 +175,6 @@
         WORDSCENE_DATA_STATE[key]=true;
       }));
     }
-    // Core STORY_DATA / CHAPTERS stories still need cloze text from the matching theme chunk.
-    // If both themes not loaded and story is shell, load its theme.
     if(!tasks.length&&story&&story._shell&&key){
       tasks.push(loadScript('data/stories-'+key+'.js').then(function(){
         mergeStoryChunk(globalThis['WORDSCENE_CHUNK_'+key]);
@@ -90,15 +185,7 @@
     if(!tasks.length)return Promise.resolve(story);
     showDataLoading('正在打开故事…');
     return Promise.all(tasks).then(function(){
-      // Load cloze for originals: theme chunks include cloze for that category.
-      // Also ensure we have expanded+cloze merged then reassemble.
-      // If dictionary already present, keep it.
-      if(typeof CLOZE_STORIES==='undefined'||!(globalThis.CLOZE_STORIES||[]).length){
-        // Theme chunk should have populated CLOZE_STORIES via mergeStoryChunk
-      }
       rebuildAfterChunks();
-      // If only one theme loaded, assemble still uses all EXPANDED so far + STORY_DATA + chapters.
-      // Cloze revisions for unloaded theme stay as original cn until that chunk loads — ok.
       hideDataLoading();
       return STORY_INDEX.get(storyId);
     }).catch(function(error){
@@ -120,7 +207,6 @@
       if(expanded.length&&cloze.length){
         assembleWordsceneData(expanded,cloze,globalThis.DICTIONARY_WORDS);
       }else if(WORDSCENE_DATA_STATE.shell){
-        // Enrich catalog words later when stories load; for now merge dictionary into BUILTIN
         var merged=new Map((globalThis.DICTIONARY_WORDS||[]).map(function(w){return [w.id,Object.assign({},w)];}));
         EXTRA_WORDS.forEach(function(w){if(!merged.has(w.id))merged.set(w.id,w);});
         STORY_WORDS.forEach(function(w){
@@ -147,27 +233,29 @@
   };
 
   window.ensureAllStoryData=function(){
-    var tasks=[];
-    if(!WORDSCENE_DATA_STATE.cultivation){
-      tasks.push(loadScript('data/stories-cultivation.js').then(function(){
-        mergeStoryChunk(globalThis.WORDSCENE_CHUNK_cultivation);
-        WORDSCENE_DATA_STATE.cultivation=true;
-      }));
-    }
-    if(!WORDSCENE_DATA_STATE.mystery){
-      tasks.push(loadScript('data/stories-mystery.js').then(function(){
-        mergeStoryChunk(globalThis.WORDSCENE_CHUNK_mystery);
-        WORDSCENE_DATA_STATE.mystery=true;
-      }));
-    }
-    if(!tasks.length){
-      if(WORDSCENE_DATA_STATE.shell)rebuildAfterChunks();
-      return Promise.resolve();
-    }
-    showDataLoading('正在加载全部故事…');
-    return Promise.all(tasks).then(function(){
-      rebuildAfterChunks();
-      hideDataLoading();
+    return ensureCatalogData().then(function(){
+      var tasks=[];
+      if(!WORDSCENE_DATA_STATE.cultivation){
+        tasks.push(loadScript('data/stories-cultivation.js').then(function(){
+          mergeStoryChunk(globalThis.WORDSCENE_CHUNK_cultivation);
+          WORDSCENE_DATA_STATE.cultivation=true;
+        }));
+      }
+      if(!WORDSCENE_DATA_STATE.mystery){
+        tasks.push(loadScript('data/stories-mystery.js').then(function(){
+          mergeStoryChunk(globalThis.WORDSCENE_CHUNK_mystery);
+          WORDSCENE_DATA_STATE.mystery=true;
+        }));
+      }
+      if(!tasks.length){
+        if(WORDSCENE_DATA_STATE.shell)rebuildAfterChunks();
+        return;
+      }
+      showDataLoading('正在加载全部故事…');
+      return Promise.all(tasks).then(function(){
+        rebuildAfterChunks();
+        hideDataLoading();
+      });
     });
   };
 
@@ -177,34 +265,47 @@
       var hash=location.hash.slice(1);
       var parts=hash.split('/');
       var route=parts[0]||'library';
-      var id=parts[1];
+      var section=parts[1];
+      var id=parts[2]||parts[1];
       var chain=Promise.resolve();
-      if(route==='story'&&id){
-        chain=ensureStoryData(id);
+      if(route==='serial'&&parts[2]){
+        chain=ensureSerialFullData();
+      }else if(route==='serial'||route==='library'||route===''){
+        chain=ensureSerialIndex();
+      }else if(route==='practice'&&section==='journey'){
+        chain=ensureSerialFullData();
+      }else if(route==='practice'&&section&&section!=='home'){
+        chain=ensureTrainingData();
+      }else if(route==='practice'){
+        chain=ensureSerialIndex();
+      }else if(route==='archive'){
+        chain=ensureCatalogData();
+      }else if(route==='story'&&id){
+        chain=ensureCatalogData().then(function(){return ensureStoryData(id);});
       }else if(route==='notebook'||route==='units'||route==='review'||route==='quiz'||route==='progress'){
         chain=ensureDictionaryData().then(function(){
-          // progress/review work better with full story word meanings
           if(route==='progress'||route==='review')return ensureAllStoryData();
         });
       }
       return chain.then(function(){
         originalRender();
-        var panel=document.getElementById('startup-panel');
-        if(panel&&panel.parentNode)panel.remove();
-        bootFinished=true;
+        markReady();
       }).catch(function(error){
         var panel=document.getElementById('startup-panel')||document.getElementById('main');
         if(panel){
           showDataLoading('内容加载失败');
           var el=document.getElementById('data-loading-panel');
-          if(el)el.querySelector('p').textContent=(error&&error.message)||'请检查文件是否完整，或点击顶部重试。';
+          if(el)el.querySelector('p').textContent=(error&&error.message)||'请检查网络后重试，或点击顶部重新加载。';
         }
       });
     };
 
     var originalReader=window.reader;
     window.reader=function(id){
-      return ensureStoryData(id).then(function(){originalReader(id);});
+      if(typeof SERIAL_CHAPTER_INDEX!=='undefined'&&SERIAL_CHAPTER_INDEX.has(id)){
+        return ensureSerialFullData().then(function(){originalReader(id);});
+      }
+      return ensureCatalogData().then(function(){return ensureStoryData(id);}).then(function(){originalReader(id);});
     };
 
     var originalWordModal=window.wordModal;
@@ -215,8 +316,11 @@
 
   function boot(){
     wrapAsyncRoute();
-    // Replace sync render() already invoked by learning/cloze with a data-aware pass.
     window.render();
+    setTimeout(function(){
+      prefetch('serial-data.js');
+      prefetch('catalog.js');
+    },1200);
   }
 
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);

@@ -7,17 +7,14 @@
   <meta name="description" content="两部连续小说，13卷140章，在剧情与对应英文中覆盖全部6164个内置词。剧情填空、线索闯关、故事听力和间隔复习。">
   <title>词间 Wordscene · 把单词放进故事里</title>
   <link rel="icon" href="icon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="style.css?v=91b2972536e4">
-  <link rel="stylesheet" href="upgrade.css?v=03071102abeb">
-  <link rel="stylesheet" href="mobile.css?v=33f066f9d179">
-  <link rel="stylesheet" href="cloze.css?v=09506822c2ba">
-  <link rel="stylesheet" href="listening.css?v=200cedb1029c">
-  <link rel="stylesheet" href="practice.css?v=49e05af19d0d">
-  <link rel="stylesheet" href="training.css?v=6d31231f8504">
-  <link rel="stylesheet" href="premium.css?v=113db2f1369e">
-   <script>window.WORDSCENE_ASSET_VERSIONS={"wordscene.compat.js":"113c595d1c1a","catalog.js":"314981300905","dictionary.js":"0b0d87dbc12b","stories-cultivation.js":"ba6f9cc8eb53","stories-mystery.js":"e01be325356a","cloze-stories.js":"5e93b95eff3f","expanded-stories.js":"a4b2e3d53925","style.css?v=91b2972536e4":"91b2972536e4","upgrade.css?v=03071102abeb":"03071102abeb","mobile.css?v=33f066f9d179":"33f066f9d179","cloze.css?v=09506822c2ba":"d2ff7aac7e8c","startup.js?v=04cc9edcec2f":"04cc9edcec2f"};</script>
-  <script src="startup.js?v=04cc9edcec2f"></script>
-  <script src="wordscene.compat.js?v=113c595d1c1a" defer></script>
+  <link rel="preload" href="app.css?v=17e6f9109ea2" as="style">
+  <link rel="preload" href="serial-index.js?v=aead44042e06" as="script">
+  <link rel="preload" href="wordscene.compat.js?v=c2ed24895f8e" as="script">
+  <link rel="stylesheet" href="app.css?v=17e6f9109ea2">
+  <script>window.WORDSCENE_ASSET_VERSIONS={"wordscene.compat.js":"c2ed24895f8e","serial-index.js":"aead44042e06","serial-data.js":"cfec498a5900","catalog.js":"314981300905","dictionary.js":"0b0d87dbc12b","startup.js":"57447b8ea349","app.css":"17e6f9109ea2","listening-questions.js":"38cf771025c3","training-data.js":"f0783524839e","expanded-stories.js":"a4b2e3d53925","cloze-stories.js":"0c1c9aef2a1c","stories-cultivation.js":"ba6f9cc8eb53","stories-mystery.js":"e01be325356a"};</script>
+  <script src="startup.js?v=57447b8ea349"></script>
+  <script src="serial-index.js?v=aead44042e06" defer></script>
+  <script src="wordscene.compat.js?v=c2ed24895f8e" defer></script>
 </head>
 <body>
   <a class="skip" href="#main">跳到主要内容</a>
@@ -32,7 +29,7 @@
     </nav>
     <button class="daily-pill" id="goal-button" aria-label="设置每日学习目标"><span class="sun-icon">✳</span> 每天一点，慢慢记住 <span>↗</span></button>
   </header>
-  <main id="main" tabindex="-1"><section id="startup-panel" class="startup-panel" aria-live="polite"><h1>正在打开故事书架…</h1><p>首次打开需要加载故事与词库，请稍候。</p><button class="button" type="button" hidden>重新加载</button><details hidden><summary>查看加载信息</summary><pre></pre></details><noscript><p>浏览器已关闭 JavaScript，请允许网页运行脚本后重新打开。</p></noscript></section></main>
+  <main id="main" tabindex="-1"><section id="startup-panel" class="startup-panel" aria-live="polite"><h1>正在打开故事书架…</h1><p>书架先打开，章节正文会在阅读时再下载。</p><button class="button" type="button" hidden>重新加载</button><details hidden><summary>查看加载信息</summary><pre></pre></details><noscript><p>浏览器已关闭 JavaScript，请允许网页运行脚本后重新打开。</p></noscript></section></main>
   <footer class="site-footer"><a href="#library" class="footer-brand">词间 <span>Wordscene</span></a><span>让单词有画面，让复习有回声。</span><button id="about-button">关于词间</button></footer>
   <dialog id="word-dialog" aria-labelledby="word-title"><div id="word-content"></div></dialog>
   <dialog id="utility-dialog" aria-labelledby="utility-title"><div id="utility-content"></div></dialog>

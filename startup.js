@@ -12,6 +12,12 @@
     details.querySelector('pre').textContent=failure||'加载等待时间较长，请检查网络后重试。';
     element.querySelector('button').hidden=false;
   }
+  window.wordsceneMarkReady=function(){
+    if(timer)clearTimeout(timer);
+    failure=null;
+    var element=panel();
+    if(element&&element.parentNode)element.remove();
+  };
   window.addEventListener('error',function(event){
     if(!failure){
       if(event.target&&event.target.tagName==='SCRIPT')failure='文件未加载：'+(event.target.src||'').split('/').pop();
@@ -28,7 +34,9 @@
       location.replace(url+(url.indexOf('?')<0?'?':'&')+'retry='+Date.now()+hash);
     });
     if(failure)showFailure();
-    else timer=setTimeout(showFailure,20000);
+    else timer=setTimeout(function(){if(panel())showFailure();},90000);
   });
-  window.addEventListener('load',function(){if(!panel())clearTimeout(timer);else if(!failure)failure='页面初始化未完成。';if(failure)showFailure();});
+  window.addEventListener('load',function(){
+    if(!panel()){if(timer)clearTimeout(timer);}
+  });
 })();
