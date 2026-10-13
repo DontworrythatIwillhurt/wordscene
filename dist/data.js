@@ -240,7 +240,7 @@ function assembleWordsceneData(expandedStories, clozeStories, dictionaryWords){
   }
   STORIES=rawList.map((raw,index)=>{
     const shell=!!raw._shell;
-    const s={...raw,cn:clozeRevisions.get(raw.id)||raw.cn,number:index+1,englishTitle:raw.englishTitle||raw.en};
+  const s={...raw,cn:clozeRevisions.get(raw.id)||raw.cn,mood:raw.category==='修仙志'?'权衡与抉择':'疑点与线索',number:index+1,englishTitle:raw.englishTitle||raw.en};
     if(Array.isArray(s.englishTitle)) s.englishTitle='WORDSCENE · '+String(index+1).padStart(2,'0');
     if(!Array.isArray(s.en)) s.en=[String(s.en||s.englishTitle||'')];
     if(!Array.isArray(s.cn)) s.cn=[String(s.cn||'')];

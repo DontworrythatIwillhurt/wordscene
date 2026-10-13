@@ -49,7 +49,7 @@
   const originalPreferences=applyPreferences;
   applyPreferences=function(){
     originalPreferences();
-    document.querySelector('meta[name="theme-color"]')?.setAttribute('content',state.preferences.night?'#1d2522':'#f6f5f0');
+    document.querySelector('meta[name="theme-color"]')?.setAttribute('content',state.preferences.night?'#192722':'#f4f0e8');
   };
   function syncDialogState(){document.body.classList.toggle('dialog-open',wordDialog.open||utilityDialog.open);}
   const dialogObserver=new MutationObserver(syncDialogState);
