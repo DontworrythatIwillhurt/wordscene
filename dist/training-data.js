@@ -1,4 +1,4 @@
-const CONTEXT_PRACTICE = [
+var CONTEXT_PRACTICE = [
   {
     "id": "disciple",
     "scenes": [
@@ -3720,7 +3720,7 @@ const CONTEXT_PRACTICE = [
     ]
   }
 ];
-const EXAM_PRACTICE = [
+var EXAM_PRACTICE = [
   {
     "id": "cloze-1",
     "type": "cloze",
@@ -4559,7 +4559,7 @@ const EXAM_PRACTICE = [
     ]
   }
 ];
-const MICRO_PRACTICE = [
+var MICRO_PRACTICE = [
   {
     "id": "micro-1",
     "title": "第 1 天：让学习空间更可达",

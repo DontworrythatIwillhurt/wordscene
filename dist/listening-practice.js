@@ -1,5 +1,9 @@
 /* Original comprehension, sentence listening and feedback share the same player. */
-const LISTENING_QUESTION_INDEX=new Map(LISTENING_QUESTIONS.map(item=>[item.id,item.questions]));
+let LISTENING_QUESTION_INDEX=new Map();
+function buildListeningQuestionIndex(){
+  LISTENING_QUESTION_INDEX=new Map((typeof LISTENING_QUESTIONS!=='undefined'&&LISTENING_QUESTIONS||[]).map(item=>[item.id,item.questions]));
+}
+buildListeningQuestionIndex();
 function storySentences(text){
   const result=[],boundaries=wordsceneMatches(text,/[.!?]+["'”’)]*(?:\s+|$)/g);let start=0;
   for(const match of boundaries){

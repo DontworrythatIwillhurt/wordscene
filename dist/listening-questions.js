@@ -1,4 +1,4 @@
-const LISTENING_QUESTIONS = [
+var LISTENING_QUESTIONS = [
   {
     "id": "cloud-gate",
     "questions": [

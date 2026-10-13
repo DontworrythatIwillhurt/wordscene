@@ -329,7 +329,14 @@ if(wordsceneHasFullBundle()){
   WORDSCENE_DATA_STATE.cultivation=true;
   WORDSCENE_DATA_STATE.mystery=true;
 }else if(!assembleFromCatalog()){
-  throw new Error('词间目录数据缺失');
+  STORIES=[];
+  STORY_WORDS=[];
+  BUILTIN_WORDS=EXTRA_WORDS.slice();
+  STORY_INDEX=new Map();
+  BUILTIN_INDEX=new Map(BUILTIN_WORDS.map(w=>[w.id,w]));
+  CONTEXTUAL_IDS=new Set();
+  COVERAGE={reference:0,contextual:0,storyUnique:0,total:0,coveredTotal:0};
+  WORDSCENE_DATA_STATE.shell=true;
 }
 
 function maskSurface(sentence,surface){

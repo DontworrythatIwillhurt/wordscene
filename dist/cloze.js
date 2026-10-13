@@ -1,6 +1,7 @@
 /* Read the scene, then recall exactly the same words in the same scene. */
 let clozeView='read',clozeSession=null;
 function storySlots(story){
+  if(!story||!Array.isArray(story.cn))return [];
   return [].concat(...story.cn.map(paragraph=>wordsceneMatches(paragraph,/\[\[([^|\]]+)\|([^\]]+)\]\]/g).map(match=>({id:match[1],meaning:match[2]}))));
 }
 function ensureCloze(story){
@@ -112,6 +113,7 @@ const previousClozeLibrary=library;
 library=function(){
   previousClozeLibrary();
   const hero=main.querySelector('.hero');
+  if(!hero)return;
   hero.querySelector('h1').innerHTML='跟着剧情走，<br>把单词<em>填回来。</em>';
   hero.querySelector('p').innerHTML='修仙篇，看人物如何争取资源、承担代价。<br>悬疑篇，跟同伴进入旧地，沿着线索追出真相。';
   main.querySelector('.section-title p').textContent='故事里读词 · 同剧情填空 · 听故事练听力';
