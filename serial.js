@@ -75,6 +75,7 @@ function serialBookCard(book,index){
 }
 const libraryBeforeSerial=library;
 library=function(){
+  if(!main)return;
   const books=serialBooks();
   if(!books.length){main.dataset.view='serial';main.innerHTML='<section class="startup-panel"><h1>正在打开故事书架…</h1><p>目录还在加载，请稍候。</p></section>';applyPreferences();return;}
   const chapter=SERIAL_CHAPTER_INDEX.get(state.serial.lastChapter)||SERIAL_CHAPTER_INDEX.get(books[0].chapters[0].id);
@@ -186,9 +187,10 @@ const updateNavBeforeSerial=updateNav;
 updateNav=function(){updateNavBeforeSerial();const route=location.hash.split('/')[0].slice(1);if(['serial','archive'].includes(route)){document.querySelectorAll('[data-nav]').forEach(el=>el.classList.toggle('active',el.dataset.nav==='library'));}};
 const renderBeforeSerial=render;
 render=function(){
+  if(!main)return;
   const [route,book,id]=location.hash.slice(1).split('/');serialStopAudio();delete main.dataset.view;
   if(!route||route==='library'||route==='serial'||route==='archive'||route==='practice'&&book==='journey'){
-    clearInterval(trainingClock);listeningStop();wordDialog.close();utilityDialog.close();document.body.classList.remove('focus-mode');
+    clearInterval(trainingClock);if(typeof listeningStop==='function')listeningStop();if(wordDialog&&wordDialog.close)wordDialog.close();if(utilityDialog&&utilityDialog.close)utilityDialog.close();document.body.classList.remove('focus-mode');
     if(!route||route==='library')library();
     else if(route==='serial'){const c=SERIAL_CHAPTER_INDEX.get(id);if(id){if(c?.book.id===book)serialRead(id);else serialNotFound();}else serialBookPage(book);}
     else if(route==='archive'){libraryBeforeSerial();const heroTitle=main.querySelector('.hero h1'),heroCopy=main.querySelector('.hero p'),shelf=main.querySelector('#shelf-heading');if(heroTitle)heroTitle.innerHTML='熟悉的词，<br>再遇见<em>新语境。</em>';if(heroCopy)heroCopy.innerHTML='这里保留完整词汇覆盖的短篇语境。<br>连续主线小说在故事书架，旧学习记录可以继续使用。';if(shelf)shelf.textContent='拓展语境';}
@@ -244,6 +246,5 @@ document.addEventListener('input',event=>{if(event.target.id==='serial-spell-inp
 document.addEventListener('submit',event=>{if(event.target.id==='serial-spell-form'){event.preventDefault();event.stopImmediatePropagation();serialGameAnswer(document.getElementById('serial-spell-input').value);}},true);
 window.addEventListener('pagehide',serialStopAudio);
 document.addEventListener('visibilitychange',()=>{if(document.hidden&&serialAudioActive){serialStopAudio();serialAudioStatus('播放已暂停，回到页面后可重新听。');}});
-const serialAboutButton=document.getElementById('about-button');serialAboutButton.replaceWith(serialAboutButton.cloneNode(true));
-document.getElementById('about-button').addEventListener('click',()=>utility('词间 · 让故事留下记忆',`<p>两部长篇连续小说，共${SERIAL_TOTAL_CHAPTERS}章，按分卷顺序阅读。先读懂人物、动作和线索，再通过剧情填空与八词闯关回忆英文。展开答案与标记读完不增加词汇掌握。</p><p>长篇正文中已有${SERIAL_COVERED_IDS.size}/${BUILTIN_WORDS.length}个词的中英语境；每个词可从完整词库跳回所在章节。原300篇只作为额外拓展保留。原来的词汇记录、收藏、笔记和短篇书签都保留；小说进度单独保存。</p><p>听力使用设备英语语音。进度保存在当前浏览器，可在完整词库页导出备份。词表来源与许可见 <a href="SOURCES.md" target="_blank" rel="noopener">内容来源 ↗</a>。</p>`));
-render();
+const serialAboutButton=document.getElementById('about-button');
+if(serialAboutButton){serialAboutButton.replaceWith(serialAboutButton.cloneNode(true));document.getElementById('about-button').addEventListener('click',()=>utility('词间 · 让故事留下记忆',`<p>两部长篇连续小说，共${SERIAL_TOTAL_CHAPTERS}章，按分卷顺序阅读。先读懂人物、动作和线索，再通过剧情填空与八词闯关回忆英文。展开答案与标记读完不增加词汇掌握。</p><p>长篇正文中已有${SERIAL_COVERED_IDS.size}/${BUILTIN_WORDS.length}个词的中英语境；每个词可从完整词库跳回所在章节。原300篇只作为额外拓展保留。原来的词汇记录、收藏、笔记和短篇书签都保留；小说进度单独保存。</p><p>听力使用设备英语语音。进度保存在当前浏览器，可在完整词库页导出备份。词表来源与许可见 <a href="SOURCES.md" target="_blank" rel="noopener">内容来源 ↗</a>。</p>`));}

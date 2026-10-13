@@ -44,16 +44,19 @@
   for(const method of ['render','reader','quizPage','renderWordList']){
     // Function declarations in the buildless app are also properties of window.
     const existing=window[method];
-    window[method]=function(...args){const result=existing(...args);enhanceControls();return result;};
+    if(typeof existing!=='function')continue;
+    window[method]=function(...args){const result=existing.apply(this,args);enhanceControls();return result;};
   }
   const originalPreferences=applyPreferences;
   applyPreferences=function(){
     originalPreferences();
     document.querySelector('meta[name="theme-color"]')?.setAttribute('content',state.preferences.night?'#192722':'#f4f0e8');
   };
-  function syncDialogState(){document.body.classList.toggle('dialog-open',wordDialog.open||utilityDialog.open);}
-  const dialogObserver=new MutationObserver(syncDialogState);
-  [wordDialog,utilityDialog].forEach(dialog=>dialogObserver.observe(dialog,{attributes:true,attributeFilter:['open']}));
+  function syncDialogState(){document.body.classList.toggle('dialog-open',Boolean((wordDialog&&wordDialog.open)||(utilityDialog&&utilityDialog.open)));}
+  if(typeof MutationObserver==='function'){
+    const dialogObserver=new MutationObserver(syncDialogState);
+    [wordDialog,utilityDialog].forEach(dialog=>{if(dialog)dialogObserver.observe(dialog,{attributes:true,attributeFilter:['open']});});
+  }
   let restingHeight=window.innerHeight;
   function syncKeyboard(){
     const editable=document.activeElement?.matches('input:not([type="file"]),textarea');

@@ -112,13 +112,14 @@ document.addEventListener('click',event=>{
 const previousClozeLibrary=library;
 library=function(){
   previousClozeLibrary();
+  if(!main)return;
   const hero=main.querySelector('.hero');
   if(!hero)return;
-  hero.querySelector('h1').innerHTML='跟着剧情走，<br>把单词<em>填回来。</em>';
-  hero.querySelector('p').innerHTML='修仙篇，看人物如何争取资源、承担代价。<br>悬疑篇，跟同伴进入旧地，沿着线索追出真相。';
-  main.querySelector('.section-title p').textContent='故事里读词 · 同剧情填空 · 听故事练听力';
-  main.querySelector('.reading-note div').innerHTML='<strong>先读故事，再关掉答案，把英文填回来。</strong><br>粗体词和中文释义一起出现；填空时保留剧情，首字母提示可以关闭。';
+  const title=hero.querySelector('h1'),copy=hero.querySelector('p'),shelfCopy=main.querySelector('.section-title p'),note=main.querySelector('.reading-note div');
+  if(title)title.innerHTML='跟着剧情走，<br>把单词<em>填回来。</em>';
+  if(copy)copy.innerHTML='修仙篇，看人物如何争取资源、承担代价。<br>悬疑篇，跟同伴进入旧地，沿着线索追出真相。';
+  if(shelfCopy)shelfCopy.textContent='故事里读词 · 同剧情填空 · 听故事练听力';
+  if(note)note.innerHTML='<strong>先读故事，再关掉答案，把英文填回来。</strong><br>粗体词和中文释义一起出现；填空时保留剧情，首字母提示可以关闭。';
 };
-const clozeAbout=document.getElementById('about-button');clozeAbout.replaceWith(clozeAbout.cloneNode(true));
-document.getElementById('about-button').addEventListener('click',()=>utility('故事与学习说明',`<p>${STORIES.length} 篇原创修仙与悬疑故事，以中文剧情中的英文词和语境义帮助记忆。读完后，同一段剧情变成填空练习。</p><p>本次收录 ${COVERAGE.total} 个内置词，每个词都有故事语境。查看答案和阅读不会自动计为学会；提交填空、词卡确认和其他测验会安排复习。</p><p>词表来源与许可见 <a href="SOURCES.md" target="_blank" rel="noopener">SOURCES.md ↗</a>。学习记录保存在当前浏览器，请定期导出备份。</p>`));
-render();
+const clozeAbout=document.getElementById('about-button');
+if(clozeAbout){clozeAbout.replaceWith(clozeAbout.cloneNode(true));document.getElementById('about-button').addEventListener('click',()=>utility('故事与学习说明',`<p>${STORIES.length} 篇原创修仙与悬疑故事，以中文剧情中的英文词和语境义帮助记忆。读完后，同一段剧情变成填空练习。</p><p>本次收录 ${COVERAGE.total} 个内置词，每个词都有故事语境。查看答案和阅读不会自动计为学会；提交填空、词卡确认和其他测验会安排复习。</p><p>词表来源与许可见 <a href="SOURCES.md" target="_blank" rel="noopener">SOURCES.md ↗</a>。学习记录保存在当前浏览器，请定期导出备份。</p>`));}

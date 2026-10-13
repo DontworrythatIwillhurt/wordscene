@@ -90,7 +90,7 @@
       hideDataLoading();
     }).catch(function(error){
       hideDataLoading();
-      toast&&toast(error.message||'目录加载失败');
+      if(typeof toast==='function')toast(error.message||'目录加载失败');
       throw error;
     });
   };
@@ -106,7 +106,7 @@
       hideDataLoading();
     }).catch(function(error){
       hideDataLoading();
-      toast&&toast(error.message||'书架加载失败');
+      if(typeof toast==='function')toast(error.message||'书架加载失败');
       throw error;
     });
   };
@@ -123,7 +123,7 @@
       hideDataLoading();
     }).catch(function(error){
       hideDataLoading();
-      toast&&toast(error.message||'长篇正文加载失败');
+      if(typeof toast==='function')toast(error.message||'长篇正文加载失败');
       throw error;
     });
   };
@@ -139,7 +139,7 @@
       hideDataLoading();
     }).catch(function(error){
       hideDataLoading();
-      toast&&toast(error.message||'练习内容加载失败');
+      if(typeof toast==='function')toast(error.message||'练习内容加载失败');
       throw error;
     });
   };
@@ -155,7 +155,7 @@
       hideDataLoading();
     }).catch(function(error){
       hideDataLoading();
-      toast&&toast(error.message||'听力题加载失败');
+      if(typeof toast==='function')toast(error.message||'听力题加载失败');
       throw error;
     });
   };
@@ -190,7 +190,7 @@
       return STORY_INDEX.get(storyId);
     }).catch(function(error){
       hideDataLoading();
-      toast&&toast(error.message||'故事加载失败');
+      if(typeof toast==='function')toast(error.message||'故事加载失败');
       throw error;
     });
   };
@@ -227,7 +227,7 @@
       hideDataLoading();
     }).catch(function(error){
       hideDataLoading();
-      toast&&toast(error.message||'词库加载失败');
+      if(typeof toast==='function')toast(error.message||'词库加载失败');
       throw error;
     });
   };
@@ -288,15 +288,12 @@
         });
       }
       return chain.then(function(){
-        originalRender();
+        try{originalRender();}catch(error){console.error(error);throw error;}
         markReady();
       }).catch(function(error){
-        var panel=document.getElementById('startup-panel')||document.getElementById('main');
-        if(panel){
-          showDataLoading('内容加载失败');
-          var el=document.getElementById('data-loading-panel');
-          if(el)el.querySelector('p').textContent=(error&&error.message)||'请检查网络后重试，或点击顶部重新加载。';
-        }
+        showDataLoading('内容加载失败');
+        var el=document.getElementById('data-loading-panel');
+        if(el)el.querySelector('p').textContent=(error&&error.message)||'请检查网络后重试，或点击顶部重新加载。';
       });
     };
 
@@ -315,8 +312,20 @@
   }
 
   function boot(){
-    wrapAsyncRoute();
-    window.render();
+    if(!document.getElementById('main')){
+      if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);
+      else setTimeout(boot,0);
+      return;
+    }
+    try{
+      wrapAsyncRoute();
+      window.render();
+    }catch(error){
+      console.error(error);
+      showDataLoading('内容加载失败');
+      var el=document.getElementById('data-loading-panel');
+      if(el)el.querySelector('p').textContent=(error&&error.message)||'请检查网络后重试，或点击顶部重新加载。';
+    }
     setTimeout(function(){
       prefetch('serial-data.js');
       prefetch('catalog.js');
