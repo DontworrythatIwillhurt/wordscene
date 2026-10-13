@@ -45,7 +45,10 @@ async function generateSerialIndex(){
   }));
   const covered=new Set();
   for(const book of books)for(const chapter of book.chapters)for(const id of chapter.wordIds)covered.add(id);
-  const payload='var SERIAL_INDEX='+JSON.stringify(books)+';var SERIAL_INDEX_META='+JSON.stringify({
+  const payload='var SERIAL_INDEX=[\n'+books.map(book=>{
+    const {chapters,...meta}=book;
+    return JSON.stringify(meta).replace(/\}$/,',"chapters":[\n'+chapters.map(chapter=>JSON.stringify(chapter)).join(',\n')+'\n]}');
+  }).join(',\n')+'\n];\nvar SERIAL_INDEX_META='+JSON.stringify({
     books:books.length,
     chapters:books.reduce((n,book)=>n+book.chapters.length,0),
     words:covered.size
@@ -65,7 +68,7 @@ const runtimeFiles=[
   'listening.js','listening-practice.js','practice-training.js','serial.js','mobile.js','loader.js'
 ];
 const source=(await Promise.all(runtimeFiles.map(file=>readFile(dist(file),'utf8')))).join('\n;\n');
-const result=await transform(source,{target:['es2017','chrome60'],charset:'utf8',minifyWhitespace:true,minifyIdentifiers:false,minifySyntax:false,legalComments:'inline'});
+const result=await transform(source,{target:['es2017','chrome60'],charset:'utf8',minifyWhitespace:false,minifyIdentifiers:false,minifySyntax:false,legalComments:'inline'});
 if(result.warnings.length)throw Error(result.warnings.map(w=>w.text).join('\n'));
 await writeFile(dist('wordscene.compat.js'),result.code);
 
@@ -81,17 +84,12 @@ versions['stories-mystery.js']=sha12(await readFile(dist('data/stories-mystery.j
 
 let html=await readFile(dist('index.html'),'utf8');
 html=html.replace(
-  /<link rel="icon"[\s\S]*?<script src="wordscene\.compat\.js[^"]*"[^>]*><\/script>/,
-  `<link rel="icon" href="icon.svg" type="image/svg+xml">
-  <link rel="preload" href="app.css?v=${versions['app.css']}" as="style">
-  <link rel="preload" href="serial-index.js?v=${versions['serial-index.js']}" as="script">
-  <link rel="preload" href="wordscene.compat.js?v=${versions['wordscene.compat.js']}" as="script">
-  <link rel="stylesheet" href="app.css?v=${versions['app.css']}">
-  <script>window.WORDSCENE_ASSET_VERSIONS=${JSON.stringify(versions)};</script>
-  <script src="startup.js?v=${versions['startup.js']}"></script>
-  <script src="serial-index.js?v=${versions['serial-index.js']}" defer></script>
-  <script src="wordscene.compat.js?v=${versions['wordscene.compat.js']}" defer></script>`
+  /<script>window\.WORDSCENE_ASSET_VERSIONS=[\s\S]*?<\/script>/,
+  `<script>window.WORDSCENE_ASSET_VERSIONS=${JSON.stringify(versions)};</script>`
 );
+for(const [file,version] of Object.entries(versions)){
+  html=html.replace(new RegExp(file.replace(/\./g,'\\.')+'\\?v=[^"\\s]+','g'),file+'?v='+version);
+}
 html=html.replace('首次打开需要加载故事与词库，请稍候。','书架先打开，章节正文会在阅读时再下载。');
 await writeFile(dist('index.html'),html);
 

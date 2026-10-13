@@ -1,5 +1,6 @@
 /* Small fallbacks for older mobile engines; progress keeps the same storage key. */
 (function(){
+  if(typeof globalThis==='undefined')window.globalThis=window;
   if(!Object.fromEntries)Object.fromEntries=function(entries){
     var result={};
     entries.forEach(function(entry){Object.defineProperty(result,entry[0],{value:entry[1],enumerable:true,writable:true,configurable:true});});
