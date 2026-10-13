@@ -29,7 +29,20 @@ function buildSerialIndexes(){
   });
   SERIAL_COVERED_IDS=new Set(SERIAL_WORD_CHAPTERS.keys());
 }
+function applySerialChapterPayload(payload){
+  if(!payload||!payload.id)return;
+  const chapter=SERIAL_CHAPTER_INDEX.get(payload.id);
+  if(!chapter)return;
+  chapter.cn=Array.isArray(payload.cn)?payload.cn:[];
+  chapter.en=Array.isArray(payload.en)?payload.en:[];
+  const source=chapter.book&&chapter.book.chapters&&chapter.book.chapters[chapter.index];
+  if(source){source.cn=chapter.cn;source.en=chapter.en;}
+}
 buildSerialIndexes();
+if(Array.isArray(window.SERIAL_CHAPTER_QUEUE)){
+  window.SERIAL_CHAPTER_QUEUE.forEach(applySerialChapterPayload);
+  window.SERIAL_CHAPTER_QUEUE.length=0;
+}
 const serialFlatten=(rows,fn)=>rows.reduce((all,row,index)=>all.concat(fn(row,index)),[]);
 function serialFormatEnglish(text){return text.split(/(\[\[.*?\]\])/g).map(part=>{if(!part.startsWith('[['))return esc(part);const [id,surface]=part.slice(2,-2).split('|');return `<button class="word-inline" data-word="${esc(id)}" lang="en">${esc(surface||id)}</button>`;}).join('');}
 let serialGame=null,serialSpeechGeneration=0,serialAudioActive=false,serialUtterance=null;
@@ -95,7 +108,8 @@ let serialReadView='read',serialReadId='';
 function serialRead(id,view){
   const chapter=SERIAL_CHAPTER_INDEX.get(id);if(!chapter){serialNotFound();return;}
   if(!Array.isArray(chapter.cn)||!chapter.cn.length){
-    if(typeof ensureSerialFullData==='function'){ensureSerialFullData().then(()=>serialRead(id,view)).catch(()=>serialNotFound());return;}
+    const load=typeof ensureSerialChapter==='function'?ensureSerialChapter:ensureSerialFullData;
+    if(typeof load==='function'){load(id).then(()=>serialRead(id,view)).catch(()=>serialNotFound());return;}
     serialNotFound();return;
   }
   if(serialReadId!==id){serialReadId=id;serialReadView='read';}if(view)serialReadView=view;
@@ -122,7 +136,8 @@ function serialGameSlots(chapter){return serialFlatten(chapter.cn,(p,paragraph)=
 function serialGameStart(id,mode='choice',retry=false){
   const chapter=SERIAL_CHAPTER_INDEX.get(id);if(!chapter){serialNotFound();return;}
   if(!Array.isArray(chapter.cn)||!chapter.cn.length){
-    if(typeof ensureSerialFullData==='function'){ensureSerialFullData().then(()=>serialGameStart(id,mode,retry)).catch(()=>serialNotFound());return;}
+    const load=typeof ensureSerialChapter==='function'?ensureSerialChapter:ensureSerialFullData;
+    if(typeof load==='function'){load(id).then(()=>serialGameStart(id,mode,retry)).catch(()=>serialNotFound());return;}
     serialNotFound();return;
   }
   const allowed=['choice','spell','listen'];if(!allowed.includes(mode))mode='choice';serialStopAudio();
