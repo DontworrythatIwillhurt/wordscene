@@ -1,4 +1,4 @@
-import {readFile,writeFile} from 'node:fs/promises';
+import {readFile,writeFile,mkdir,readdir,unlink} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
 import {transform} from 'esbuild';
 
@@ -23,9 +23,12 @@ function extractWordIds(chapter){
   return wordIds;
 }
 
-async function generateSerialIndex(){
+async function loadNovels(){
   const source=await readFile(dist('serial-data.js'),'utf8');
-  const novels=new Function(source.replace(/(?:const|var)\s+SERIAL_NOVELS\s*=/,'return '))();
+  return new Function(source.replace(/(?:const|var)\s+SERIAL_NOVELS\s*=/,'return '))();
+}
+
+async function generateSerialIndex(novels){
   const books=novels.map(book=>({
     id:book.id,
     title:book.title,
@@ -57,14 +60,39 @@ async function generateSerialIndex(){
   return {bytes:Buffer.byteLength(payload),meta:{books:books.length,chapters:books.reduce((n,book)=>n+book.chapters.length,0),words:covered.size}};
 }
 
+async function generateSerialChapters(novels){
+  const dir=new URL('./dist/serial-chapters/',import.meta.url);
+  await mkdir(dir,{recursive:true});
+  const existing=await readdir(dir);
+  await Promise.all(existing.filter(file=>file.endsWith('.js')).map(file=>unlink(new URL(file,dir))));
+  let bytes=0,count=0,maxLine=0;
+  for(const book of novels){
+    for(const chapter of book.chapters){
+      const payload='(function(payload){if(typeof applySerialChapterPayload==="function")applySerialChapterPayload(payload);else (window.SERIAL_CHAPTER_QUEUE||(window.SERIAL_CHAPTER_QUEUE=[])).push(payload);})('+JSON.stringify({
+        id:chapter.id,
+        book:book.id,
+        cn:chapter.cn||[],
+        en:chapter.en||[]
+      })+');\n';
+      await writeFile(new URL(chapter.id+'.js',dir),payload);
+      bytes+=Buffer.byteLength(payload);
+      count++;
+      maxLine=Math.max(maxLine,...payload.split('\n').map(line=>line.length));
+    }
+  }
+  return {count,bytes,maxLine};
+}
+
 const cssFiles=['style.css','upgrade.css','mobile.css','cloze.css','listening.css','practice.css','training.css','premium.css'];
 const appCss=(await Promise.all(cssFiles.map(async file=>'/* '+file+' */\n'+await readFile(dist(file),'utf8')))).join('\n');
 await writeFile(dist('app.css'),appCss);
 
-const serialIndex=await generateSerialIndex();
+const novels=await loadNovels();
+const serialIndex=await generateSerialIndex(novels);
+const serialChapters=await generateSerialChapters(novels);
 
 const runtimeFiles=[
-  'compatibility.js','chapters.js','data.js','app.js','learning.js','skills.js','cloze.js',
+  'serial-index.js','compatibility.js','chapters.js','data.js','app.js','learning.js','skills.js','cloze.js',
   'listening.js','listening-practice.js','practice-training.js','serial.js','mobile.js','loader.js'
 ];
 const source=(await Promise.all(runtimeFiles.map(file=>readFile(dist(file),'utf8')))).join('\n;\n');
@@ -81,6 +109,7 @@ const versions={};
 for(const file of hashedFiles)versions[file]=sha12(await readFile(dist(file)));
 versions['stories-cultivation.js']=sha12(await readFile(dist('data/stories-cultivation.js')));
 versions['stories-mystery.js']=sha12(await readFile(dist('data/stories-mystery.js')));
+versions['serial-chapters']=versions['serial-data.js'];
 
 let html=await readFile(dist('index.html'),'utf8');
 html=html.replace(
@@ -95,4 +124,5 @@ await writeFile(dist('index.html'),html);
 
 console.log('Compatible browser bundle: '+versions['wordscene.compat.js']+' ('+Buffer.byteLength(result.code)+' bytes)');
 console.log('Serial index: '+versions['serial-index.js']+' ('+serialIndex.bytes+' bytes, '+serialIndex.meta.chapters+' chapters, '+serialIndex.meta.words+' words)');
+console.log('Serial chapters: '+serialChapters.count+' files, '+serialChapters.bytes+' bytes, maxLine '+serialChapters.maxLine);
 console.log('Concatenated CSS: '+versions['app.css']+' ('+Buffer.byteLength(appCss)+' bytes)');
