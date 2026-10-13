@@ -12,7 +12,7 @@
       "title": "山契",
       "chapters": 44,
       "volumes": 5,
-      "chineseCharacters": 43043,
+      "chineseCharacters": 42286,
       "wordSlots": 1840
     },
     {
@@ -20,7 +20,7 @@
       "title": "第七码头",
       "chapters": 96,
       "volumes": 8,
-      "chineseCharacters": 100839,
+      "chineseCharacters": 99080,
       "wordSlots": 4440
     }
   ],
@@ -48,7 +48,7 @@
         "chapter": 1,
         "volume": 1,
         "paragraph": 1,
-        "meaning": "带着灵性的"
+        "meaning": "灵性的"
       }
     ],
     "trial": [
@@ -145,7 +145,7 @@
         "chapter": 3,
         "volume": 1,
         "paragraph": 5,
-        "meaning": "遮住"
+        "meaning": "藏住"
       },
       {
         "bookId": "mountain-ledger",
@@ -154,7 +154,7 @@
         "chapter": 9,
         "volume": 1,
         "paragraph": 3,
-        "meaning": "隐藏"
+        "meaning": "隐瞒"
       }
     ],
     "provoke": [
@@ -231,7 +231,7 @@
         "chapter": 1,
         "volume": 1,
         "paragraph": 5,
-        "meaning": "刻文"
+        "meaning": "碑文"
       }
     ],
     "ancient": [
@@ -264,7 +264,7 @@
         "chapter": 1,
         "volume": 1,
         "paragraph": 5,
-        "meaning": "最后期限"
+        "meaning": "截止期限"
       },
       {
         "bookId": "seventh-wharf",
@@ -328,7 +328,7 @@
         "chapter": 2,
         "volume": 1,
         "paragraph": 2,
-        "meaning": "对称"
+        "meaning": "对称的"
       }
     ],
     "interpret": [
@@ -370,7 +370,7 @@
         "chapter": 2,
         "volume": 1,
         "paragraph": 2,
-        "meaning": "抹掉"
+        "meaning": "抹去"
       }
     ],
     "counterfeit": [
@@ -421,7 +421,7 @@
         "chapter": 2,
         "volume": 1,
         "paragraph": 3,
-        "meaning": "对照"
+        "meaning": "对比"
       }
     ],
     "possession": [
@@ -443,7 +443,7 @@
         "chapter": 2,
         "volume": 1,
         "paragraph": 4,
-        "meaning": "机关原理"
+        "meaning": "机关"
       }
     ],
     "alignment": [
@@ -507,7 +507,7 @@
         "chapter": 2,
         "volume": 1,
         "paragraph": 5,
-        "meaning": "指向正确方向"
+        "meaning": "辨明方向"
       }
     ],
     "arrange": [
@@ -670,7 +670,7 @@
         "chapter": 3,
         "volume": 1,
         "paragraph": 3,
-        "meaning": "旧习惯"
+        "meaning": "习俗"
       }
     ],
     "lash": [
@@ -692,7 +692,7 @@
         "chapter": 3,
         "volume": 1,
         "paragraph": 4,
-        "meaning": "药物"
+        "meaning": "伤药"
       }
     ],
     "verify": [
@@ -712,7 +712,7 @@
         "chapter": 10,
         "volume": 1,
         "paragraph": 2,
-        "meaning": "核验真伪"
+        "meaning": "核实"
       },
       {
         "bookId": "seventh-wharf",
@@ -743,7 +743,7 @@
         "chapter": 3,
         "volume": 1,
         "paragraph": 5,
-        "meaning": "替代路线"
+        "meaning": "另一条路线"
       }
     ],
     "dread": [
@@ -873,7 +873,7 @@
         "chapter": 4,
         "volume": 1,
         "paragraph": 3,
-        "meaning": "慷慨"
+        "meaning": "慷慨的"
       }
     ],
     "ingredient": [
@@ -906,7 +906,7 @@
         "chapter": 4,
         "volume": 1,
         "paragraph": 4,
-        "meaning": "伤害"
+        "meaning": "伤势"
       }
     ],
     "guarantee": [
@@ -928,7 +928,7 @@
         "chapter": 4,
         "volume": 1,
         "paragraph": 4,
-        "meaning": "说明"
+        "meaning": "记录"
       },
       {
         "bookId": "seventh-wharf",
@@ -948,7 +948,7 @@
         "chapter": 4,
         "volume": 1,
         "paragraph": 4,
-        "meaning": "补偿"
+        "meaning": "报酬"
       },
       {
         "bookId": "mountain-ledger",
@@ -977,7 +977,7 @@
         "chapter": 4,
         "volume": 1,
         "paragraph": 5,
-        "meaning": "下结论"
+        "meaning": "断定"
       }
     ],
     "evidence": [
@@ -1030,7 +1030,7 @@
         "chapter": 5,
         "volume": 1,
         "paragraph": 1,
-        "meaning": "指令"
+        "meaning": "指示"
       }
     ],
     "profit": [
@@ -1061,7 +1061,7 @@
         "chapter": 5,
         "volume": 1,
         "paragraph": 1,
-        "meaning": "债务"
+        "meaning": "赔付责任"
       }
     ],
     "difficulty": [
@@ -1072,7 +1072,7 @@
         "chapter": 5,
         "volume": 1,
         "paragraph": 1,
-        "meaning": "困境"
+        "meaning": "困难"
       }
     ],
     "betray": [
@@ -1083,7 +1083,7 @@
         "chapter": 5,
         "volume": 1,
         "paragraph": 2,
-        "meaning": "背叛了"
+        "meaning": "背叛"
       }
     ],
     "release": [
@@ -1094,7 +1094,7 @@
         "chapter": 5,
         "volume": 1,
         "paragraph": 2,
-        "meaning": "获释"
+        "meaning": "释放"
       }
     ],
     "contract": [
@@ -1180,7 +1180,7 @@
         "chapter": 5,
         "volume": 1,
         "paragraph": 4,
-        "meaning": "贡赋"
+        "meaning": "贡物"
       }
     ],
     "beneficiary": [
@@ -1202,7 +1202,7 @@
         "chapter": 5,
         "volume": 1,
         "paragraph": 4,
-        "meaning": "贪婪"
+        "meaning": "贪婪的"
       }
     ],
     "essential": [
@@ -1224,7 +1224,7 @@
         "chapter": 5,
         "volume": 1,
         "paragraph": 5,
-        "meaning": "起源"
+        "meaning": "来源"
       }
     ],
     "access": [
@@ -1286,7 +1286,7 @@
         "chapter": 6,
         "volume": 1,
         "paragraph": 1,
-        "meaning": "步骤"
+        "meaning": "程序"
       },
       {
         "bookId": "mountain-ledger",
@@ -1317,7 +1317,7 @@
         "chapter": 6,
         "volume": 1,
         "paragraph": 1,
-        "meaning": "进入"
+        "meaning": "穿透"
       }
     ],
     "damp": [
@@ -1339,7 +1339,7 @@
         "chapter": 6,
         "volume": 1,
         "paragraph": 2,
-        "meaning": "低声说话"
+        "meaning": "低语"
       }
     ],
     "erupt": [
@@ -1350,7 +1350,7 @@
         "chapter": 6,
         "volume": 1,
         "paragraph": 2,
-        "meaning": "猛然喷发"
+        "meaning": "爆发"
       }
     ],
     "isolate": [
@@ -1361,7 +1361,7 @@
         "chapter": 6,
         "volume": 1,
         "paragraph": 2,
-        "meaning": "隔离开来"
+        "meaning": "分隔开"
       }
     ],
     "cooperate": [
@@ -1383,7 +1383,7 @@
         "chapter": 6,
         "volume": 1,
         "paragraph": 3,
-        "meaning": "拉力"
+        "meaning": "张力"
       }
     ],
     "diagram": [
@@ -1394,7 +1394,7 @@
         "chapter": 6,
         "volume": 1,
         "paragraph": 3,
-        "meaning": "图解"
+        "meaning": "示意图"
       }
     ],
     "equilibrium": [
@@ -1460,7 +1460,7 @@
         "chapter": 6,
         "volume": 1,
         "paragraph": 4,
-        "meaning": "登记账册"
+        "meaning": "登记册"
       }
     ],
     "lessen": [
@@ -1568,7 +1568,7 @@
         "chapter": 7,
         "volume": 1,
         "paragraph": 2,
-        "meaning": "优先次序"
+        "meaning": "优先权"
       },
       {
         "bookId": "seventh-wharf",
@@ -1577,7 +1577,7 @@
         "chapter": 9,
         "volume": 1,
         "paragraph": 3,
-        "meaning": "优先位置"
+        "meaning": "优先事项"
       }
     ],
     "sacrifice": [
@@ -1621,7 +1621,7 @@
         "chapter": 7,
         "volume": 1,
         "paragraph": 3,
-        "meaning": "正面对抗"
+        "meaning": "对抗"
       }
     ],
     "construct": [
@@ -1720,7 +1720,7 @@
         "chapter": 7,
         "volume": 1,
         "paragraph": 5,
-        "meaning": "控制"
+        "meaning": "调节"
       }
     ],
     "relief": [
@@ -1745,17 +1745,6 @@
         "meaning": "脚步声"
       }
     ],
-    "mutual": [
-      {
-        "bookId": "mountain-ledger",
-        "bookTitle": "山契",
-        "chapterId": "serial-cultivation-08",
-        "chapter": 8,
-        "volume": 1,
-        "paragraph": 1,
-        "meaning": "相互的"
-      }
-    ],
     "provided": [
       {
         "bookId": "mountain-ledger",
@@ -1765,6 +1754,17 @@
         "volume": 1,
         "paragraph": 1,
         "meaning": "只要"
+      }
+    ],
+    "mutual": [
+      {
+        "bookId": "mountain-ledger",
+        "bookTitle": "山契",
+        "chapterId": "serial-cultivation-08",
+        "chapter": 8,
+        "volume": 1,
+        "paragraph": 1,
+        "meaning": "相互的"
       }
     ],
     "respond": [
@@ -1815,7 +1815,7 @@
         "chapter": 8,
         "volume": 1,
         "paragraph": 2,
-        "meaning": "公开声明"
+        "meaning": "声明"
       },
       {
         "bookId": "seventh-wharf",
@@ -1846,7 +1846,7 @@
         "chapter": 8,
         "volume": 1,
         "paragraph": 2,
-        "meaning": "补偿过错的机会"
+        "meaning": "弥补"
       }
     ],
     "prudent": [
@@ -1897,7 +1897,7 @@
         "chapter": 8,
         "volume": 1,
         "paragraph": 3,
-        "meaning": "预见"
+        "meaning": "预料"
       }
     ],
     "consistent": [
@@ -2065,7 +2065,7 @@
         "chapter": 9,
         "volume": 1,
         "paragraph": 1,
-        "meaning": "悲伤"
+        "meaning": "悲痛"
       }
     ],
     "perish": [
@@ -2107,7 +2107,7 @@
         "chapter": 9,
         "volume": 1,
         "paragraph": 2,
-        "meaning": "辩解理由"
+        "meaning": "正当理由"
       }
     ],
     "decision": [
@@ -2140,7 +2140,7 @@
         "chapter": 9,
         "volume": 1,
         "paragraph": 3,
-        "meaning": "名声"
+        "meaning": "名誉"
       },
       {
         "bookId": "seventh-wharf",
@@ -2272,6 +2272,17 @@
         "meaning": "检查"
       }
     ],
+    "truth": [
+      {
+        "bookId": "mountain-ledger",
+        "bookTitle": "山契",
+        "chapterId": "serial-cultivation-09",
+        "chapter": 9,
+        "volume": 1,
+        "paragraph": 5,
+        "meaning": "真相"
+      }
+    ],
     "revenge": [
       {
         "bookId": "mountain-ledger",
@@ -2299,17 +2310,6 @@
         "volume": 8,
         "paragraph": 5,
         "meaning": "报复"
-      }
-    ],
-    "truth": [
-      {
-        "bookId": "mountain-ledger",
-        "bookTitle": "山契",
-        "chapterId": "serial-cultivation-09",
-        "chapter": 9,
-        "volume": 1,
-        "paragraph": 5,
-        "meaning": "真相"
       }
     ],
     "assembly": [
@@ -2342,7 +2342,7 @@
         "chapter": 10,
         "volume": 1,
         "paragraph": 1,
-        "meaning": "可信的"
+        "meaning": "可靠的"
       }
     ],
     "confirm": [
@@ -2521,7 +2521,7 @@
         "chapter": 10,
         "volume": 1,
         "paragraph": 5,
-        "meaning": "两难处境"
+        "meaning": "两难"
       },
       {
         "bookId": "seventh-wharf",
@@ -2775,7 +2775,7 @@
         "chapter": 11,
         "volume": 1,
         "paragraph": 5,
-        "meaning": "替代装置"
+        "meaning": "替换装置"
       }
     ],
     "triumph": [
@@ -2817,7 +2817,7 @@
         "chapter": 11,
         "volume": 1,
         "paragraph": 5,
-        "meaning": "可能"
+        "meaning": "前景"
       }
     ],
     "revenue": [
@@ -2976,7 +2976,7 @@
         "chapter": 12,
         "volume": 1,
         "paragraph": 4,
-        "meaning": "修炼"
+        "meaning": "耕种"
       }
     ],
     "recovery": [
@@ -3020,7 +3020,7 @@
         "chapter": 12,
         "volume": 1,
         "paragraph": 5,
-        "meaning": "解决"
+        "meaning": "决心"
       }
     ],
     "perseverance": [
@@ -21040,7 +21040,7 @@
         "chapter": 8,
         "volume": 1,
         "paragraph": 3,
-        "meaning": "隐藏的"
+        "meaning": "隐瞒的"
       }
     ],
     "device": [
@@ -21826,7 +21826,7 @@
         "chapter": 5,
         "volume": 1,
         "paragraph": 4,
-        "meaning": "牌照"
+        "meaning": "许可证"
       }
     ],
     "credible": [
@@ -21912,7 +21912,7 @@
         "chapter": 6,
         "volume": 1,
         "paragraph": 2,
-        "meaning": "失真"
+        "meaning": "扭曲"
       }
     ],
     "filter": [
@@ -21923,7 +21923,7 @@
         "chapter": 6,
         "volume": 1,
         "paragraph": 2,
-        "meaning": "滤波"
+        "meaning": "滤波器"
       }
     ],
     "reproduce": [
@@ -22042,7 +22042,7 @@
         "chapter": 6,
         "volume": 1,
         "paragraph": 5,
-        "meaning": "化学"
+        "meaning": "化学的"
       }
     ],
     "patrol": [
@@ -22108,7 +22108,7 @@
         "chapter": 7,
         "volume": 1,
         "paragraph": 3,
-        "meaning": "禁闭"
+        "meaning": "关在"
       }
     ],
     "oxygen": [
@@ -22163,7 +22163,7 @@
         "chapter": 7,
         "volume": 1,
         "paragraph": 5,
-        "meaning": "扣留"
+        "meaning": "扣留调查"
       },
       {
         "bookId": "seventh-wharf",
@@ -22248,17 +22248,6 @@
         "meaning": "后果"
       }
     ],
-    "compartment": [
-      {
-        "bookId": "seventh-wharf",
-        "bookTitle": "第七码头",
-        "chapterId": "serial-mystery-08",
-        "chapter": 8,
-        "volume": 1,
-        "paragraph": 4,
-        "meaning": "隔层"
-      }
-    ],
     "lock": [
       {
         "bookId": "seventh-wharf",
@@ -22281,6 +22270,17 @@
         "meaning": "开锁"
       }
     ],
+    "compartment": [
+      {
+        "bookId": "seventh-wharf",
+        "bookTitle": "第七码头",
+        "chapterId": "serial-mystery-08",
+        "chapter": 8,
+        "volume": 1,
+        "paragraph": 4,
+        "meaning": "隔层"
+      }
+    ],
     "integrity": [
       {
         "bookId": "seventh-wharf",
@@ -22289,7 +22289,7 @@
         "chapter": 8,
         "volume": 1,
         "paragraph": 5,
-        "meaning": "完整可靠性"
+        "meaning": "可靠性"
       }
     ],
     "testimony": [
@@ -22545,7 +22545,7 @@
         "chapter": 10,
         "volume": 1,
         "paragraph": 5,
-        "meaning": "工作人员"
+        "meaning": "船员"
       }
     ],
     "arrest": [
@@ -22776,7 +22776,7 @@
         "chapter": 11,
         "volume": 1,
         "paragraph": 5,
-        "meaning": "检察机关人员"
+        "meaning": "检察官"
       },
       {
         "bookId": "seventh-wharf",
@@ -22936,7 +22936,7 @@
         "chapter": 12,
         "volume": 1,
         "paragraph": 3,
-        "meaning": "居民群体"
+        "meaning": "社群"
       },
       {
         "bookId": "seventh-wharf",
