@@ -5,7 +5,7 @@ function refreshWordIndex(){wordIndex=new Map(BUILTIN_WORDS.map(w=>[w.id,w]));}
 const rawCleanState=cleanState;
 cleanState=function(raw){
   const s=rawCleanState(raw);
-  s.bookmarks=Array.isArray(raw?.bookmarks)?raw.bookmarks.filter(id=>getStory(id)):[];
+  s.bookmarks=Array.isArray(raw?.bookmarks)?raw.bookmarks.filter(isKnownWordsceneStory):[];
   s.mistakes=Object.fromEntries(Object.entries(raw?.mistakes||{}).filter(([id,n])=>getWordSafe(id,s)&&Number.isInteger(n)&&n>0));
   s.preferences={...s.preferences,size:[18,20,22,24].includes(raw?.preferences?.size)?raw.preferences.size:20,night:Boolean(raw?.preferences?.night),rate:[.7,.85,1,1.15].includes(raw?.preferences?.rate)?raw.preferences.rate:.85};
   s.words=Object.fromEntries(Object.entries(s.words).filter(([,p])=>/^\d{4}-\d{2}-\d{2}$/.test(p.due)));

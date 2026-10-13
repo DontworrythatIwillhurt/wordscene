@@ -15,7 +15,7 @@ function cleanSkillRecords(raw,s){
 }
 function cleanListeningChecks(raw){
   const result={};if(!raw||typeof raw!=='object'||Array.isArray(raw))return result;
-  for(const [id,p] of Object.entries(raw))if(getStory(id)&&p&&Number.isInteger(p.correct)&&Number.isInteger(p.total)&&p.total>=1&&p.total<=5&&p.correct>=0&&p.correct<=p.total)result[id]={correct:p.correct,total:p.total,last:/^\d{4}-\d{2}-\d{2}$/.test(p.last||'')?p.last:'',attempts:Math.max(1,Math.floor(Number(p.attempts)||1)),updatedAt:Math.max(0,Number(p.updatedAt)||0)};
+  for(const [id,p] of Object.entries(raw))if(isKnownWordsceneStory(id)&&p&&Number.isInteger(p.correct)&&Number.isInteger(p.total)&&p.total>=1&&p.total<=5&&p.correct>=0&&p.correct<=p.total)result[id]={correct:p.correct,total:p.total,last:/^\d{4}-\d{2}-\d{2}$/.test(p.last||'')?p.last:'',attempts:Math.max(1,Math.floor(Number(p.attempts)||1)),updatedAt:Math.max(0,Number(p.updatedAt)||0)};
   return result;
 }
 function mergeSkillRecords(current,incoming){

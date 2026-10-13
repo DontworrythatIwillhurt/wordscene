@@ -30,13 +30,29 @@ function buildSerialIndexes(){
   SERIAL_COVERED_IDS=new Set(SERIAL_WORD_CHAPTERS.keys());
 }
 function applySerialChapterPayload(payload){
-  if(!payload||!payload.id)return;
+  if(!payload||!payload.id)return false;
   const chapter=SERIAL_CHAPTER_INDEX.get(payload.id);
-  if(!chapter)return;
-  chapter.cn=Array.isArray(payload.cn)?payload.cn:[];
-  chapter.en=Array.isArray(payload.en)?payload.en:[];
+  if(!chapter||payload.book!==chapter.book.id)return false;
+  const revision=window.WORDSCENE_ASSET_VERSIONS?.['serial-chapters'];
+  if(revision&&payload.version!==revision)return false;
+  if(!Array.isArray(payload.cn)||!payload.cn.length||!Array.isArray(payload.en)||payload.cn.length!==payload.en.length)return false;
+  const ids=[];
+  for(let i=0;i<payload.cn.length;i++){
+    if(typeof payload.cn[i]!=='string'||typeof payload.en[i]!=='string')return false;
+    const markers=text=>wordsceneMatches(text,/\[\[([^|\]]+)\|([^\]]+)\]\]/g).map(m=>m[1]).sort();
+    const cn=markers(payload.cn[i]),en=markers(payload.en[i]);
+    if(JSON.stringify(cn)!==JSON.stringify(en))return false;ids.push(...cn);
+  }
+  if(JSON.stringify([...new Set(ids)].sort())!==JSON.stringify((chapter.wordIds||ids).slice().sort())||new Set(ids).size!==ids.length)return false;
+  chapter.cn=payload.cn;
+  chapter.en=payload.en;
   const source=chapter.book&&chapter.book.chapters&&chapter.book.chapters[chapter.index];
   if(source){source.cn=chapter.cn;source.en=chapter.en;}
+  for(const term of serialTerms(chapter)){
+    const reference=(SERIAL_WORD_CHAPTERS.get(term.id)||[]).find(ref=>ref.id===chapter.id);
+    if(reference){reference.paragraph=chapter.cn.findIndex(p=>p.includes('[['+term.id+'|'));reference.meaning=term.meaning;}
+  }
+  return true;
 }
 buildSerialIndexes();
 if(Array.isArray(window.SERIAL_CHAPTER_QUEUE)){
@@ -227,7 +243,9 @@ wordModal=function(id){
   if(Array.isArray(chapter.cn)&&reference.paragraph>=0&&chapter.cn[reference.paragraph]){
     wordDialog.querySelector('.word-meaning')?.insertAdjacentHTML('beforebegin',`<div class="context-box"><small>${esc(chapter.book.title)} · 第 ${chapter.number} 章 · ${esc(chapter.title)}</small><p>${esc(chapter.cn[reference.paragraph].replace(/\[\[([^|\]]+)\|([^\]]+)\]\]/g,(_,key,meaning)=>key===id?clozeExpected(key)+'（'+meaning+'）':meaning))}</p></div>`);
     const meaning=wordDialog.querySelector('.word-meaning');if(meaning&&reference.meaning)meaning.textContent=reference.meaning;
-    const example=wordDialog.querySelector('.word-example');if(example&&Array.isArray(chapter.en))example.textContent=listeningPlain(chapter.en[reference.paragraph]||'');
+    let example=wordDialog.querySelector('.word-example');
+    if(!example){example=document.createElement('div');example.className='word-example';example.lang='en';wordDialog.querySelector('.word-meaning')?.insertAdjacentElement('afterend',example);}
+    if(example&&Array.isArray(chapter.en))example.textContent=listeningPlain(chapter.en[reference.paragraph]||'');
   }
   if(clozeExpected(id)!==id){const title=wordDialog.querySelector('.english-title');if(title)title.textContent=clozeExpected(id);wordDialog.querySelector('.word-meaning')?.insertAdjacentHTML('afterend',`<p class="practice-label">请记标准拼写 ${esc(clozeExpected(id))}。</p>`);}
   wordDialog.querySelector('.word-source')?.insertAdjacentHTML('beforebegin',`<details class="serial-word-sources" open><summary>在连续长篇里遇见这个词 · ${refs.length} 章</summary><div class="related-story-links">${refs.slice(0,12).map(r=>`<a href="#serial/${r.book}/${r.id}">《${esc(r.bookTitle)}》· 第 ${r.number} 章 · ${esc(r.title)} ↗</a>`).join('')}</div></details>`);

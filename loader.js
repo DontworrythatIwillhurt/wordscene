@@ -2,25 +2,27 @@
 (function(){
   var assetVersions=window.WORDSCENE_ASSET_VERSIONS||{};
   var pending={};
+  var loadedScripts={};
+  var routeGeneration=0;
   var bootFinished=false;
 
   function versioned(path){
     var file=path.split('/').pop();
     var version=assetVersions[path]||assetVersions[file]||'';
     if(path.indexOf('serial-chapters/')===0)version=assetVersions['serial-chapters']||version;
+    if(path.indexOf('dictionary-parts/')===0)version=assetVersions['dictionary-parts']||version;
     return version?path+(path.indexOf('?')>=0?'&':'?')+'v='+version:path;
   }
 
-  function loadScript(path){
+  function loadScript(path,attempt){
     var src=versioned(path);
     if(pending[src])return pending[src];
+    if(loadedScripts[src])return Promise.resolve();
     pending[src]=new Promise(function(resolve,reject){
-      var existing=document.querySelector('script[data-wordscene-src="'+src+'"]');
-      if(existing){resolve();return;}
       var script=document.createElement('script');
       var done=false;
-      script.src=src;
-      script.async=false;
+      script.src=src+(attempt?(src.indexOf('?')<0?'?':'&')+'attempt='+attempt+'-'+Date.now():'');
+      script.async=true;
       script.charset='utf-8';
       script.dataset.wordsceneSrc=src;
       var timer=setTimeout(function(){
@@ -29,8 +31,8 @@
         pending[src]=null;
         if(script.parentNode)script.parentNode.removeChild(script);
         reject(new Error('加载超时：'+path));
-      },20000);
-      script.onload=function(){if(done)return;done=true;clearTimeout(timer);resolve();};
+      },25000);
+      script.onload=function(){if(done)return;done=true;clearTimeout(timer);loadedScripts[src]=true;resolve();};
       script.onerror=function(){
         if(done)return;
         done=true;
@@ -44,11 +46,13 @@
     return pending[src];
   }
 
-  function loadScriptRetry(path){
-    return loadScript(path).catch(function(){
-      pending[versioned(path)]=null;
-      return loadScript(path);
-    });
+  function loadScriptRetry(path,verify){
+    function attempt(number){return loadScript(path,number).then(function(){if(verify&&!verify())throw new Error('内容不完整，请重新加载');}).catch(function(error){
+      var src=versioned(path);delete pending[src];delete loadedScripts[src];
+      if(number>=2)throw error;
+      return new Promise(function(resolve){setTimeout(resolve,number?800:250);}).then(function(){return attempt(number+1);});
+    });}
+    return attempt(0);
   }
 
   function showDataLoading(message){
@@ -60,10 +64,11 @@
       panel.id='data-loading-panel';
       panel.className='startup-panel data-loading-panel';
       panel.setAttribute('aria-live','polite');
-      panel.innerHTML='<h1></h1><p></p>';
+      panel.innerHTML='<h1></h1><p></p><button class="button" type="button" data-retry-content hidden>重新加载本页</button> <a class="text-link" href="#library">返回书架</a>';
     }
     panel.querySelector('h1').textContent=message||'正在加载内容…';
     panel.querySelector('p').textContent='首次打开会下载词库或故事正文，完成后即可继续。学习记录不会丢失。';
+    panel.querySelector('button').hidden=true;
     if(!panel.parentNode)main.insertAdjacentElement('afterbegin',panel);
     panel.hidden=false;
   }
@@ -74,6 +79,7 @@
   }
 
   function refreshIndexes(){
+    if(typeof WORDSCENE_DICTIONARY_PARTS!=='undefined')WORDSCENE_DICTIONARY_PARTS.forEach(function(words,bucket){applyWordsceneDictionaryPayload({bucket:bucket,words:words});});
     if(typeof refreshWordIndex==='function')refreshWordIndex();
   }
 
@@ -140,16 +146,16 @@
     if(chapter&&Array.isArray(chapter.cn)&&chapter.cn.length)return Promise.resolve(chapter);
     if(!id)return Promise.resolve(chapter);
     showDataLoading('正在打开本章正文…');
-    return loadScriptRetry('serial-chapters/'+id+'.js').then(function(){
-      hideDataLoading();
-      var loaded=typeof SERIAL_CHAPTER_INDEX!=='undefined'?SERIAL_CHAPTER_INDEX.get(id):null;
-      if(!loaded||!Array.isArray(loaded.cn)||!loaded.cn.length)throw new Error('本章正文还没准备好');
-      prefetchNextChapter(id);
-      return loaded;
-    }).catch(function(error){
-      hideDataLoading();
-      if(typeof toast==='function')toast(error.message||'本章正文加载失败');
-      throw error;
+    if(!chapter)return Promise.reject(new Error('目录里没有找到这一章'));
+    var revision=assetVersions['serial-chapters'];
+    var cache=window.wordsceneChapterCache;
+    return (cache?cache.get(id):Promise.resolve(null)).then(function(payload){
+      if(payload&&payload.version===revision&&applySerialChapterPayload(payload))return;
+      return loadScriptRetry('serial-chapters/'+id+'.js',function(){var row=SERIAL_CHAPTER_INDEX.get(id);return row&&row.cn&&row.cn.length;});
+    }).then(function(){
+      var row=SERIAL_CHAPTER_INDEX.get(id);
+      if(cache)cache.put({id:id,book:row.book.id,cn:row.cn,en:row.en,version:revision});
+      return row;
     });
   };
 
@@ -300,6 +306,10 @@
   function wrapAsyncRoute(){
     var originalRender=window.render;
     window.render=function(){
+      var generation=++routeGeneration;
+      var requestedHash=location.hash;
+      if(typeof serialStopAudio==='function')serialStopAudio();
+      if(typeof wordDialog!=='undefined'&&wordDialog.open)wordDialog.close();
       var hash=location.hash.slice(1);
       var parts=hash.split('/');
       var route=parts[0]||'library';
@@ -315,8 +325,8 @@
         chain=ensureSerialChapter(parts[2]);
       }else if(route==='practice'&&section==='journey'&&!hasIndex){
         chain=ensureSerialIndex();
-      }else if(route==='practice'&&section&&section!=='home'){
-        chain=ensureTrainingData();
+      }else if(route==='practice'&&section){
+        if(section!=='journey')chain=ensureTrainingData();
       }else if(route==='practice'&&!hasIndex){
         chain=ensureSerialIndex();
       }else if(route==='archive'){
@@ -324,32 +334,64 @@
       }else if(route==='story'&&id){
         chain=ensureCatalogData().then(function(){return ensureStoryData(id);});
       }else if(route==='notebook'||route==='units'||route==='review'||route==='quiz'||route==='progress'){
-        chain=ensureDictionaryData().then(function(){
-          if(route==='progress'||route==='review')return ensureAllStoryData();
-        });
+        chain=ensureCatalogData();
       }
       return chain.then(function(){
+        if(generation!==routeGeneration||location.hash!==requestedHash)return;
         try{originalRender();}catch(error){console.error(error);throw error;}
+        document.getElementById('main').dataset.loadedRoute=requestedHash;
         markReady();
       }).catch(function(error){
+        if(generation!==routeGeneration||location.hash!==requestedHash)return;
         showDataLoading('内容加载失败');
         var el=document.getElementById('data-loading-panel');
-        if(el)el.querySelector('p').textContent=(error&&error.message)||'请检查网络后重试，或点击顶部重新加载。';
+        if(el){el.querySelector('p').textContent='这次没有加载完整，请检查网络后重试。已读章节和学习记录仍保留。';el.querySelector('button').hidden=false;}
+        window.WORDSCENE_LAST_LOAD_ERROR=error&&error.message;
+        markReady();
       });
     };
 
     var originalReader=window.reader;
     window.reader=function(id){
+      var requestedHash=location.hash;
       if(typeof SERIAL_CHAPTER_INDEX!=='undefined'&&SERIAL_CHAPTER_INDEX.has(id)){
-        return ensureSerialChapter(id).then(function(){originalReader(id);});
+        return ensureSerialChapter(id).then(function(){if(location.hash===requestedHash)originalReader(id);});
       }
-      return ensureCatalogData().then(function(){return ensureStoryData(id);}).then(function(){originalReader(id);});
+      return ensureCatalogData().then(function(){return ensureStoryData(id);}).then(function(){if(location.hash===requestedHash)originalReader(id);});
     };
 
     var originalWordModal=window.wordModal;
-    window.wordModal=function(id){
-      ensureDictionaryData().then(function(){originalWordModal(id);}).catch(function(){originalWordModal(id);});
+    var originalListeningReader=window.listeningReader;
+    window.listeningReader=function(story){
+      originalListeningReader(story);
+      if(listeningSession.mode!=='questions'||LISTENING_QUESTION_INDEX.has(story.id))return;
+      var session=listeningSession,hash=location.hash;
+      ensureListeningQuestions().then(function(){
+        if(location.hash===hash&&listeningSession===session&&clozeView==='listen'){
+          session.comprehension=null;originalListeningReader(story);
+        }
+      }).catch(function(){
+        if(location.hash===hash&&listeningSession===session){var panel=document.querySelector('.comprehension-panel');if(panel)panel.insertAdjacentHTML('beforeend','<button class="button secondary" data-retry-listening>重试加载理解题</button>');}
+      });
     };
+    window.wordModal=function(id){
+      originalWordModal(id);
+      var dialog=document.getElementById('word-dialog');
+      if(dialog&&dialog.open&&WORDSCENE_CORE_INDEX.get(id)?.hasDictionary&&!WORDSCENE_DETAIL_IDS.has(id)){
+        dialog.querySelector('.word-source').insertAdjacentHTML('beforebegin','<button type="button" class="text-link" data-dictionary-detail>查看完整释义与音标</button>');
+      }
+    };
+    document.addEventListener('click',function(event){
+      if(event.target.closest('[data-retry-content]')){window.render();return;}
+      if(event.target.closest('[data-retry-listening]')){window.listeningReader(getStory(listeningSession.id));return;}
+      var button=event.target.closest('[data-dictionary-detail]');if(!button)return;
+      var id=selectedWord,hash=location.hash,hashValue=0;
+      for(var i=0;i<id.length;i++)hashValue=(hashValue*31+id.charCodeAt(i))>>>0;
+      var bucket=hashValue%64;button.disabled=true;button.textContent='正在读取释义…';
+      loadScriptRetry('dictionary-parts/'+bucket+'.js',function(){return WORDSCENE_DICTIONARY_PARTS.has(bucket)&&WORDSCENE_DETAIL_IDS.has(id);}).then(function(){
+        if(selectedWord===id&&wordDialog.open&&location.hash===hash)originalWordModal(id);
+      }).catch(function(){if(button.isConnected){button.disabled=false;button.textContent='释义没能加载，点击重试';}});
+    });
   }
 
   function boot(){
@@ -360,6 +402,7 @@
     }
     try{
       wrapAsyncRoute();
+      markReady();
       window.render();
     }catch(error){
       console.error(error);
@@ -367,9 +410,6 @@
       var el=document.getElementById('data-loading-panel');
       if(el)el.querySelector('p').textContent=(error&&error.message)||'请检查网络后重试，或点击顶部重新加载。';
     }
-    setTimeout(function(){
-      prefetch('catalog.js');
-    },2500);
   }
 
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);

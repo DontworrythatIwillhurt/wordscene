@@ -1,6 +1,6 @@
 /* ES5 syntax so a blocked file or unsupported engine never leaves a blank main. */
 (function(){
-  var failure=null,timer,shown=false;
+  var failure=null,timer,shown=false,mainRetries=0;
   function panel(){return document.getElementById('startup-panel');}
   function showFailure(){
     var element=panel();
@@ -25,6 +25,15 @@
     if(element&&element.parentNode)element.remove();
   };
   window.addEventListener('error',function(event){
+    if(event.target&&event.target.tagName==='SCRIPT'&&/wordscene\.compat\.js/.test(event.target.src||'')&&mainRetries<2){
+      mainRetries++;
+      if(event.target.parentNode)event.target.parentNode.removeChild(event.target);
+      setTimeout(function(){
+        var script=document.createElement('script'),version=(window.WORDSCENE_ASSET_VERSIONS||{})['wordscene.compat.js'];
+        script.src='wordscene.compat.js?v='+version+'&attempt='+mainRetries+'-'+Date.now();script.async=true;document.body.appendChild(script);
+      },mainRetries*500);
+      armFailure(45000);return;
+    }
     if(!failure){
       if(event.target&&event.target.tagName==='SCRIPT')failure='文件未加载：'+(event.target.src||'').split('/').pop();
       else if(event.message)failure=event.message+(event.filename?'\n文件：'+event.filename.split('/').pop():'');
