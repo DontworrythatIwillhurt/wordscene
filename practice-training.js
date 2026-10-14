@@ -19,9 +19,13 @@ buildTrainingIndexes();
 const CLOZE_INSTRUCTION='In this section, there is a passage with ten blanks. You are required to select one word for each blank from a list of choices given in a word bank following the passage. Read the passage through carefully before making your choices. Each choice in the bank is identified by a letter. Please mark the corresponding letter for each item on Answer Sheet 2 with a single line through the centre. You may not use any of the words in the bank more than once.';
 const MATCHING_INSTRUCTION='In this section, you are going to read a passage with ten statements attached to it. Each statement contains information given in one of the paragraphs. Identify the paragraph from which the information is derived. You may choose a paragraph more than once. Each paragraph is marked with a letter. Answer the questions by marking the corresponding letter on Answer Sheet 2.';
 function validTrainingKey(key){
+  if(key.startsWith('phrase:'))return typeof WORDSCENE_PHRASE_META!=='undefined'&&WORDSCENE_PHRASE_META.some(row=>row.id===key.slice(7));
+  if(key.startsWith('replay:')){const pieces=key.slice(7).split(':'),kind=pieces.pop(),id=pieces.join(':');return ['read','listen','spell'].includes(kind)&&typeof WORDSCENE_CORE_INDEX!=='undefined'&&WORDSCENE_CORE_INDEX.has(id);}
+  if(key.startsWith('novel:'))return knownNovelStudyId(key.slice(6));
   if(key.startsWith('context:'))return !CONTEXT_INDEX.size||CONTEXT_INDEX.has(key.slice(8));
   return key.startsWith('exam:')&&(!EXAM_INDEX.size||EXAM_INDEX.has(key.slice(5)));
 }
+function knownNovelStudyId(id){const books=typeof SERIAL_INDEX!=='undefined'?SERIAL_INDEX:typeof SERIAL_NOVELS!=='undefined'?SERIAL_NOVELS:[];return books.some(book=>book.chapters.some(c=>c.id===id));}
 function cleanTrainingRecords(raw){
   const result=Object.create(null);if(!raw||typeof raw!=='object'||Array.isArray(raw))return result;
   for(const [key,p] of Object.entries(raw))if(validTrainingKey(key)&&p&&Number.isInteger(p.correct)&&Number.isInteger(p.total)&&p.total>0&&p.total<=12&&p.correct>=0&&p.correct<=p.total)result[key]={correct:p.correct,total:p.total,attempts:Math.max(1,Math.floor(Number(p.attempts)||1)),last:/^\d{4}-\d{2}-\d{2}$/.test(p.last||'')?p.last:'',updatedAt:Number.isFinite(p.updatedAt)?Math.max(0,p.updatedAt):0};
@@ -29,7 +33,7 @@ function cleanTrainingRecords(raw){
 }
 function cleanMicroWork(raw){
   const result=Object.create(null);if(!raw||typeof raw!=='object'||Array.isArray(raw))return result;
-  for(const [id,tasks] of Object.entries(raw))if((!MICRO_INDEX.size||MICRO_INDEX.has(id))&&tasks){result[id]={};for(const kind of ['translation','writing']){const task=tasks[kind];if(task&&typeof task.text==='string')result[id][kind]={text:task.text.slice(0,7000),submitted:Boolean(task.submitted),checks:Array.from({length:3},(_,i)=>Boolean(task.checks?.[i])),updatedAt:Number.isFinite(task.updatedAt)?Math.max(0,task.updatedAt):0};}}
+  for(const [id,tasks] of Object.entries(raw))if((id.startsWith('novel:')?knownNovelStudyId(id.slice(6)):!MICRO_INDEX.size||MICRO_INDEX.has(id))&&tasks){result[id]={};for(const kind of ['translation','writing']){const task=tasks[kind];if(task&&typeof task.text==='string')result[id][kind]={text:task.text.slice(0,7000),submitted:Boolean(task.submitted),checks:Array.from({length:3},(_,i)=>Boolean(task.checks?.[i])),updatedAt:Number.isFinite(task.updatedAt)?Math.max(0,task.updatedAt):0};}}
   return result;
 }
 function mergeTrainingRecords(current,incoming){const result={...current};for(const [key,p] of Object.entries(incoming||{}))if(!result[key]||p.updatedAt>result[key].updatedAt||p.updatedAt===result[key].updatedAt&&p.attempts>result[key].attempts)result[key]={...p};return result;}

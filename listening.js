@@ -65,6 +65,7 @@ function listeningPlay(resume){
     if(generation!==listeningGeneration||!session.playing||clozeView!=='listen')return;
     const story=getStory(session.id),chunks=listeningPlaybackChunks(session,story);
     if(session.chunk>=chunks.length){
+      if(story.novel){if(session.scope==='sentence')session.precisionDrafts[session.paragraph][session.sentenceIndex].heard=true;else session.drafts[session.paragraph].heard=true;}
       session.chunk=0;
       if(session.loop){session.status='本段已听完，再听一遍。';}
       else if(session.scope!=='sentence'&&session.continuous&&session.paragraph+1<story.en.length){session.paragraph++;session.sentenceIndex=0;session.transcript=false;reader(session.id);}
@@ -100,7 +101,7 @@ function listeningDictation(draft){
     const i=index++,result=draft.results?.[i];
     return `<span class="listening-slot ${result||''}"><label for="listening-answer-${i}">${i+1}.</label><input id="listening-answer-${i}" data-listening-answer="${i}" aria-label="听写第 ${i+1} 空" aria-invalid="${result==='wrong'}" value="${esc(draft.answers[i])}" placeholder="________" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" maxlength="80" enterkeyhint="next" ${draft.results?'disabled':''}>${result?`<span class="listening-feedback">${result==='correct'?'✓':'→ '+esc(draft.slots[i].answer)}</span>`:''}</span>`;
   }).join('');
-  return `<section class="listening-dictation"><h3>听清这段剧情里的 ${draft.slots.length} 个词</h3><p class="practice-label">按录音中的实际拼写回填，包括过去式或复数；不区分大小写。先听再答，原文默认隐藏。</p>${draft.results?`<div class="cloze-summary" role="status"><strong>答对 ${draft.results.filter(result=>result==='correct').length} / ${draft.slots.length} 空</strong><p>${draft.assisted?'这一轮查看过原文，结果仅供核对，不计入词汇掌握。':'已保存本轮结果，错词已加入复习。'}</p></div>`:''}<form id="listening-form" novalidate><p class="listening-cloze-text" lang="en">${text}</p><div class="listening-form-actions">${draft.results?'<button type="button" class="button" data-listening="restart">重新听写本段</button>':'<button type="submit" class="button">核对听写 →</button>'}<button type="button" class="text-link" data-listening="restart">清空，重新听写</button></div></form></section>`;
+  return `<section class="listening-dictation"><h3>听清这段剧情里的 ${draft.slots.length} 个词</h3><p class="practice-label">按录音中的实际拼写回填，包括过去式或复数；不区分大小写。先听再答，原文默认隐藏。</p>${draft.results?`<div class="cloze-summary" role="status"><strong>答对 ${draft.results.filter(result=>result==='correct').length} / ${draft.slots.length} 空</strong><p>${draft.assisted?'本轮查看过参考或未完整播放，结果仅供核对，不计入词汇掌握。':'已保存本轮结果，错词已加入复习。'}</p></div>`:''}<form id="listening-form" novalidate><p class="listening-cloze-text" lang="en">${text}</p><div class="listening-form-actions">${draft.results?'<button type="button" class="button" data-listening="restart">重新听写本段</button>':'<button type="submit" class="button">核对听写 →</button>'}<button type="button" class="text-link" data-listening="restart">清空，重新听写</button></div></form></section>`;
 }
 const readerBeforeListening=reader;
 reader=function(id){
@@ -122,7 +123,7 @@ document.addEventListener('click',event=>{
   else if(action==='pause'){listeningStop('已暂停。继续时从当前句开头重听。');session.paused=true;updateListeningPlayer();}
   else if(action==='stop'){listeningStop('播放已停止。');session.chunk=0;}
   else if(action==='transcript'){session.transcript=!session.transcript;if(session.transcript){draft.assisted=true;if(session.comprehension)session.comprehension.assisted=true;if(session.precisionDrafts)session.precisionDrafts[session.paragraph].forEach(sentence=>sentence.assisted=true);}reader(session.id);}
-  else if(action==='restart'){listeningStop();draft.answers=draft.slots.map(()=> '');draft.results=null;draft.assisted=false;session.transcript=false;session.chunk=0;session.status='新一轮听写已开始。';reader(session.id);}
+  else if(action==='restart'){listeningStop();draft.answers=draft.slots.map(()=> '');draft.results=null;draft.assisted=false;draft.heard=false;session.transcript=false;session.chunk=0;session.status='新一轮听写已开始。';reader(session.id);}
 },true);
 document.addEventListener('change',event=>{
   if(!listeningSession||clozeView!=='listen')return;
@@ -149,6 +150,7 @@ document.addEventListener('submit',event=>{
   const empty=draft.answers.findIndex(value=>!normalizeCloze(value));
   if(empty>=0){toast(`第 ${empty+1} 空还没填写。先重听，或展开原文核对。`);document.getElementById('listening-answer-'+empty).focus();return;}
   draft.results=draft.slots.map((slot,i)=>isClozeCorrect(draft.answers[i],slot.answer)?'correct':'wrong');
+  if(getStory(session.id).novel&&!draft.heard)draft.assisted=true;
   if(!draft.assisted){
     const ids=[...new Set(draft.slots.map(slot=>slot.id))];
     ids.forEach(id=>recordInSkills(id,draft.slots.every((slot,i)=>slot.id!==id||draft.results[i]==='correct'),['listen','spell']));

@@ -51,7 +51,7 @@ function skillQueue(kind,weakOnly){
 function skillMeaningOptions(word){
   const seen=new Set([word.meaning]),choices=[word];
   const usefulChars=text=>(text.match(/[\u3400-\u9fff]/g)||[]).filter(char=>!'的地得人事物使与及和性'.includes(char)),targetChars=new Set(usefulChars(word.meaning));
-  const suitable=candidate=>candidate.meaning&&!seen.has(candidate.meaning)&&!usefulChars(candidate.meaning).some(char=>targetChars.has(char));
+  const suitable=candidate=>candidate.id!==word.id&&candidate.meaning&&!seen.has(candidate.meaning)&&!usefulChars(candidate.meaning).some(char=>targetChars.has(char));
   for(const candidate of shuffle(allWords()))if(candidate.pos===word.pos&&suitable(candidate)){choices.push(candidate);seen.add(candidate.meaning);if(choices.length===4)break;}
   if(choices.length<4)for(const candidate of shuffle(allWords()))if(suitable(candidate)){choices.push(candidate);seen.add(candidate.meaning);if(choices.length===4)break;}
   return shuffle(choices);

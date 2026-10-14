@@ -6334,6 +6334,9 @@ var WORDSCENE_CORE_VOCAB = [
 ];
 var WORDSCENE_OLD_STORY_IDS = ["cloud-gate", "ruins-lamp", "moon-sword", "stolen-herb", "tribulation-snow", "star-platform", "silent-rain", "seventh-wharf", "mirror-house", "three-days", "empty-room", "fog-hotel", "old-archive", "sea-recording", "paper-cipher", "silent-testimony", "volume-1", "volume-2", "volume-3", "volume-4", "volume-5", "volume-6", "volume-7", "volume-8", "volume-9", "volume-10", "volume-11", "volume-12", "volume-13", "volume-14", "volume-15", "volume-16", "volume-17", "volume-18", "volume-19", "volume-20", "volume-21", "volume-22", "volume-23", "volume-24", "expansion-a-001", "expansion-a-002", "expansion-a-003", "expansion-a-004", "expansion-a-005", "expansion-a-006", "expansion-a-007", "expansion-a-008", "expansion-a-009", "expansion-a-010", "expansion-a-011", "expansion-a-012", "expansion-a-013", "expansion-a-014", "expansion-a-015", "expansion-a-016", "expansion-a-017", "expansion-a-018", "expansion-a-019", "expansion-a-020", "expansion-a-021", "expansion-a-022", "expansion-a-023", "expansion-a-024", "expansion-a-025", "expansion-a-026", "expansion-a-027", "expansion-a-028", "expansion-a-029", "expansion-a-030", "expansion-a-031", "expansion-a-032", "expansion-a-033", "expansion-a-034", "expansion-a-035", "expansion-a-036", "expansion-a-037", "expansion-a-038", "expansion-a-039", "expansion-a-040", "expansion-a-041", "expansion-a-042", "expansion-a-043", "expansion-a-044", "expansion-a-045", "expansion-a-046", "expansion-a-047", "expansion-a-048", "expansion-a-049", "expansion-a-050", "expansion-a-051", "expansion-a-052", "expansion-a-053", "expansion-a-054", "expansion-a-055", "expansion-a-056", "expansion-a-057", "expansion-a-058", "expansion-a-059", "expansion-a-060", "expansion-a-061", "expansion-a-062", "expansion-a-063", "expansion-a-064", "expansion-a-065", "expansion-a-066", "expansion-a-067", "expansion-a-068", "expansion-a-069", "expansion-a-070", "expansion-a-071", "expansion-a-072", "expansion-a-073", "expansion-a-074", "expansion-a-075", "expansion-a-076", "expansion-a-077", "expansion-a-078", "expansion-a-079", "expansion-a-080", "expansion-a-081", "expansion-a-082", "expansion-a-083", "expansion-a-084", "expansion-a-085", "expansion-a-086", "expansion-a-087", "expansion-a-088", "expansion-a-089", "expansion-a-090", "expansion-a-091", "expansion-a-092", "expansion-a-093", "expansion-b-001", "expansion-b-002", "expansion-b-003", "expansion-b-004", "expansion-b-005", "expansion-b-006", "expansion-b-007", "expansion-b-008", "expansion-b-009", "expansion-b-010", "expansion-b-011", "expansion-b-012", "expansion-b-013", "expansion-b-014", "expansion-b-015", "expansion-b-016", "expansion-b-017", "expansion-b-018", "expansion-b-019", "expansion-b-020", "expansion-b-021", "expansion-b-022", "expansion-b-023", "expansion-b-024", "expansion-b-025", "expansion-b-026", "expansion-b-027", "expansion-b-028", "expansion-b-029", "expansion-b-030", "expansion-b-031", "expansion-b-032", "expansion-b-033", "expansion-b-034", "expansion-b-035", "expansion-b-036", "expansion-b-037", "expansion-b-038", "expansion-b-039", "expansion-b-040", "expansion-b-041", "expansion-b-042", "expansion-b-043", "expansion-b-044", "expansion-b-045", "expansion-b-046", "expansion-b-047", "expansion-b-048", "expansion-b-049", "expansion-b-050", "expansion-b-051", "expansion-b-052", "expansion-b-053", "expansion-b-054", "expansion-b-055", "expansion-b-056", "expansion-b-057", "expansion-b-058", "expansion-b-059", "expansion-b-060", "expansion-b-061", "expansion-b-062", "expansion-b-063", "expansion-b-064", "expansion-b-065", "expansion-b-066", "expansion-b-067", "expansion-b-068", "expansion-b-069", "expansion-b-070", "expansion-b-071", "expansion-b-072", "expansion-b-073", "expansion-b-074", "expansion-b-075", "expansion-b-076", "expansion-b-077", "expansion-b-078", "expansion-b-079", "expansion-b-080", "expansion-b-081", "expansion-b-082", "expansion-b-083", "expansion-b-084", "expansion-b-085", "expansion-b-086", "expansion-b-087", "expansion-b-088", "expansion-b-089", "expansion-b-090", "expansion-b-091", "expansion-b-092", "expansion-c-001", "expansion-c-002", "expansion-c-003", "expansion-c-004", "expansion-c-005", "expansion-c-006", "expansion-c-007", "expansion-c-008", "expansion-c-009", "expansion-c-010", "expansion-c-011", "expansion-c-012", "expansion-c-013", "expansion-c-014", "expansion-c-015", "expansion-c-016", "expansion-c-017", "expansion-c-018", "expansion-c-019", "expansion-c-020", "expansion-c-021", "expansion-c-022", "expansion-c-023", "expansion-c-024", "expansion-c-025", "expansion-c-026", "expansion-c-027", "expansion-c-028", "expansion-c-029", "expansion-c-030", "expansion-c-031", "expansion-c-032", "expansion-c-033", "expansion-c-034", "expansion-c-035", "expansion-c-036", "expansion-c-037", "expansion-c-038", "expansion-c-039", "expansion-c-040", "expansion-c-041", "expansion-c-042", "expansion-c-043", "expansion-c-044", "expansion-c-045", "expansion-c-046", "expansion-c-047", "expansion-c-048", "expansion-c-049", "expansion-c-050", "expansion-c-051", "expansion-c-052", "expansion-c-053", "expansion-c-054", "expansion-c-055", "expansion-c-056", "expansion-c-057", "expansion-c-058", "expansion-c-059", "expansion-c-060", "expansion-c-061", "expansion-c-062", "expansion-c-063", "expansion-c-064", "expansion-c-065", "expansion-c-066", "expansion-c-067", "expansion-c-068", "expansion-c-069", "expansion-c-070", "expansion-c-071", "expansion-c-072", "expansion-c-073", "expansion-c-074", "expansion-c-075"];
 ;
+var WORDSCENE_PHRASE_REVISION = "190da4584817";
+var WORDSCENE_PHRASE_META = [{ "id": "rely-on", "word": "rely", "chapters": ["serial-cultivation-03"] }, { "id": "access-to", "word": "access", "chapters": ["serial-cultivation-05"] }, { "id": "compensation-for", "word": "compensation", "chapters": ["serial-cultivation-04", "serial-mystery-09"] }, { "id": "cooperate-in", "word": "cooperate", "chapters": ["serial-cultivation-06"] }, { "id": "respond-to", "word": "respond", "chapters": ["serial-cultivation-08"] }, { "id": "consistent-with", "word": "consistent", "chapters": ["serial-cultivation-08"] }, { "id": "prospect-of", "word": "prospect", "chapters": ["serial-cultivation-11"] }, { "id": "mastery-of", "word": "mastery", "chapters": ["serial-cultivation-12"] }, { "id": "exposure-to", "word": "exposure", "chapters": ["serial-cultivation-13"] }, { "id": "compete-with", "word": "compete", "chapters": ["serial-cultivation-14"] }, { "id": "pessimistic-about", "word": "pessimistic", "chapters": ["serial-cultivation-15"] }, { "id": "devotion-to", "word": "devotion", "chapters": ["serial-cultivation-16"] }, { "id": "wrestle-with", "word": "wrestle", "chapters": ["serial-cultivation-17"] }, { "id": "adhere-to", "word": "adhere", "chapters": ["serial-cultivation-18"] }, { "id": "resort-to", "word": "resort", "chapters": ["serial-cultivation-34"] }, { "id": "focus-on", "word": "focus", "chapters": ["serial-mystery-14"] }, { "id": "consist-of", "word": "consist", "chapters": ["serial-mystery-40"] }, { "id": "cope-with", "word": "cope", "chapters": ["serial-mystery-55"] }, { "id": "conform-to", "word": "conform", "chapters": ["serial-mystery-62"] }, { "id": "compatible-with", "word": "compatible", "chapters": ["serial-mystery-63"] }, { "id": "comply-with", "word": "comply", "chapters": ["serial-mystery-68"] }, { "id": "prone-to", "word": "prone", "chapters": ["serial-mystery-71"] }, { "id": "abide-by", "word": "abide", "chapters": ["serial-mystery-71"] }, { "id": "belong-to", "word": "belong", "chapters": ["serial-mystery-73"] }, { "id": "depend-on", "word": "depend", "chapters": ["serial-mystery-75"] }, { "id": "lack-of", "word": "lack", "chapters": ["serial-mystery-81"] }, { "id": "succeed-in", "word": "succeed", "chapters": ["serial-mystery-91"] }, { "id": "disapprove-of", "word": "disapprove", "chapters": ["serial-mystery-76"] }, { "id": "incapable-of", "word": "incapable", "chapters": ["serial-mystery-80"] }, { "id": "envious-of", "word": "envious", "chapters": ["serial-mystery-77"] }, { "id": "longing-for", "word": "longing", "chapters": ["serial-mystery-82"] }, { "id": "proud-of", "word": "proud", "chapters": ["serial-mystery-87"] }, { "id": "request-for", "word": "request", "chapters": ["serial-mystery-88"] }, { "id": "sceptical-of", "word": "sceptical", "chapters": ["serial-mystery-89"] }, { "id": "converse-with", "word": "converse", "chapters": ["serial-mystery-75"] }, { "id": "control-over", "word": "control", "chapters": ["serial-mystery-75"] }, { "id": "conclude-from", "word": "conclude", "chapters": ["serial-cultivation-04"] }, { "id": "emerge-from", "word": "emerge", "chapters": ["serial-cultivation-11"] }, { "id": "preside-over", "word": "preside", "chapters": ["serial-mystery-67"] }, { "id": "strive-for", "word": "strive", "chapters": ["serial-mystery-68"] }];
+;
 (function() {
   if (typeof globalThis === "undefined") window.globalThis = window;
   if (!Object.fromEntries) Object.fromEntries = function(entries) {
@@ -7112,7 +7115,7 @@ try {
 }
 const allWords = () => [...BUILTIN_WORDS, ...state.custom];
 const getWord = (id) => BUILTIN_INDEX.get(id) || state.custom.find((w) => w.id === id);
-const getStory = (id) => STORY_INDEX.get(id);
+let getStory = (id) => STORY_INDEX.get(id);
 let category = "全部", search = "", sortUnread = false, notebookFilter = "all", notebookSearch = "", notebookLimit = 40, quiz = null, selectedWord = null, toastTimer, activeSpeech = null;
 const main = document.getElementById("main"), wordDialog = document.getElementById("word-dialog"), utilityDialog = document.getElementById("utility-dialog");
 function save() {
@@ -8034,7 +8037,7 @@ function skillQueue(kind, weakOnly) {
 function skillMeaningOptions(word) {
   const seen = /* @__PURE__ */ new Set([word.meaning]), choices = [word];
   const usefulChars = (text) => (text.match(/[\u3400-\u9fff]/g) || []).filter((char) => !"的地得人事物使与及和性".includes(char)), targetChars = new Set(usefulChars(word.meaning));
-  const suitable = (candidate) => candidate.meaning && !seen.has(candidate.meaning) && !usefulChars(candidate.meaning).some((char) => targetChars.has(char));
+  const suitable = (candidate) => candidate.id !== word.id && candidate.meaning && !seen.has(candidate.meaning) && !usefulChars(candidate.meaning).some((char) => targetChars.has(char));
   for (const candidate of shuffle(allWords())) if (candidate.pos === word.pos && suitable(candidate)) {
     choices.push(candidate);
     seen.add(candidate.meaning);
@@ -8406,6 +8409,10 @@ function listeningPlay(resume) {
     if (generation !== listeningGeneration || !session.playing || clozeView !== "listen") return;
     const story = getStory(session.id), chunks = listeningPlaybackChunks(session, story);
     if (session.chunk >= chunks.length) {
+      if (story.novel) {
+        if (session.scope === "sentence") session.precisionDrafts[session.paragraph][session.sentenceIndex].heard = true;
+        else session.drafts[session.paragraph].heard = true;
+      }
       session.chunk = 0;
       if (session.loop) {
         session.status = "本段已听完，再听一遍。";
@@ -8474,7 +8481,7 @@ function listeningDictation(draft) {
     const i = index++, result = (_a2 = draft.results) == null ? void 0 : _a2[i];
     return '<span class="listening-slot '.concat(result || "", '"><label for="listening-answer-').concat(i, '">').concat(i + 1, '.</label><input id="listening-answer-').concat(i, '" data-listening-answer="').concat(i, '" aria-label="听写第 ').concat(i + 1, ' 空" aria-invalid="').concat(result === "wrong", '" value="').concat(esc(draft.answers[i]), '" placeholder="________" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" maxlength="80" enterkeyhint="next" ').concat(draft.results ? "disabled" : "", ">").concat(result ? '<span class="listening-feedback">'.concat(result === "correct" ? "✓" : "→ " + esc(draft.slots[i].answer), "</span>") : "", "</span>");
   }).join("");
-  return '<section class="listening-dictation"><h3>听清这段剧情里的 '.concat(draft.slots.length, ' 个词</h3><p class="practice-label">按录音中的实际拼写回填，包括过去式或复数；不区分大小写。先听再答，原文默认隐藏。</p>').concat(draft.results ? '<div class="cloze-summary" role="status"><strong>答对 '.concat(draft.results.filter((result) => result === "correct").length, " / ").concat(draft.slots.length, " 空</strong><p>").concat(draft.assisted ? "这一轮查看过原文，结果仅供核对，不计入词汇掌握。" : "已保存本轮结果，错词已加入复习。", "</p></div>") : "", '<form id="listening-form" novalidate><p class="listening-cloze-text" lang="en">').concat(text, '</p><div class="listening-form-actions">').concat(draft.results ? '<button type="button" class="button" data-listening="restart">重新听写本段</button>' : '<button type="submit" class="button">核对听写 →</button>', '<button type="button" class="text-link" data-listening="restart">清空，重新听写</button></div></form></section>');
+  return '<section class="listening-dictation"><h3>听清这段剧情里的 '.concat(draft.slots.length, ' 个词</h3><p class="practice-label">按录音中的实际拼写回填，包括过去式或复数；不区分大小写。先听再答，原文默认隐藏。</p>').concat(draft.results ? '<div class="cloze-summary" role="status"><strong>答对 '.concat(draft.results.filter((result) => result === "correct").length, " / ").concat(draft.slots.length, " 空</strong><p>").concat(draft.assisted ? "本轮查看过参考或未完整播放，结果仅供核对，不计入词汇掌握。" : "已保存本轮结果，错词已加入复习。", "</p></div>") : "", '<form id="listening-form" novalidate><p class="listening-cloze-text" lang="en">').concat(text, '</p><div class="listening-form-actions">').concat(draft.results ? '<button type="button" class="button" data-listening="restart">重新听写本段</button>' : '<button type="submit" class="button">核对听写 →</button>', '<button type="button" class="text-link" data-listening="restart">清空，重新听写</button></div></form></section>');
 }
 const readerBeforeListening = reader;
 reader = function(id) {
@@ -8528,6 +8535,7 @@ document.addEventListener("click", (event) => {
     draft.answers = draft.slots.map(() => "");
     draft.results = null;
     draft.assisted = false;
+    draft.heard = false;
     session.transcript = false;
     session.chunk = 0;
     session.status = "新一轮听写已开始。";
@@ -8575,6 +8583,7 @@ document.addEventListener("submit", (event) => {
     return;
   }
   draft.results = draft.slots.map((slot, i) => isClozeCorrect(draft.answers[i], slot.answer) ? "correct" : "wrong");
+  if (getStory(session.id).novel && !draft.heard) draft.assisted = true;
   if (!draft.assisted) {
     const ids = [...new Set(draft.slots.map((slot) => slot.id))];
     ids.forEach((id) => recordInSkills(id, draft.slots.every((slot, i) => slot.id !== id || draft.results[i] === "correct"), ["listen", "spell"]));
@@ -8685,7 +8694,7 @@ function sentenceHints(text) {
 }
 function precisionPanel(story) {
   const s = listeningSession, sentences = s.sentences[s.paragraph], sentence = sentences[s.sentenceIndex], draft = s.precisionDrafts[s.paragraph][s.sentenceIndex], slots = sentenceWordSlots(story, s.paragraph, sentence), result = draft.result;
-  return '<section class="precision-panel"><h3>单句精听与跟读</h3><p class="precision-hint">选一句，点上方播放；可循环本句。先听写，再核对漏词和错词。不区分大小写、忽略句读标点，接受常见英美拼写。</p><div class="precision-sentences" aria-label="选择句子">'.concat(sentences.map((_, i) => '<button data-precision-sentence="'.concat(i, '" aria-pressed="').concat(i === s.sentenceIndex, '" class="').concat(i === s.sentenceIndex ? "active" : "", '">第 ').concat(i + 1, " 句</button>")).join(""), '</div><form id="precision-form"><label for="precision-input">写下刚才听到的这一句</label><textarea id="precision-input" lang="en" maxlength="1500" spellcheck="false" autocapitalize="off" autocomplete="off" ').concat(result ? "disabled" : "", ' placeholder="先听，再输入；也可以只写下听清的部分">').concat(esc(draft.text), '</textarea><div class="precision-actions">').concat(result ? '<button type="button" class="button" data-precision-action="restart">重新听写本句</button>' : '<button type="submit" class="button">核对这一句 →</button><button type="button" class="button secondary" data-precision-action="restart">重新开始本句</button>', '<button type="button" class="button secondary" data-precision-action="reveal">').concat(draft.revealed ? "隐藏本句原文" : "显示本句原文", "</button></div></form>").concat(result ? '<div class="cloze-summary" role="status"><strong>对上 '.concat(result.correct, " / ").concat(result.total, " 个原文词").concat(result.extra ? " · 多写 " + result.extra + " 词" : "", "</strong><p>").concat(draft.assisted ? "本轮看过原文，仅核对，不计入词汇掌握。" : "本句重点词已记录听辨和拼写结果；漏词、错词可以再听一遍。", '</p><div class="precision-feedback">').concat(result.operations.map((op) => op.kind === "equal" ? esc(op.expected) : op.kind === "extra" ? '<span class="extra" title="多写的词">'.concat(esc(op.typed), "</span>") : '<span class="'.concat(op.kind, '" title="').concat(op.kind === "missing" ? "漏词" : "写成了 " + esc(op.typed), '">').concat(esc(op.expected)).concat(op.kind === "changed" ? "（".concat(esc(op.typed), "）") : "〔漏〕", "</span>")).join(" "), "</div></div>") : "").concat(draft.revealed || result ? '<div class="precision-reference"><h4>原文与跟读提示</h4><p lang="en">'.concat(esc(sentence.text), "</p>").concat(sentenceHints(sentence.text)).concat(slots.length ? '<p class="practice-label">还有听不清的重点词？标记后进入“听出”薄弱词队列。</p><div class="precision-keywords">'.concat(slots.map((slot) => '<button data-precision-weak="'.concat(esc(slot.id), '" ').concat(draft.marked.includes(slot.id) ? "disabled" : "", ">").concat(esc(clozeExpected(slot.id)), " · ").concat(draft.marked.includes(slot.id) ? "已标记" : "听不清", "</button>")).join(""), "</div>") : "", "</div>") : "", "</section>");
+  return '<section class="precision-panel"><h3>单句精听与跟读</h3><p class="precision-hint">选一句，点上方播放；可循环本句。先听写，再核对漏词和错词。不区分大小写、忽略句读标点，接受常见英美拼写。</p><div class="precision-sentences" aria-label="选择句子">'.concat(sentences.map((_, i) => '<button data-precision-sentence="'.concat(i, '" aria-pressed="').concat(i === s.sentenceIndex, '" class="').concat(i === s.sentenceIndex ? "active" : "", '">第 ').concat(i + 1, " 句</button>")).join(""), '</div><form id="precision-form"><label for="precision-input">写下刚才听到的这一句</label><textarea id="precision-input" lang="en" maxlength="1500" spellcheck="false" autocapitalize="off" autocomplete="off" ').concat(result ? "disabled" : "", ' placeholder="先听，再输入；也可以只写下听清的部分">').concat(esc(draft.text), '</textarea><div class="precision-actions">').concat(result ? '<button type="button" class="button" data-precision-action="restart">重新听写本句</button>' : '<button type="submit" class="button">核对这一句 →</button><button type="button" class="button secondary" data-precision-action="restart">重新开始本句</button>', '<button type="button" class="button secondary" data-precision-action="reveal">').concat(draft.revealed ? "隐藏本句原文" : "显示本句原文", "</button></div></form>").concat(result ? '<div class="cloze-summary" role="status"><strong>对上 '.concat(result.correct, " / ").concat(result.total, " 个原文词").concat(result.extra ? " · 多写 " + result.extra + " 词" : "", "</strong><p>").concat(draft.assisted ? "本轮查看过参考或未完整播放，仅核对，不计入词汇掌握。" : "本句重点词已记录听辨和拼写结果；漏词、错词可以再听一遍。", '</p><div class="precision-feedback">').concat(result.operations.map((op) => op.kind === "equal" ? esc(op.expected) : op.kind === "extra" ? '<span class="extra" title="多写的词">'.concat(esc(op.typed), "</span>") : '<span class="'.concat(op.kind, '" title="').concat(op.kind === "missing" ? "漏词" : "写成了 " + esc(op.typed), '">').concat(esc(op.expected)).concat(op.kind === "changed" ? "（".concat(esc(op.typed), "）") : "〔漏〕", "</span>")).join(" "), "</div></div>") : "").concat(draft.revealed || result ? '<div class="precision-reference"><h4>原文与跟读提示</h4><p lang="en">'.concat(esc(sentence.text), "</p>").concat(sentenceHints(sentence.text)).concat(slots.length ? '<p class="practice-label">还有听不清的重点词？标记后进入“听出”薄弱词队列。</p><div class="precision-keywords">'.concat(slots.map((slot) => '<button data-precision-weak="'.concat(esc(slot.id), '" ').concat(draft.marked.includes(slot.id) ? "disabled" : "", ">").concat(esc(clozeExpected(slot.id)), " · ").concat(draft.marked.includes(slot.id) ? "已标记" : "听不清", "</button>")).join(""), "</div>") : "", "</div>") : "", "</section>");
 }
 function comprehensionPanel(story) {
   const s = listeningSession, attempt = s.comprehension, questions = LISTENING_QUESTION_INDEX.get(story.id) || [];
@@ -8749,6 +8758,7 @@ document.addEventListener("submit", (event) => {
   d.result = compareListeningSentence(sentence.text, d.text);
   s.comprehension.assisted = true;
   s.drafts[s.paragraph].assisted = true;
+  if (story.novel && !d.heard) d.assisted = true;
   if (!d.assisted) {
     const slots = sentenceWordSlots(story, s.paragraph, sentence), correctSlots = slots.map((slot) => {
       const indices = d.result.source.map((token, i) => token.start >= slot.start && token.end <= slot.end ? i : -1).filter((i) => i >= 0);
@@ -8782,6 +8792,7 @@ document.addEventListener("click", (event) => {
     d.text = "";
     d.result = null;
     d.assisted = false;
+    d.heard = false;
     d.revealed = false;
     d.marked = [];
     s.chunk = 0;
@@ -8854,8 +8865,18 @@ buildTrainingIndexes();
 const CLOZE_INSTRUCTION = "In this section, there is a passage with ten blanks. You are required to select one word for each blank from a list of choices given in a word bank following the passage. Read the passage through carefully before making your choices. Each choice in the bank is identified by a letter. Please mark the corresponding letter for each item on Answer Sheet 2 with a single line through the centre. You may not use any of the words in the bank more than once.";
 const MATCHING_INSTRUCTION = "In this section, you are going to read a passage with ten statements attached to it. Each statement contains information given in one of the paragraphs. Identify the paragraph from which the information is derived. You may choose a paragraph more than once. Each paragraph is marked with a letter. Answer the questions by marking the corresponding letter on Answer Sheet 2.";
 function validTrainingKey(key) {
+  if (key.startsWith("phrase:")) return typeof WORDSCENE_PHRASE_META !== "undefined" && WORDSCENE_PHRASE_META.some((row) => row.id === key.slice(7));
+  if (key.startsWith("replay:")) {
+    const pieces = key.slice(7).split(":"), kind = pieces.pop(), id = pieces.join(":");
+    return ["read", "listen", "spell"].includes(kind) && typeof WORDSCENE_CORE_INDEX !== "undefined" && WORDSCENE_CORE_INDEX.has(id);
+  }
+  if (key.startsWith("novel:")) return knownNovelStudyId(key.slice(6));
   if (key.startsWith("context:")) return !CONTEXT_INDEX.size || CONTEXT_INDEX.has(key.slice(8));
   return key.startsWith("exam:") && (!EXAM_INDEX.size || EXAM_INDEX.has(key.slice(5)));
+}
+function knownNovelStudyId(id) {
+  const books = typeof SERIAL_INDEX !== "undefined" ? SERIAL_INDEX : typeof SERIAL_NOVELS !== "undefined" ? SERIAL_NOVELS : [];
+  return books.some((book) => book.chapters.some((c) => c.id === id));
 }
 function cleanTrainingRecords(raw) {
   const result = /* @__PURE__ */ Object.create(null);
@@ -8866,7 +8887,7 @@ function cleanTrainingRecords(raw) {
 function cleanMicroWork(raw) {
   const result = /* @__PURE__ */ Object.create(null);
   if (!raw || typeof raw !== "object" || Array.isArray(raw)) return result;
-  for (const [id, tasks] of Object.entries(raw)) if ((!MICRO_INDEX.size || MICRO_INDEX.has(id)) && tasks) {
+  for (const [id, tasks] of Object.entries(raw)) if ((id.startsWith("novel:") ? knownNovelStudyId(id.slice(6)) : !MICRO_INDEX.size || MICRO_INDEX.has(id)) && tasks) {
     result[id] = {};
     for (const kind of ["translation", "writing"]) {
       const task = tasks[kind];
@@ -9622,7 +9643,7 @@ updateNav = function() {
 const renderBeforeSerial = render;
 render = function() {
   if (!main) return;
-  const [route, book, id] = location.hash.slice(1).split("/");
+  const [route, book, id, view] = location.hash.slice(1).split("/");
   serialStopAudio();
   delete main.dataset.view;
   if (!route || route === "library" || route === "serial" || route === "archive" || route === "practice" && book === "journey") {
@@ -9635,7 +9656,7 @@ render = function() {
     else if (route === "serial") {
       const c = SERIAL_CHAPTER_INDEX.get(id);
       if (id) {
-        if ((c == null ? void 0 : c.book.id) === book) serialRead(id);
+        if ((c == null ? void 0 : c.book.id) === book) serialRead(id, view);
         else serialNotFound();
       } else serialBookPage(book);
     } else if (route === "archive") {
@@ -9644,7 +9665,8 @@ render = function() {
       if (heroTitle) heroTitle.innerHTML = "熟悉的词，<br>再遇见<em>新语境。</em>";
       if (heroCopy) heroCopy.innerHTML = "这里保留完整词汇覆盖的短篇语境。<br>连续主线小说在故事书架，旧学习记录可以继续使用。";
       if (shelf) shelf.textContent = "拓展语境";
-    } else serialGamePage(id);
+    } else if (id) serialGamePage(id);
+    else novelStudyHub();
     updateNav();
     return;
   }
@@ -9729,7 +9751,10 @@ document.addEventListener("click", (event) => {
   event.stopImmediatePropagation();
   if (b.dataset.serialView) {
     serialStopAudio();
-    serialRead(serialReadId, b.dataset.serialView);
+    if (typeof listeningStop === "function") listeningStop();
+    const c = SERIAL_CHAPTER_INDEX.get(serialReadId), hash = novelStudyUrl(c, b.dataset.serialView);
+    if (location.hash === hash) serialRead(serialReadId, b.dataset.serialView);
+    else location.hash = hash;
     scrollTrainingStart();
     return;
   }
@@ -9805,6 +9830,788 @@ if (serialAboutButton) {
   serialAboutButton.replaceWith(serialAboutButton.cloneNode(true));
   document.getElementById("about-button").addEventListener("click", () => utility("词间 · 让故事留下记忆", "<p>两部长篇连续小说，共".concat(SERIAL_TOTAL_CHAPTERS, "章，按分卷顺序阅读。先读懂人物、动作和线索，再通过剧情填空与八词闯关回忆英文。展开答案与标记读完不增加词汇掌握。</p><p>长篇正文中已有").concat(SERIAL_COVERED_IDS.size, "/").concat(BUILTIN_WORDS.length, '个词的中英语境；每个词可从完整词库跳回所在章节。原300篇只作为额外拓展保留。原来的词汇记录、收藏、笔记和短篇书签都保留；小说进度单独保存。</p><p>听力使用设备英语语音。进度保存在当前浏览器，可在完整词库页导出备份。词表来源与许可见 <a href="SOURCES.md" target="_blank" rel="noopener">内容来源 ↗</a>。</p>')));
 }
+;
+const NOVEL_STUDY_LABEL = "以下为原创 CET-style 仿真模拟训练。";
+let novelPointSession = null, novelDraftTimer = null, novelHubId = "";
+function novelStudyChapter(preferHub = false) {
+  return SERIAL_CHAPTER_INDEX.get(preferHub && novelHubId || state.serial.lastChapter) || SERIAL_CHAPTER_INDEX.values().next().value;
+}
+function novelStudyUrl(chapter, view) {
+  return "#serial/" + chapter.book.id + "/" + chapter.id + (view === "read" ? "" : "/" + view);
+}
+function novelStudyNav(chapter, view) {
+  return '<nav class="cloze-steps novel-study-tabs" aria-label="本章学习方式">'.concat([["read", "01 · READ", "沉浸阅读"], ["exercise", "02 · RECALL", "剧情填空"], ["listen", "03 · LISTEN", "故事听力"], ["points", "04 · APPLY", "六级考点"]].map(([key, no, label]) => '<a href="'.concat(novelStudyUrl(chapter, key), '" data-serial-view="').concat(key, '" class="').concat(view === key ? "active" : "", '" ').concat(view === key ? 'aria-current="page"' : "", "><small>").concat(no, "</small>").concat(label, "</a>")).join(""), "</nav>");
+}
+function novelFeatureLinks(chapter) {
+  return '<section class="novel-feature-grid" aria-label="小说辅助学习"><a class="novel-feature" href="'.concat(novelStudyUrl(chapter, "listen"), '"><small>LISTEN IN THE STORY</small><h3>听这一章，抓住线索</h3><p>整章连播 · 重点词听写 · 单句精听</p><span>故事听力 →</span></a><a class="novel-feature" href="').concat(novelStudyUrl(chapter, "points"), '"><small>CET-6 IN CONTEXT</small><h3>从这一章，读懂考点</h3><p>语境辨义 · 词形还原 · 逻辑关系 · 剧情翻译</p><span>本章六级考点 →</span></a></section>');
+}
+function novelStudyHub() {
+  const chapter = novelStudyChapter(true);
+  if (!chapter) {
+    serialNotFound();
+    return;
+  }
+  main.dataset.view = "novel-hub";
+  main.innerHTML = '<section class="page-heading"><div class="serial-kicker">READ · LISTEN · APPLY</div><h1>故事里的词，听懂也用对。</h1><p>先选一章，再把同一段剧情读懂、听清、写出来。</p></section><section class="novel-chapter-picker"><label for="novel-study-chapter">今天练哪一章？</label><select id="novel-study-chapter">'.concat(serialBooks().map((book) => '<optgroup label="'.concat(esc(book.title), '">').concat(book.chapters.map((c) => '<option value="'.concat(c.id, '" ').concat(c.id === chapter.id ? "selected" : "", ">").concat(String(Number(c.id.split("-").pop())).padStart(2, "0"), " · ").concat(esc(c.title), "</option>")).join(""), "</optgroup>")).join(""), '</select><p id="novel-hub-summary">').concat(esc(chapter.summary), '</p></section><section class="novel-feature-grid">').concat([["listen", "故事听力", "整章连播、词汇听写、逐句核对"], ["points", "小说六级考点", "从本章原句练语境、词形与逻辑"], ["journey", "八词线索闯关", "找出线索、拼回动作、听音寻词"], ["exam", "六级题型训练", "选词填空、仔细阅读、信息匹配与写译"]].map(([kind, title, text]) => '<a class="novel-feature" data-novel-hub="'.concat(kind, '" href="').concat(kind === "exam" ? "#practice/home" : kind === "journey" ? "#practice/journey/" + chapter.id : novelStudyUrl(chapter, kind), '"><small>').concat(kind === "exam" ? "EXAM PRACTICE" : "IN THIS CHAPTER", "</small><h2>").concat(title, "</h2><p>").concat(text, "</p><span>进入练习 →</span></a>")).join(""), '</section><section class="serial-entry"><div><h2>先回到人物的选择。</h2><p>听力和考点使用所选章的同一份正文，学习成绩分别记录。</p></div><a class="button secondary" data-novel-hub="read" href="').concat(novelStudyUrl(chapter, "read"), '">读所选章 →</a></section>');
+  applyPreferences();
+}
+function novelStoryAdapter(chapter) {
+  return __spreadProps(__spreadValues({}, chapter), { novel: true, words: serialTerms(chapter).map((term) => {
+    const marker = wordsceneMatches(chapter.en.join(" "), /\[\[([^|\]]+)\|([^\]]+)\]\]/g).find((m) => m[1] === term.id);
+    return __spreadProps(__spreadValues({}, getWord(term.id)), { id: term.id, word: clozeExpected(term.id), meaning: term.meaning, surface: (marker == null ? void 0 : marker[2]) || clozeExpected(term.id), storyId: chapter.id, source: chapter.title });
+  }) });
+}
+const getStoryBeforeNovel = getStory;
+getStory = function(id) {
+  var _a2;
+  const chapter = SERIAL_CHAPTER_INDEX.get(id);
+  return ((_a2 = chapter == null ? void 0 : chapter.cn) == null ? void 0 : _a2.length) ? novelStoryAdapter(chapter) : getStoryBeforeNovel(id);
+};
+function novelStudyTop(chapter, view) {
+  return '<div class="reader-top"><a class="back-link" href="#serial/'.concat(chapter.book.id, '">← ').concat(esc(chapter.book.title), ' · 目录</a><a class="text-link" href="#practice">听读练习总览 →</a></div>').concat(novelStudyNav(chapter, view)).concat(readerTools());
+}
+function novelStudyPage(id, view) {
+  var _a2, _b, _c;
+  const chapter = SERIAL_CHAPTER_INDEX.get(id);
+  if (!((_a2 = chapter == null ? void 0 : chapter.cn) == null ? void 0 : _a2.length)) {
+    serialNotFound();
+    return;
+  }
+  serialReadId = id;
+  serialReadView = view;
+  clozeView = view;
+  state.serial.lastChapter = id;
+  if (view === "listen") {
+    const previous = state.lastStory;
+    listeningReader(novelStoryAdapter(chapter));
+    state.lastStory = previous;
+    save();
+    main.dataset.view = "novel-listen";
+    main.querySelector(".reader-top").outerHTML = novelStudyTop(chapter, view).replace(/<nav[\s\S]*$/, "");
+    main.querySelector(".cloze-steps").outerHTML = novelStudyNav(chapter, view);
+    (_b = main.querySelector(".reader-controls")) == null ? void 0 : _b.remove();
+    const heading = main.querySelector(".cloze-step-heading");
+    heading.querySelector("h2").textContent = "听这一章，再把线索听回来";
+    heading.querySelector("p").textContent = "本章英文与中文剧情对应。先听人物、行动和转折，再逐段听写或单句精听。";
+    (_c = main.querySelector('[data-listening-mode="questions"]')) == null ? void 0 : _c.remove();
+    main.querySelectorAll(".listening-vocabulary p").forEach((row) => {
+      var _a3;
+      const id2 = row.querySelector("[data-word]").dataset.word;
+      row.querySelector("span").textContent = ((_a3 = serialTerms(chapter).find((term) => term.id === id2)) == null ? void 0 : _a3.meaning) || getWord(id2).meaning;
+    });
+    main.querySelector(".listening-paper").insertAdjacentHTML("beforeend", '<div class="serial-entry"><div><h2>听到的表达，怎样用进六级？</h2><p>回到本章原句，练语境、词形和逻辑，再试着翻译一段剧情。</p></div><a class="button secondary" href="'.concat(novelStudyUrl(chapter, "points"), '">本章六级考点 →</a></div>'));
+  } else novelPointsPage(chapter);
+  applyPreferences();
+}
+const serialReadBeforeNovel = serialRead;
+serialRead = function(id, view) {
+  var _a2, _b;
+  const chapter = SERIAL_CHAPTER_INDEX.get(id), requested = view || (serialReadId === id ? serialReadView : "read");
+  if (((_a2 = chapter == null ? void 0 : chapter.cn) == null ? void 0 : _a2.length) && ["listen", "points"].includes(requested)) return novelStudyPage(id, requested);
+  const result = serialReadBeforeNovel(id, view);
+  if (((_b = chapter == null ? void 0 : chapter.cn) == null ? void 0 : _b.length) && main.querySelector(".cloze-steps")) main.querySelector(".cloze-steps").outerHTML = novelStudyNav(chapter, serialReadView);
+  return result;
+};
+const libraryBeforeNovelStudy = library;
+library = function() {
+  var _a2;
+  libraryBeforeNovelStudy();
+  const chapter = novelStudyChapter();
+  if (chapter) (_a2 = main.querySelector(".serial-rewards")) == null ? void 0 : _a2.insertAdjacentHTML("afterend", novelFeatureLinks(chapter));
+};
+const practicePageBeforeNovel = practicePage;
+practicePage = function(section) {
+  if (!section) return novelStudyHub();
+  const result = practicePageBeforeNovel(section);
+  main.insertAdjacentHTML("afterbegin", '<div class="reader-top"><a class="back-link" href="#practice">← 听读练习总览</a></div>');
+  return result;
+};
+const progressBeforeNovelStudy = progress;
+progress = function() {
+  var _a2;
+  progressBeforeNovelStudy();
+  const records = Object.entries(state.training).filter(([key]) => key.startsWith("novel:")).sort((a, b) => b[1].updatedAt - a[1].updatedAt);
+  (_a2 = main.querySelector(".progress-grid")) == null ? void 0 : _a2.insertAdjacentHTML("afterend", '<section class="progress-card"><h2>小说里的六级考点</h2><p>已练 '.concat(records.length, " 章。听写的重点词计入“听出”和“拼对”，考点微练按章节单独保存。</p>").concat(records.slice(0, 5).map(([key, r]) => {
+    const c = SERIAL_CHAPTER_INDEX.get(key.slice(6));
+    return '<p><a class="text-link" href="'.concat(novelStudyUrl(c, "points"), '">').concat(esc(c.book.title), " · ").concat(esc(c.title), " →</a> <span>最近 ").concat(r.correct, " / ").concat(r.total, " 项</span></p>");
+  }).join(""), '<a class="text-link" href="#practice">继续听读练习 →</a></section>'));
+};
+const wordModalBeforeNovelStudy = wordModal;
+wordModal = function(id) {
+  if (main.dataset.view === "novel-points" && novelPointSession && !novelPointSession.checked) novelPointSession.assisted = true;
+  if (main.dataset.view === "novel-listen" && listeningSession) {
+    const l = listeningSession;
+    l.drafts[l.paragraph].assisted = true;
+    l.precisionDrafts[l.paragraph].forEach((d) => d.assisted = true);
+  }
+  return wordModalBeforeNovelStudy(id);
+};
+document.addEventListener("change", (event) => {
+  if (event.target.id !== "novel-study-chapter") return;
+  novelHubId = event.target.value;
+  const c = novelStudyChapter(true);
+  document.getElementById("novel-hub-summary").textContent = c.summary;
+  main.querySelectorAll("[data-novel-hub]").forEach((link) => {
+    const kind = link.dataset.novelHub;
+    if (kind === "exam") return;
+    link.href = kind === "journey" ? "#practice/journey/" + c.id : novelStudyUrl(c, kind);
+  });
+});
+const NOVEL_LOGIC_POINTS = [
+  { id: "contrast", label: "转折或让步", pattern: /\b(?:however|nevertheless|although|even though)\b|^["'“\s]*but\b|[,;]\s*but\b/i, note: "先找前后观点或情境的差异，再看人物最终采取什么行动。不能只抓转折前的一句，就判断整句态度。" },
+  { id: "condition", label: "条件和限制", pattern: /^["'“\s]*(?:if|unless)\b|[,;]\s*(?:if|unless)\b|\bprovided that\b/i, note: "把条件与结果分开，再连起来读。条件尚未满足时，结果也不能当成已经发生的事实；unless 表示否定条件。" },
+  { id: "reason", label: "原因和结果", pattern: /\bbecause(?: of)?\b/i, note: "分清原因和结果各是什么。选项若把因果颠倒，或只写一个相邻细节，就不等于准确解释了人物的行动。" },
+  { id: "sequence", label: "时间或先后顺序", pattern: /^["'“\s]*(?:before|after|then|later|finally)\b|\buntil\b/i, note: "先确定时间范围或先后顺序。until 提示某种状态持续到一个时间点；不能把先发生直接当成造成后果的原因。" }
+];
+function novelSentences(chapter) {
+  return chapter.en.reduce((all, paragraph, index) => all.concat(storySentences(paragraph).map((sentence) => ({ marked: sentence.text, text: listeningPlain(sentence.text), paragraph: index }))), []);
+}
+function novelWordExample(chapter, id) {
+  const found = novelSentences(chapter).find((s) => s.marked.includes("[[" + id + "|"));
+  if (found) return found;
+  const paragraph = chapter.en.findIndex((p) => p.includes("[[" + id + "|"));
+  if (paragraph >= 0) return { marked: chapter.en[paragraph], text: listeningPlain(chapter.en[paragraph]), paragraph };
+}
+function novelLogicExamples(chapter) {
+  const sentences = novelSentences(chapter), examples = [];
+  for (const rule of NOVEL_LOGIC_POINTS) {
+    const conditionalProvided = rule.id === "condition" && serialTerms(chapter).some((t) => t.id === "provided" && /只要|假如|如果|倘若/.test(t.meaning));
+    const sentence = sentences.find((s) => rule.pattern.test(s.text) || conditionalProvided && s.marked.includes("[[provided|provided]]"));
+    if (sentence) {
+      const match = sentence.text.match(rule.pattern) || ["provided"];
+      examples.push(__spreadProps(__spreadValues({}, sentence), { rule, cue: match[0].trim().replace(/^[,;“"'\s]+/, "") }));
+    }
+  }
+  return examples;
+}
+function novelForms(chapter) {
+  const rows = [];
+  chapter.en.forEach((text, paragraph) => wordsceneMatches(text, /\[\[([^|\]]+)\|([^\]]+)\]\]/g).forEach(([, id, surface]) => {
+    if (normalizeCloze(surface) !== normalizeCloze(clozeExpected(id))) rows.push({ id, surface, paragraph, example: novelWordExample(chapter, id) });
+  }));
+  return rows;
+}
+function novelQuizStart(chapter) {
+  var _a2;
+  const items = [];
+  for (const term of shuffle(serialTerms(chapter)).slice(0, 5)) {
+    const example = novelWordExample(chapter, term.id);
+    if (!example) continue;
+    const marker = wordsceneMatches(example.marked, /\[\[([^|\]]+)\|([^\]]+)\]\]/g).find((m) => m[1] === term.id);
+    items.push({ kind: "meaning", id: term.id, example, answer: term.id, meaning: term.meaning, surface: marker[2], options: skillMeaningOptions(__spreadProps(__spreadValues({}, getWord(term.id)), { id: term.id, meaning: term.meaning })).map((w) => ({ value: w.id, text: w.meaning, word: w.id })) });
+  }
+  for (const row of novelForms(chapter).slice(0, 2)) items.push(__spreadProps(__spreadValues({ kind: "form" }, row), { answer: row.surface }));
+  const logic = novelLogicExamples(chapter)[0];
+  if (logic) items.push({ kind: "logic", example: logic, answer: logic.rule.id, options: shuffle(NOVEL_LOGIC_POINTS.map((rule) => ({ value: rule.id, text: rule.label }))) });
+  novelPointSession = { id: chapter.id, items, choices: items.map(() => ""), checked: false, assisted: false, reference: false };
+  novelPointsPage(chapter);
+  (_a2 = document.getElementById("novel-quiz")) == null ? void 0 : _a2.scrollIntoView({ block: "start" });
+}
+function novelQuizCorrect(item, answer2) {
+  return item.kind === "form" ? normalizeCloze(answer2) === normalizeCloze(item.answer) : answer2 === item.answer;
+}
+function novelQuizPanel(chapter) {
+  const s = novelPointSession;
+  if (!s) return '<section class="novel-lesson"><h2>把本章表达，换一种方式认出来。</h2><p>从本章原句抽取五个词，再练实际词形和逻辑信号。先作答，提交后看依据。</p><button class="button" data-novel-action="quiz-start">开始本章考点微练 →</button></section>';
+  const correct = s.items.filter((item, i) => novelQuizCorrect(item, s.choices[i])).length;
+  return '<section class="novel-lesson" id="novel-quiz"><h2>本章考点微练</h2><p class="practice-label">'.concat(NOVEL_STUDY_LABEL, " ").concat(s.checked ? s.assisted ? "已查看参考，本轮只作核对。" : "本轮成绩已保存，重复提交不重复计分。" : "先选完或填完，再核对。查看词卡或参考后，本轮只作核对。", "</p>").concat(s.checked ? '<div class="cloze-summary" role="status"><strong>答对 '.concat(correct, " / ").concat(s.items.length, " 项</strong></div>") : "").concat(s.items.map((item, i) => {
+    const result = s.checked ? novelQuizCorrect(item, s.choices[i]) : null;
+    const title = item.kind === "meaning" ? "原句中的 ".concat(item.surface, " 更接近哪个意思？") : item.kind === "form" ? "把 ".concat(clozeExpected(item.id), " 填成本章原句的实际词形。") : "加粗的「".concat(item.example.cue, "」提示什么关系？");
+    let example = item.example.text;
+    if (item.kind === "form") example = listeningPlain(item.example.marked.replace(new RegExp("\\[\\[" + item.id + "\\|[^\\]]+\\]\\]"), "________"));
+    let rendered = esc(example);
+    if (item.kind === "meaning") rendered = esc(item.example.marked).replace(/\[\[([^|\]]+)\|([^\]]+)\]\]/g, (_, id, surface) => id === item.id ? "<strong>" + surface + "</strong>" : surface);
+    if (item.kind === "logic") {
+      const at = example.toLowerCase().indexOf(item.example.cue.toLowerCase());
+      rendered = esc(example.slice(0, at)) + "<strong>" + esc(example.slice(at, at + item.example.cue.length)) + "</strong>" + esc(example.slice(at + item.example.cue.length));
+    }
+    return '<article class="novel-question '.concat(result === null ? "" : result ? "correct" : "wrong", '"><small>').concat(i + 1, " · ").concat(item.kind === "meaning" ? "语境辨义" : item.kind === "form" ? "词形还原" : "逻辑关系", "</small><h3>").concat(esc(title), '</h3><p class="novel-example" lang="en">').concat(rendered, "</p>").concat(item.kind === "form" ? '<label class="sr-only" for="novel-form-'.concat(i, '">第 ').concat(i + 1, ' 项实际词形</label><input id="novel-form-').concat(i, '" class="spelling-input" data-novel-form="').concat(i, '" value="').concat(esc(s.choices[i]), '" autocomplete="off" autocapitalize="off" spellcheck="false" ').concat(s.checked ? "disabled" : "", ">") : '<div class="novel-options">'.concat(item.options.map((option) => '<button data-novel-answer="'.concat(i, ":").concat(esc(option.value), '" aria-pressed="').concat(s.choices[i] === option.value, '" ').concat(s.checked ? "disabled" : "", ' class="').concat(s.choices[i] === option.value ? "selected" : "", '">').concat(esc(option.text), "</button>")).join(""), "</div>")).concat(s.checked ? '<div class="novel-feedback"><strong>'.concat(result ? "✓ 回忆正确" : "沿着原句再看一次", "</strong><p>").concat(item.kind === "meaning" ? esc(item.surface + " 在本章表示「" + item.meaning + "」。") : item.kind === "form" ? esc("原文用 " + item.surface + "，词库原形是 " + clozeExpected(item.id) + "；听写要保留实际词形。") : esc(item.example.rule.note), "</p><p>依据：本章第 ").concat(item.example.paragraph + 1, ' 段</p><p lang="en">').concat(esc(item.example.text), "</p>").concat(item.kind === "meaning" ? "<details><summary>其他选项为什么不合适？</summary>".concat(item.options.filter((o) => o.value !== item.answer).map((o) => "<p>".concat(esc(o.text), "：对应 ").concat(esc(clozeExpected(o.word)), "，不是这里 ").concat(esc(item.surface), " 的语境义。</p>")).join(""), "</details>") : "", "</div>") : "", "</article>");
+  }).join(""), '<div class="training-actions">').concat(s.checked ? '<button class="button" data-novel-action="quiz-start">换一组再练</button><button class="text-link" data-novel-action="quiz-exit">回到本章讲解</button>' : '<button class="button" data-novel-action="quiz-submit">核对本章微练 →</button><button class="text-link" data-novel-action="quiz-reference">查看本章参考</button>', "</div></section>");
+}
+function novelTranslationDraft(chapter) {
+  var _a2, _b;
+  const key = "novel:" + chapter.id;
+  (_a2 = state.microWork)[key] || (_a2[key] = {});
+  return (_b = state.microWork[key]).translation || (_b.translation = { text: "", submitted: false, checks: [false, false, false], updatedAt: 0 });
+}
+function novelLessonPanels(chapter) {
+  const logic = novelLogicExamples(chapter).slice(0, 2), forms = novelForms(chapter).slice(0, 4), sentences = novelSentences(chapter), long = sentences.find((s) => s.text.split(/\s+/).length >= 24) || sentences.reduce((best, s) => s.text.length > best.text.length ? s : best, sentences[0]);
+  const paragraph = chapter.cn.length - 1, draft = novelTranslationDraft(chapter);
+  return '<section class="novel-lesson"><h2>原形与实际词形</h2><p>词库复习填原形；听写和翻译要看原句中的实际形式。</p>'.concat(forms.length ? '<div class="novel-form-list">'.concat(forms.map((row) => '<div><button class="text-link" data-word="'.concat(row.id, '">').concat(esc(clozeExpected(row.id)), '</button><span>→</span><strong lang="en">').concat(esc(row.surface), "</strong><small>见第 ").concat(row.paragraph + 1, " 段</small></div>")).join(""), "</div>") : "<p>本章标记词主要使用原形。仍要留意句中未标记动词的时态，以及数量词与名词的搭配。</p>", "</section>").concat(logic.map((row) => '<section class="novel-lesson"><small>阅读与听力 · '.concat(row.rule.label, "</small><h2>读到「").concat(esc(row.cue), '」，先找它连接的两部分。</h2><p class="novel-example" lang="en">').concat(esc(row.text), "</p><p>").concat(esc(row.rule.note), "</p><small>本章第 ").concat(row.paragraph + 1, " 段</small>").concat(row.rule.id === "condition" ? '<p><a class="text-link" href="https://learnenglish.britishcouncil.org/free-resources/grammar/b1-b2/conditionals-zero-first-second" target="_blank" rel="noopener">条件句语法参考 ↗</a></p>' : "", "</section>")).join(""), '<section class="novel-lesson"><h2>长句：先保留关键事实，再补细节。</h2><p class="novel-example" lang="en">').concat(esc(long.text), '</p><p>先找谁采取了什么行动，再核对时间、条件和附加说明。复述时保留事实之间的关系，避免只拼接认识的单词。</p><button class="text-link" data-novel-sentence="').concat(long.paragraph, '">▷ 听这句所在的英文段落</button><p id="serial-speech-status" role="status">与本章剧情相同的英文语境。</p></section><section class="novel-lesson"><small>剧情 → 英文表达</small><h2>试译本章最后一段</h2><p class="novel-translation-source">').concat(esc(listeningPlain(chapter.cn[paragraph])), '</p><form id="novel-translation-form"><label for="novel-translation-input">先写自己的译文，再对照参考</label><textarea id="novel-translation-input" maxlength="7000" placeholder="人物是谁，做了什么，结果怎样？" rows="7">').concat(esc(draft.text), '</textarea><button class="button" type="submit">对照本章参考译文 →</button></form>').concat(draft.submitted ? '<div class="novel-translation-reference"><h3>本章参考译文</h3><p class="novel-example" lang="en">'.concat(esc(listeningPlain(chapter.en[paragraph])), '</p><p class="practice-label">按信息、语法和表达自评；参考译文可有其他合理写法。</p>').concat(["人物、动作和关键事实没有漏掉", "时态、单复数及逻辑关系保持一致", "目标词在句中的用法自然、词形正确"].map((text, i) => '<label><input type="checkbox" data-novel-check="'.concat(i, '" ').concat(draft.checks[i] ? "checked" : "", "> ").concat(text, "</label>")).join(""), "</div>") : "", '<p class="practice-label">草稿自动保存在当前浏览器，并随学习备份导出。对照译文不增加词汇掌握。</p></section>');
+}
+function novelPointsPage(chapter) {
+  if ((novelPointSession == null ? void 0 : novelPointSession.id) !== chapter.id) novelPointSession = null;
+  const active = novelPointSession && !novelPointSession.checked && !novelPointSession.reference;
+  main.dataset.view = "novel-points";
+  state.serial.lastChapter = chapter.id;
+  save();
+  main.innerHTML = novelStudyTop(chapter, "points") + '<article class="reader-paper"><div class="serial-kicker">'.concat(esc(chapter.book.title), " · 第 ").concat(chapter.number, " 章</div><h1>把「").concat(esc(chapter.title), '」里的英文用对。</h1><p class="practice-label">').concat(NOVEL_STUDY_LABEL, '</p><p>使用本章原句练语境、词形、逻辑与翻译，再到六级题型中检验。</p><div class="novel-point-tags"><span>语境辨义</span><span>词形还原</span><span>逻辑关系</span><span>长句与翻译</span></div>').concat(novelQuizPanel(chapter)).concat(active ? "" : novelLessonPanels(chapter), '<div class="serial-entry"><div><h2>再走一步，换到六级题型。</h2><p>选词填空练词性和搭配；阅读练证据与推断；写译练信息组织。</p></div><a class="button secondary" href="#practice/home">六级题型训练 →</a></div></article>');
+  applyPreferences();
+}
+document.addEventListener("click", (event) => {
+  const b = event.target.closest("[data-novel-action],[data-novel-answer],[data-novel-sentence]");
+  if (!b) return;
+  event.preventDefault();
+  event.stopImmediatePropagation();
+  const c = SERIAL_CHAPTER_INDEX.get(serialReadId), s = novelPointSession;
+  if (b.dataset.novelSentence !== void 0) {
+    serialSpeak(c.en[Number(b.dataset.novelSentence)]);
+    return;
+  }
+  if (b.dataset.novelAnswer) {
+    if (!s || s.checked) return;
+    const [index, value] = b.dataset.novelAnswer.split(":");
+    s.choices[Number(index)] = value;
+    b.closest(".novel-options").querySelectorAll("button").forEach((button) => {
+      const selected = button === b;
+      button.classList.toggle("selected", selected);
+      button.setAttribute("aria-pressed", String(selected));
+    });
+    return;
+  }
+  const action = b.dataset.novelAction;
+  if (action === "quiz-start") {
+    novelQuizStart(c);
+    return;
+  }
+  if (action === "quiz-exit") {
+    novelPointSession = null;
+    novelPointsPage(c);
+    return;
+  }
+  if (action === "quiz-reference" && s && !s.checked) {
+    s.assisted = true;
+    s.reference = true;
+    novelPointsPage(c);
+    return;
+  }
+  if (action === "quiz-submit" && s && !s.checked) {
+    if (s.choices.some((answer2) => !answer2.trim())) {
+      toast("先完成每一项，再核对。");
+      return;
+    }
+    s.checked = true;
+    const correct = s.items.filter((item, i) => novelQuizCorrect(item, s.choices[i])).length;
+    if (!s.assisted) {
+      storeTraining("novel:" + c.id, correct, s.items.length);
+      s.items.forEach((item, i) => {
+        if (item.id) recordInSkills(item.id, novelQuizCorrect(item, s.choices[i]), [item.kind === "form" ? "spell" : "read"]);
+      });
+    }
+    novelPointsPage(c);
+    document.getElementById("novel-quiz").scrollIntoView({ block: "start" });
+  }
+}, true);
+document.addEventListener("input", (event) => {
+  if (event.target.dataset.novelForm !== void 0 && novelPointSession && !novelPointSession.checked) novelPointSession.choices[Number(event.target.dataset.novelForm)] = event.target.value;
+  if (event.target.id === "novel-translation-input") {
+    const draft = novelTranslationDraft(SERIAL_CHAPTER_INDEX.get(serialReadId));
+    draft.text = event.target.value;
+    draft.updatedAt = Date.now();
+    draft.submitted = false;
+    clearTimeout(novelDraftTimer);
+    novelDraftTimer = setTimeout(save, 250);
+  }
+});
+document.addEventListener("change", (event) => {
+  if (event.target.dataset.novelCheck === void 0) return;
+  const draft = novelTranslationDraft(SERIAL_CHAPTER_INDEX.get(serialReadId));
+  draft.checks[Number(event.target.dataset.novelCheck)] = event.target.checked;
+  draft.updatedAt = Date.now();
+  save();
+});
+document.addEventListener("submit", (event) => {
+  if (event.target.id !== "novel-translation-form") return;
+  event.preventDefault();
+  event.stopImmediatePropagation();
+  const chapter = SERIAL_CHAPTER_INDEX.get(serialReadId), draft = novelTranslationDraft(chapter);
+  if (!draft.text.trim() || !/[A-Za-z]/.test(draft.text)) {
+    toast("先写下自己的英文，再对照参考。");
+    return;
+  }
+  draft.submitted = true;
+  draft.updatedAt = Date.now();
+  clearTimeout(novelDraftTimer);
+  save();
+  novelPointsPage(chapter);
+  document.querySelector(".novel-translation-reference").scrollIntoView({ block: "start" });
+}, true);
+window.addEventListener("pagehide", () => {
+  clearTimeout(novelDraftTimer);
+  save();
+});
+;
+let replayRun = null, replayAttempt = null, replayFilter = "all", phraseRun = null, phraseAttempt = null;
+let memorySpeechGeneration = 0, memorySpeechTimer = null, memorySpeaking = false;
+let PHRASE_INDEX = /* @__PURE__ */ new Map();
+function buildPhraseIndex() {
+  PHRASE_INDEX = new Map((typeof WORDSCENE_PHRASES !== "undefined" ? WORDSCENE_PHRASES : []).map((row) => [row.id, row]));
+}
+function memoryHeader(title, description) {
+  return '<div class="reader-top memory-top"><a class="back-link" href="#practice">← 听读练习</a><a class="text-link" href="#review">今日复习 →</a></div><section class="page-heading"><div class="serial-kicker">REMEMBER · RECONNECT · USE</div><h1>'.concat(esc(title), "</h1><p>").concat(esc(description), "</p></section>");
+}
+function memoryGapHtml(text, label) {
+  return esc(text).replace("________", '<span class="memory-blank">〔'.concat(esc(label), "〕</span>"));
+}
+function memoryEntries() {
+  const n = replayCandidates().length;
+  return '<section class="memory-entry-grid" aria-label="剧情记忆与搭配"><a class="memory-entry" href="#practice/replay"><small>RETURN TO THE SCENE</small><h2>错词剧情回放</h2><p>'.concat(n ? "".concat(n, " 个词需要再见一面") : "从上次的章节试着回忆", ' · 把词放回人物与线索里</p><span>开始回想 →</span></a><a class="memory-entry" href="#practice/phrases"><small>WORDS THAT WORK TOGETHER</small><h2>搭配拼接</h2><p>').concat(WORDSCENE_PHRASE_META.length, " 组小说表达 · 拼回原句，再换情境使用</p><span>把词连起来 →</span></a></section>");
+}
+const memoryHubBefore = novelStudyHub;
+novelStudyHub = function() {
+  var _a2;
+  memoryHubBefore();
+  (_a2 = main.querySelector(".page-heading")) == null ? void 0 : _a2.insertAdjacentHTML("afterend", memoryEntries());
+};
+const memoryReviewBefore = review;
+review = function() {
+  var _a2;
+  memoryReviewBefore();
+  if (!skillQuiz) (_a2 = main.querySelector(".page-heading")) == null ? void 0 : _a2.insertAdjacentHTML("afterend", memoryEntries());
+};
+const memoryLibraryBefore = library;
+library = function() {
+  var _a2;
+  memoryLibraryBefore();
+  (_a2 = main.querySelector(".novel-feature-grid")) == null ? void 0 : _a2.insertAdjacentHTML("afterend", '<section class="memory-home-strip"><p>昨天没记住的词，今天换个方式再遇见。</p><a href="#practice/replay">错词剧情回放 →</a><a href="#practice/phrases">搭配拼接 →</a></section>');
+};
+const memoryLessonsBefore = novelLessonPanels;
+novelLessonPanels = function(chapter) {
+  const related = WORDSCENE_PHRASE_META.filter((row) => row.chapters.includes(chapter.id));
+  return memoryLessonsBefore(chapter) + (related.length ? '<section class="novel-lesson"><small>本章表达 · 换情境使用</small><h2>把单词和它的搭配一起记。</h2><p>先拼回本章原句，再换到校园或工作情境检验。</p><div class="memory-link-list">'.concat(related.map((row) => '<a class="button secondary" href="#practice/phrases/'.concat(row.id, '">').concat(esc(clozeExpected(row.word)), " · 搭配拼接 →</a>")).join(""), "</div></section>") : "");
+};
+const memoryProgressBefore = progress;
+progress = function() {
+  var _a2;
+  memoryProgressBefore();
+  const recall = Object.entries(state.training).filter(([key]) => key.startsWith("replay:")), phrases = Object.entries(state.training).filter(([key]) => key.startsWith("phrase:"));
+  (_a2 = main.querySelector(".progress-grid")) == null ? void 0 : _a2.insertAdjacentHTML("afterend", '<section class="progress-card"><h2>从剧情回忆，到搭配使用</h2><p>剧情回放 '.concat(recall.length, " 项记录 · 搭配迁移 ").concat(phrases.length, " 组记录。搭配只有新情境的独立作答才记成绩。</p>").concat(phrases.sort((a, b) => b[1].updatedAt - a[1].updatedAt).slice(0, 5).map(([key, r]) => '<p><a class="text-link" href="#practice/phrases/'.concat(key.slice(7), '">').concat(esc(key.slice(7).replace(/-/g, " ")), " →</a> · ").concat(r.correct ? "最近迁移正确" : "需要再练", "</p>")).join(""), '<a class="text-link" href="#practice/replay">回到错词剧情 →</a></section>'));
+};
+const memoryWordBefore = wordModal;
+wordModal = function(id) {
+  var _a2;
+  if (main.dataset.view === "memory-replay" && replayAttempt && !replayAttempt.checked) replayAttempt.assisted = true;
+  if (main.dataset.view === "memory-phrase" && (phraseAttempt == null ? void 0 : phraseAttempt.phase) === "transfer" && !phraseAttempt.transfer.checked) phraseAttempt.transfer.assisted = true;
+  memoryWordBefore(id);
+  const related = WORDSCENE_PHRASE_META.filter((row) => row.word === id);
+  if (related.length) (_a2 = wordDialog.querySelector(".word-source")) == null ? void 0 : _a2.insertAdjacentHTML("beforebegin", '<div class="memory-link-list">'.concat(related.map((row) => '<a class="text-link" href="#practice/phrases/'.concat(row.id, '">用 ').concat(esc(clozeExpected(id)), " 练搭配 →</a>")).join(""), "</div>"));
+};
+function replayReference(id) {
+  const refs = SERIAL_WORD_CHAPTERS.get(id) || [];
+  return refs.find((r) => r.id === state.serial.lastChapter) || refs.find((r) => state.serial.completed.includes(r.id)) || refs[0];
+}
+function replayRouteChapter(id) {
+  var _a2;
+  return ((_a2 = replayRun == null ? void 0 : replayRun.items[replayRun.index]) == null ? void 0 : _a2.id) === id ? replayRun.items[replayRun.index].ref : replayReference(id);
+}
+function replayCandidates(filter = "all") {
+  var _a2, _b;
+  const rows = [];
+  for (const id of /* @__PURE__ */ new Set([...Object.keys(state.words), ...Object.keys(state.skills)])) {
+    const ref = replayReference(id);
+    if (!ref) continue;
+    const skills = state.skills[id] || {}, old = state.words[id];
+    const weak = ["listen", "spell", "read"].filter((kind2) => {
+      var _a3;
+      return ((_a3 = skills[kind2]) == null ? void 0 : _a3.stage) === 0;
+    }), due = ["listen", "spell", "read"].filter((kind2) => {
+      var _a3;
+      return ((_a3 = skills[kind2]) == null ? void 0 : _a3.due) <= today();
+    }).sort((a, b) => skills[a].due.localeCompare(skills[b].due));
+    let kind, priority;
+    if (filter !== "all") {
+      if (weak.includes(filter)) {
+        kind = filter;
+        priority = 0;
+      } else if (due.includes(filter)) {
+        kind = filter;
+        priority = 1;
+      } else if (filter === "spell" && old && (old.stage === 0 || old.due <= today())) {
+        kind = "spell";
+        priority = old.stage === 0 ? 0 : 1;
+      }
+    } else if (weak.length) {
+      kind = weak[0];
+      priority = 0;
+    } else if ((old == null ? void 0 : old.stage) === 0) {
+      kind = "spell";
+      priority = 0;
+    } else if (due.length) {
+      kind = due[0];
+      priority = 1;
+    } else if ((old == null ? void 0 : old.due) <= today()) {
+      kind = "spell";
+      priority = 1;
+    }
+    if (kind) {
+      const recent = priority === 0 && filter === "all" ? Math.max(0, ...weak.map((key) => skills[key].updatedAt || 0), (old == null ? void 0 : old.stage) === 0 ? Date.parse(old.last || "") || 0 : 0) : ((_a2 = skills[kind]) == null ? void 0 : _a2.updatedAt) || Date.parse((old == null ? void 0 : old.last) || "") || 0;
+      rows.push({ id, kind, ref, priority, due: ((_b = skills[kind]) == null ? void 0 : _b.due) || (old == null ? void 0 : old.due) || "", updatedAt: recent, reason: priority === 0 ? SKILL_LABELS[kind] + "待重练" : SKILL_LABELS[kind] + "已到期" });
+    }
+  }
+  return rows.sort((a, b) => a.priority - b.priority || (a.priority === 0 ? b.updatedAt - a.updatedAt : a.due.localeCompare(b.due)) || a.id.localeCompare(b.id));
+}
+function replayMenu() {
+  const rows = replayCandidates(replayFilter), count = replayCandidates().length;
+  main.dataset.view = "memory-menu";
+  main.innerHTML = memoryHeader("回到那一幕，再想起这个词。", "先用剧情回忆，再核对原句。每轮最多八词，优先回放最近答错和已经到期的词。") + '<section class="novel-lesson"><h2>'.concat(count ? "".concat(count, " 个词，等你回到故事里。") : "今天还没有需要回放的错词或到期词。", '</h2><div class="memory-filters" aria-label="复习分项">').concat([["all", "全部"], ["listen", "听出"], ["spell", "拼对"], ["read", "看懂"]].map(([key, label]) => '<button data-memory-filter="'.concat(key, '" aria-pressed="').concat(replayFilter === key, '" class="').concat(replayFilter === key ? "selected" : "", '">').concat(label, "</button>")).join(""), "</div><p>当前分项有 ").concat(rows.length, ' 词；每个词回到自己的小说片段，听力薄弱词优先用英文段落回放。</p><div class="training-actions"><button class="button" data-memory-action="replay-start" ').concat(rows.length ? "" : "disabled", ">回放 ").concat(Math.min(8, rows.length), ' 个词 →</button><button class="button secondary" data-memory-action="replay-fresh">从上次章节试练八词</button></div><p class="practice-label">刷新会结束未提交的一轮；已提交结果保留。没有小说语境的自添词可继续使用原词库复习。</p></section><section class="novel-lesson"><h2>这轮会回到哪些地方？</h2>').concat(rows.length ? rows.slice(0, 8).map((row) => "<p>".concat(esc(row.ref.bookTitle), " · 第 ").concat(row.ref.number, " 章 · ").concat(esc(row.ref.title), ' <span class="memory-tag">').concat(row.reason, "</span></p>")).join("") : "<p>读过一章、做过练习后，这里会依据你的记录安排回放。</p>", "</section>");
+  applyPreferences();
+}
+function replayStart(fresh2 = false, retry = false) {
+  let items;
+  if (retry && replayRun) items = replayRun.items.filter((item, i) => {
+    var _a2, _b;
+    return !((_a2 = replayRun.results[i]) == null ? void 0 : _a2.correct) || ((_b = replayRun.results[i]) == null ? void 0 : _b.assisted);
+  });
+  else if (fresh2) {
+    const chapter = novelStudyChapter();
+    items = shuffle(chapter.wordIds || serialTerms(chapter).map((t) => t.id)).slice(0, 8).map((id) => ({ id, kind: "spell", ref: replayReference(id), reason: "本章试练" }));
+  } else items = replayCandidates(replayFilter).slice(0, 8);
+  if (!items.length) {
+    toast("当前没有需要回放的词，可以从上次章节试练。");
+    return;
+  }
+  replayRun = { items, index: 0, results: [] };
+  replayAttempt = null;
+  replayGoItem();
+}
+function replayGoItem() {
+  const item = replayRun.items[replayRun.index], hash = "#practice/replay/" + item.id + "/" + item.kind;
+  if (location.hash === hash) render();
+  else location.hash = hash;
+  scrollTrainingStart();
+}
+function replayPage(id, kind = "spell") {
+  var _a2, _b;
+  if (id === "done") {
+    replayResult();
+    return;
+  }
+  const ref = replayRouteChapter(id), chapter = ref && SERIAL_CHAPTER_INDEX.get(ref.id);
+  if (!ref || !((_a2 = chapter == null ? void 0 : chapter.cn) == null ? void 0 : _a2.length)) {
+    main.innerHTML = memoryHeader("这条线索暂时找不到。", "请从错词回放总览重新选择。") + '<a class="button" href="#practice/replay">回到回放总览 →</a>';
+    return;
+  }
+  if (!["listen", "spell", "read"].includes(kind)) kind = "spell";
+  if (!replayRun || ((_b = replayRun.items[replayRun.index]) == null ? void 0 : _b.id) !== id) {
+    replayRun = { items: [{ id, kind, ref, reason: "单词回放" }], index: 0, results: [] };
+    replayAttempt = null;
+  }
+  replayRun.items[replayRun.index].kind = kind;
+  if (!replayAttempt || replayAttempt.id !== id || replayAttempt.kind !== kind) {
+    const assisted = (replayAttempt == null ? void 0 : replayAttempt.id) === id && (replayAttempt.assisted || replayAttempt.checked);
+    const term = serialGameSlots(chapter).find((t) => t.id === id), example = novelWordExample(chapter, id);
+    if (!term || !example) {
+      serialNotFound();
+      return;
+    }
+    const marker = wordsceneMatches(example.marked, /\[\[([^|\]]+)\|([^\]]+)\]\]/g).find((m) => m[1] === id);
+    replayAttempt = { id, kind, chapter: chapter.id, term, example, surface: marker[2], answer: "", checked: false, assisted: Boolean(assisted), heard: false, options: kind === "read" ? skillMeaningOptions(__spreadProps(__spreadValues({}, getWord(id)), { id, meaning: term.meaning })) : [] };
+  }
+  const s = replayAttempt;
+  main.dataset.view = "memory-replay";
+  const prompt = s.kind === "read" ? "这段英文里，加粗的词是什么意思？" : s.kind === "listen" ? "听完这段英文，写回线索词的实际词形。" : "凭这幅剧情画面，写回英文原形。";
+  const english = esc(s.example.marked).replace(/\[\[([^|\]]+)\|([^\]]+)\]\]/g, (_, key, surface) => key === id ? "<strong>" + surface + "</strong>" : surface);
+  main.innerHTML = memoryHeader("把那条线索，再找回来。", "本轮直接使用原小说片段，提交后核对中文和对应英文。") + '<section class="memory-paper"><div class="quiz-top"><span>'.concat(replayRun.index + 1, " / ").concat(replayRun.items.length, " · ").concat(SKILL_LABELS[kind], "</span><span>").concat(esc(chapter.book.title), " · 第 ").concat(chapter.number, " 章</span></div><h2>").concat(esc(chapter.title), '</h2><p class="practice-label">').concat(NOVEL_STUDY_LABEL, "</p><h3>").concat(prompt, "</h3>").concat(kind === "read" ? '<p class="novel-example" lang="en">'.concat(english, "</p>") : '<div class="memory-scene">'.concat(serialMaskedScene(chapter, s.term), "</div>")).concat(kind === "listen" ? '<div class="memory-audio"><button class="button secondary" data-memory-action="replay-audio">▷ 回放这一段英文</button><button class="text-link" data-memory-action="audio-stop">停止</button><p id="memory-audio-status" role="status">'.concat(s.heard ? "本段已完整播放。" : "先听完整段落；实际拼写可能是过去式或复数。", '</p><a class="text-link" href="#practice/replay/').concat(id, '/spell">改用剧情拼写 →</a></div>') : "").concat(kind === "read" ? '<div class="novel-options">'.concat(s.options.map((w) => '<button data-memory-choice="'.concat(esc(w.id), '" aria-pressed="').concat(s.answer === w.id, '" class="').concat(s.answer === w.id ? "selected" : "", '" ').concat(s.checked ? "disabled" : "", ">").concat(esc(w.meaning), "</button>")).join(""), "</div>") : '<form id="memory-replay-form"><label for="memory-replay-input">'.concat(kind === "listen" ? "英文实际词形" : "英文原形", '</label><input class="spelling-input" id="memory-replay-input" maxlength="80" value="').concat(esc(s.answer), '" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" ').concat(s.checked ? "disabled" : "", '><button class="button" type="submit" ').concat(s.checked ? "disabled" : "", ">核对这条线索 →</button></form>")).concat(!s.checked ? '<div class="training-actions">'.concat(kind === "read" ? '<button class="button" data-memory-action="replay-submit">核对词义 →</button>' : "", '<button class="text-link" data-memory-action="replay-reveal">暂时想不起，展开原句</button></div><p class="practice-label">展开原句或查看词卡后，这一项只作核对，不增加掌握记录。</p>') : replayFeedback(chapter, s), '<div class="memory-source-link"><a class="text-link" data-memory-source href="').concat(novelStudyUrl(chapter, "read"), '">回到这章小说 →</a></div></section>');
+  applyPreferences();
+}
+function replayCorrect(s) {
+  return s.kind === "read" ? s.answer === s.id : isClozeCorrect(s.answer, s.kind === "listen" ? s.surface : s.id);
+}
+function replayFeedback(chapter, s) {
+  return '<section class="memory-feedback" role="status"><h3>'.concat(s.assisted ? "原句已展开，这一项只作核对。" : replayCorrect(s) ? "线索找回来了。" : "这幅画面，值得再看一眼。", '</h3><p><strong lang="en">').concat(esc(clozeExpected(s.id)), "</strong> · ").concat(esc(s.term.meaning)).concat(s.surface.toLowerCase() !== clozeExpected(s.id).toLowerCase() ? " · 原句词形 " + esc(s.surface) : "", "</p><p>").concat(esc(listeningPlain(chapter.cn[s.term.paragraph])), '</p><p class="novel-example" lang="en">').concat(esc(s.example.text), '</p><p class="practice-label">依据：第 ').concat(s.term.paragraph + 1, " 段。").concat(s.assisted ? "本项不记成绩。" : "结果已进入对应复习分项。", '</p><button class="button" data-memory-action="replay-next">').concat(replayRun.index + 1 === replayRun.items.length ? "看看这轮回忆 →" : "回到下一幕 →", "</button></section>");
+}
+function replaySubmit(reveal = false) {
+  const s = replayAttempt;
+  if (!s || s.checked) return;
+  if (reveal) {
+    s.assisted = true;
+    s.answer = s.kind === "read" ? s.id : s.kind === "listen" ? s.surface : clozeExpected(s.id);
+  } else {
+    if (!s.answer.trim()) {
+      toast("先写下或选择你回忆到的答案。");
+      return;
+    }
+    if (s.kind === "listen" && !s.heard && !s.assisted) {
+      toast("先听完整段落，再核对；朗读不可用时可改用剧情拼写。");
+      return;
+    }
+  }
+  memoryStopAudio();
+  s.checked = true;
+  const correct = replayCorrect(s);
+  replayRun.results[replayRun.index] = { correct, assisted: s.assisted };
+  if (!s.assisted) {
+    storeTraining("replay:" + s.id + ":" + s.kind, correct ? 1 : 0, 1);
+    recordInSkills(s.id, correct, s.kind === "listen" ? ["listen", "spell"] : [s.kind]);
+  }
+  replayPage(s.id, s.kind);
+  main.querySelector(".memory-feedback").scrollIntoView({ block: "start" });
+}
+function replayResult() {
+  main.dataset.view = "memory-menu";
+  if (!replayRun) {
+    replayMenu();
+    return;
+  }
+  const results = replayRun.results, correct = results.filter((r) => r.correct && !r.assisted).length, assisted = results.filter((r) => r.assisted).length;
+  main.innerHTML = memoryHeader("这些词，又回到你的故事里了。", "每一次回忆，都对应实际的小说片段。") + '<section class="novel-lesson"><div class="result-number">'.concat(correct, "<small> / ").concat(results.length, " 项独立回忆正确</small></div><p>").concat(assisted, ' 项借助原句核对；这些项不增加掌握记录。答错的词已安排重练。</p><div class="training-actions"><button class="button" data-memory-action="replay-retry" ').concat(correct === results.length ? "disabled" : "", '>再回想未记住的词</button><a class="button secondary" href="#practice/phrases">试试搭配拼接 →</a><a class="text-link" href="#practice/replay">回到回放总览</a></div></section>');
+  applyPreferences();
+}
+function phrasePriority(row) {
+  var _a2;
+  const score = state.training["phrase:" + row.id];
+  return !score ? 1 : score.correct < score.total ? 0 : ((_a2 = state.words[row.word]) == null ? void 0 : _a2.due) <= today() ? 1 : 2;
+}
+function phraseMenu() {
+  buildPhraseIndex();
+  main.dataset.view = "memory-menu";
+  const rows = [...PHRASE_INDEX.values()].sort((a, b) => phrasePriority(a) - phrasePriority(b) || a.id.localeCompare(b.id));
+  main.innerHTML = memoryHeader("让单词，带上它的搭配。", "先拼回小说里的表达，再换到校园或工作情境。点击词块即可拼接，不需要拖动。") + '<section class="novel-lesson"><h2>'.concat(rows.length, ' 组真实小说表达</h2><p>每轮六组，优先练迁移答错或尚未练过的搭配。小说拼接是学习环节；新情境的独立作答才记成绩。</p><button class="button" data-memory-action="phrase-start">拼接六组搭配 →</button><p class="practice-label">').concat(NOVEL_STUDY_LABEL, ' 刷新会结束未提交的一轮。</p></section><section class="memory-phrase-list">').concat(rows.map((row) => {
+    const result = state.training["phrase:" + row.id], c = SERIAL_CHAPTER_INDEX.get(row.refs[0].chapter);
+    return '<a href="#practice/phrases/'.concat(row.id, '"><span><strong lang="en">').concat(esc(clozeExpected(row.word)), " ").concat(row.prep, "</strong><small>").concat(esc(row.meaning), " · ").concat(esc(c.book.title), "第 ").concat(c.number, ' 章</small></span><span class="memory-tag">').concat(result ? result.correct ? "迁移正确" : "需要再练" : "尚未练习", " →</span></a>");
+  }).join(""), "</section>");
+  applyPreferences();
+}
+function phraseStart(retry = false) {
+  const rows = retry && phraseRun ? phraseRun.ids.filter((id, i) => {
+    var _a2, _b;
+    return !((_a2 = phraseRun.results[i]) == null ? void 0 : _a2.correct) || ((_b = phraseRun.results[i]) == null ? void 0 : _b.assisted);
+  }) : [...PHRASE_INDEX.values()].sort((a, b) => phrasePriority(a) - phrasePriority(b) || a.id.localeCompare(b.id)).slice(0, 6).map((r) => r.id);
+  if (!rows.length) {
+    toast("这一轮已全部完成。");
+    return;
+  }
+  phraseRun = { ids: rows, index: 0, results: [] };
+  phraseAttempt = null;
+  phraseGoItem();
+}
+function phraseGoItem() {
+  const hash = "#practice/phrases/" + phraseRun.ids[phraseRun.index];
+  if (location.hash === hash) render();
+  else location.hash = hash;
+  scrollTrainingStart();
+}
+function phraseRouteChapter(id) {
+  var _a2, _b;
+  return (_b = (_a2 = PHRASE_INDEX.get(id)) == null ? void 0 : _a2.refs[0]) == null ? void 0 : _b.chapter;
+}
+function phrasePage(id) {
+  var _a2, _b;
+  buildPhraseIndex();
+  if (id === "done") {
+    phraseResult();
+    return;
+  }
+  const row = PHRASE_INDEX.get(id), ref = row == null ? void 0 : row.refs[0], chapter = ref && SERIAL_CHAPTER_INDEX.get(ref.chapter);
+  if (!row || !((_b = (_a2 = chapter == null ? void 0 : chapter.cn) == null ? void 0 : _a2[ref.paragraph]) == null ? void 0 : _b.length) || !chapter.en[ref.paragraph].includes(ref.marked)) {
+    main.innerHTML = memoryHeader("这组搭配暂时找不到。", "请从搭配总览重新选择。") + '<a class="button" href="#practice/phrases">回到搭配总览 →</a>';
+    return;
+  }
+  if (!phraseRun || phraseRun.ids[phraseRun.index] !== id) {
+    phraseRun = { ids: [id], index: 0, results: [] };
+    phraseAttempt = null;
+  }
+  if (!phraseAttempt || phraseAttempt.id !== id) phraseAttempt = { id, phase: "story", tokens: [], storyChecked: false, storyRevealed: false, transfer: { answer: "", checked: false, assisted: false }, bank: shuffle([ref.surface, row.prep, ...row.transfer.distractors]), options: shuffle([row.prep, ...row.transfer.distractors]) };
+  const s = phraseAttempt, example = novelWordExample(chapter, row.word), masked = example.marked.replace(ref.marked, "________"), transfer = row.transfer.prefix + "________" + row.transfer.suffix;
+  main.dataset.view = "memory-phrase";
+  main.innerHTML = memoryHeader("把词连起来，换个情境用。", "同一个搭配，先放回小说，再用到一个新的真实生活情境。") + '<section class="memory-paper"><div class="quiz-top"><span>搭配 '.concat(phraseRun.index + 1, " / ").concat(phraseRun.ids.length, "</span><span>").concat(s.phase === "story" ? "01 · 小说拼接" : "02 · 新情境迁移", '</span></div><p class="practice-label">').concat(NOVEL_STUDY_LABEL, "</p>").concat(s.phase === "story" ? '<div class="serial-kicker">'.concat(esc(chapter.book.title), " · 第 ").concat(chapter.number, " 章</div><h2>把「").concat(esc(row.meaning), '」的表达拼回来。</h2><p class="memory-scene">').concat(serialMaskedScene(chapter, { id: row.word, paragraph: ref.paragraph }), '</p><p class="novel-example" lang="en">').concat(memoryGapHtml(listeningPlain(masked), "搭配"), '</p><div class="memory-built" aria-label="已拼接的词块" aria-live="polite">').concat([0, 1].map((i) => "<span>".concat(s.tokens[i] ? esc(s.tokens[i]) : "第 " + (i + 1) + " 块", "</span>")).join(""), '</div><div class="memory-token-bank" aria-label="可选择的词块">').concat(s.bank.map((token) => '<button data-memory-token="'.concat(esc(token), '" ').concat(s.storyChecked || s.tokens.includes(token) ? "disabled" : "", ' lang="en">').concat(esc(token), "</button>")).join(""), "</div>").concat(!s.storyChecked ? '<div class="training-actions"><button class="button" data-memory-action="phrase-check">核对小说表达 →</button><button class="text-link" data-memory-action="phrase-undo">退回一块</button><button class="text-link" data-memory-action="phrase-reveal">展开表达，先学一遍</button></div>' : '<section class="memory-feedback" role="status"><h3>'.concat(s.storyRevealed ? "先记住这个表达。" : phraseStoryCorrect(row, s) ? "词块连起来了。" : "沿着原句，换个连接方式。", '</h3><p><strong lang="en">').concat(esc(ref.surface), " ").concat(row.prep, "</strong> · ").concat(esc(row.meaning), "</p><p>").concat(esc(row.note), '</p><p class="novel-example" lang="en">').concat(esc(example.text), '</p><p class="practice-label">依据：本章第 ').concat(ref.paragraph + 1, ' 段。小说拼接只作学习，不增加词汇掌握。</p><button class="button" data-memory-action="phrase-transfer">换一个情境检验 →</button></section>')) : '<h2>这次，换到小说以外。</h2><p>选择让句子成立的连接词；先作答，再看搭配和解释。</p><p class="novel-example" lang="en">'.concat(memoryGapHtml(transfer, "连接词"), '</p><div class="novel-options">').concat(s.options.map((option) => '<button data-memory-prep="'.concat(option, '" aria-pressed="').concat(s.transfer.answer === option, '" class="').concat(s.transfer.answer === option ? "selected" : "", '" ').concat(s.transfer.checked ? "disabled" : "", ' lang="en">').concat(option, "</button>")).join(""), "</div>").concat(!s.transfer.checked ? '<div class="training-actions"><button class="button" data-memory-action="phrase-submit">核对新情境 →</button><button class="text-link" data-memory-action="phrase-transfer-reveal">查看表达与解释</button></div>' : '<section class="memory-feedback" role="status"><h3>'.concat(s.transfer.assisted ? "这项只作参考核对。" : s.transfer.answer === row.prep ? "换了情境，也用对了。" : "这组搭配，下一轮再见。", '</h3><p class="novel-example" lang="en">').concat(esc(row.transfer.prefix + row.prep + row.transfer.suffix), '</p><p><strong lang="en">').concat(esc(clozeExpected(row.word)), " ").concat(row.prep, "</strong> · ").concat(esc(row.meaning), "</p><p>").concat(esc(row.note), '</p><p class="practice-label">').concat(s.transfer.assisted ? "参考核对不增加词汇掌握。" : "迁移结果已保存；本词的“看懂”分项已更新。", '</p><button class="button" data-memory-action="phrase-next">').concat(phraseRun.index + 1 === phraseRun.ids.length ? "看看这轮搭配 →" : "拼下一组表达 →", "</button></section>")), '<div class="memory-source-link"><a class="text-link" data-memory-source href="').concat(novelStudyUrl(chapter, "read"), '">回到原小说 →</a> <a class="text-link" href="#practice/phrases">搭配总览 →</a></div></section>');
+  applyPreferences();
+}
+function phraseStoryCorrect(row, s) {
+  return s.tokens.length === 2 && s.tokens[0].toLowerCase() === row.refs[0].surface.toLowerCase() && s.tokens[1] === row.prep;
+}
+function phraseSubmit(reveal = false) {
+  const s = phraseAttempt, row = PHRASE_INDEX.get(s == null ? void 0 : s.id);
+  if (!row || s.phase !== "transfer" || s.transfer.checked) return;
+  if (reveal) {
+    s.transfer.assisted = true;
+    s.transfer.answer = row.prep;
+  } else if (!s.transfer.answer) {
+    toast("先选择连接词，再核对新情境。");
+    return;
+  }
+  s.transfer.checked = true;
+  const correct = s.transfer.answer === row.prep;
+  phraseRun.results[phraseRun.index] = { correct, assisted: s.transfer.assisted };
+  if (!s.transfer.assisted) {
+    storeTraining("phrase:" + row.id, correct ? 1 : 0, 1);
+    recordInSkills(row.word, correct, ["read"]);
+  }
+  phrasePage(s.id);
+  main.querySelector(".memory-feedback").scrollIntoView({ block: "start" });
+}
+function phraseResult() {
+  main.dataset.view = "memory-menu";
+  if (!phraseRun) {
+    phraseMenu();
+    return;
+  }
+  const r = phraseRun.results, correct = r.filter((x) => x.correct && !x.assisted).length;
+  main.innerHTML = memoryHeader("搭配连起来，表达也更完整了。", "小说学习与新情境检验分开记录，帮助你看到是否真的能换个地方使用。") + '<section class="novel-lesson"><div class="result-number">'.concat(correct, "<small> / ").concat(r.length, " 项独立迁移正确</small></div><p>").concat(r.filter((x) => x.assisted).length, ' 项参考核对不计成绩。下轮优先练尚未迁移正确的表达。</p><div class="training-actions"><button class="button" data-memory-action="phrase-retry" ').concat(correct === r.length ? "disabled" : "", '>重练未掌握的搭配</button><a class="button secondary" href="#practice/replay">回放我的错词 →</a><a class="text-link" href="#practice/phrases">回到搭配总览</a></div></section>');
+  applyPreferences();
+}
+function memoryStopAudio(message) {
+  memorySpeechGeneration++;
+  clearTimeout(memorySpeechTimer);
+  if (memorySpeaking && "speechSynthesis" in window) speechSynthesis.cancel();
+  memorySpeaking = false;
+  if (message) {
+    const status = document.getElementById("memory-audio-status");
+    if (status) status.textContent = message;
+  }
+}
+function replayPlay() {
+  const s = replayAttempt;
+  if (!s || s.kind !== "listen") return;
+  memoryStopAudio();
+  serialStopAudio();
+  listeningStop();
+  if (!("speechSynthesis" in window) || typeof SpeechSynthesisUtterance === "undefined") {
+    memoryStopAudio("当前浏览器不支持朗读，可以改用剧情拼写。");
+    return;
+  }
+  const voices = speechSynthesis.getVoices(), voice = voices.find((v) => /^en[-_]/i.test(v.lang));
+  if (voices.length && !voice) {
+    memoryStopAudio("设备没有可用英语语音，可以改用剧情拼写。");
+    return;
+  }
+  const chapter = SERIAL_CHAPTER_INDEX.get(s.chapter), chunks = listeningChunks(listeningPlain(chapter.en[s.term.paragraph])), generation = memorySpeechGeneration, hash = location.hash;
+  memorySpeaking = true;
+  const next = (index) => {
+    if (generation !== memorySpeechGeneration || replayAttempt !== s || location.hash !== hash) return;
+    clearTimeout(memorySpeechTimer);
+    if (index === chunks.length) {
+      s.heard = true;
+      memorySpeaking = false;
+      document.getElementById("memory-audio-status").textContent = "本段已完整播放，可以填写实际词形。";
+      return;
+    }
+    const utterance = new SpeechSynthesisUtterance(chunks[index]);
+    utterance.lang = (voice == null ? void 0 : voice.lang) || "en-GB";
+    if (voice) utterance.voice = voice;
+    utterance.rate = state.preferences.rate || 0.85;
+    document.getElementById("memory-audio-status").textContent = "正在回放第 ".concat(index + 1, " / ").concat(chunks.length, " 个片段…");
+    memorySpeechTimer = setTimeout(() => memoryStopAudio("语音没有完成，请重试或改用剧情拼写。"), 3e4);
+    utterance.onend = () => next(index + 1);
+    utterance.onerror = () => {
+      if (generation === memorySpeechGeneration) memoryStopAudio("英语朗读未能完成，请重试或改用剧情拼写。");
+    };
+    try {
+      speechSynthesis.speak(utterance);
+    } catch (_) {
+      memoryStopAudio("英语语音暂时不可用，可以改用剧情拼写。");
+    }
+  };
+  next(0);
+}
+const memoryRenderBefore = render;
+render = function() {
+  const [route, section, id, kind] = location.hash.slice(1).split("/");
+  if (route === "practice" && ["replay", "phrases"].includes(section)) {
+    wordDialog.close();
+    utilityDialog.close();
+    document.body.classList.remove("focus-mode");
+    clearInterval(trainingClock);
+    if (section === "replay") id ? replayPage(id, kind) : replayMenu();
+    else id ? phrasePage(id) : phraseMenu();
+    updateNav();
+  } else memoryRenderBefore();
+};
+document.addEventListener("click", (event) => {
+  const source = event.target.closest("[data-memory-source]");
+  if (source) {
+    if (main.dataset.view === "memory-replay" && replayAttempt && !replayAttempt.checked) replayAttempt.assisted = true;
+    if (main.dataset.view === "memory-phrase" && (phraseAttempt == null ? void 0 : phraseAttempt.phase) === "transfer" && !phraseAttempt.transfer.checked) phraseAttempt.transfer.assisted = true;
+    return;
+  }
+  const b = event.target.closest("[data-memory-action],[data-memory-filter],[data-memory-choice],[data-memory-token],[data-memory-prep]");
+  if (!b) return;
+  event.preventDefault();
+  event.stopImmediatePropagation();
+  if (b.dataset.memoryFilter) {
+    replayFilter = b.dataset.memoryFilter;
+    replayMenu();
+    return;
+  }
+  if (b.dataset.memoryChoice) {
+    if (replayAttempt && !replayAttempt.checked) {
+      replayAttempt.answer = b.dataset.memoryChoice;
+      replayPage(replayAttempt.id, replayAttempt.kind);
+    }
+    return;
+  }
+  if (b.dataset.memoryToken) {
+    if ((phraseAttempt == null ? void 0 : phraseAttempt.phase) === "story" && !phraseAttempt.storyChecked && phraseAttempt.tokens.length < 2) {
+      phraseAttempt.tokens.push(b.dataset.memoryToken);
+      phrasePage(phraseAttempt.id);
+    }
+    return;
+  }
+  if (b.dataset.memoryPrep) {
+    if ((phraseAttempt == null ? void 0 : phraseAttempt.phase) === "transfer" && !phraseAttempt.transfer.checked) {
+      phraseAttempt.transfer.answer = b.dataset.memoryPrep;
+      phrasePage(phraseAttempt.id);
+    }
+    return;
+  }
+  const action = b.dataset.memoryAction;
+  if (action === "replay-start") replayStart();
+  else if (action === "replay-fresh") replayStart(true);
+  else if (action === "replay-retry") replayStart(false, true);
+  else if (action === "replay-submit") replaySubmit();
+  else if (action === "replay-reveal") replaySubmit(true);
+  else if (action === "replay-audio") replayPlay();
+  else if (action === "audio-stop") memoryStopAudio("播放已停止。");
+  else if (action === "replay-next" && (replayAttempt == null ? void 0 : replayAttempt.checked)) {
+    replayRun.index++;
+    replayAttempt = null;
+    if (replayRun.index < replayRun.items.length) replayGoItem();
+    else location.hash = "#practice/replay/done";
+  } else if (action === "phrase-start") phraseStart();
+  else if (action === "phrase-retry") phraseStart(true);
+  else if (action === "phrase-undo" && phraseAttempt && !phraseAttempt.storyChecked) {
+    phraseAttempt.tokens.pop();
+    phrasePage(phraseAttempt.id);
+  } else if (["phrase-check", "phrase-reveal"].includes(action) && (phraseAttempt == null ? void 0 : phraseAttempt.phase) === "story" && !phraseAttempt.storyChecked) {
+    if (action === "phrase-check" && phraseAttempt.tokens.length !== 2) {
+      toast("先点选两个词块，再核对。");
+      return;
+    }
+    const row = PHRASE_INDEX.get(phraseAttempt.id);
+    if (action === "phrase-reveal") {
+      phraseAttempt.storyRevealed = true;
+      phraseAttempt.tokens = [row.refs[0].surface, row.prep];
+    }
+    phraseAttempt.storyChecked = true;
+    phrasePage(row.id);
+    main.querySelector(".memory-feedback").scrollIntoView({ block: "start" });
+  } else if (action === "phrase-transfer" && (phraseAttempt == null ? void 0 : phraseAttempt.storyChecked)) {
+    phraseAttempt.phase = "transfer";
+    phrasePage(phraseAttempt.id);
+    scrollTrainingStart();
+  } else if (action === "phrase-submit") phraseSubmit();
+  else if (action === "phrase-transfer-reveal") phraseSubmit(true);
+  else if (action === "phrase-next" && (phraseAttempt == null ? void 0 : phraseAttempt.transfer.checked)) {
+    phraseRun.index++;
+    phraseAttempt = null;
+    if (phraseRun.index < phraseRun.ids.length) phraseGoItem();
+    else location.hash = "#practice/phrases/done";
+  }
+}, true);
+document.addEventListener("input", (event) => {
+  if (event.target.id === "memory-replay-input" && replayAttempt && !replayAttempt.checked) replayAttempt.answer = event.target.value;
+});
+document.addEventListener("submit", (event) => {
+  if (event.target.id !== "memory-replay-form") return;
+  event.preventDefault();
+  event.stopImmediatePropagation();
+  replaySubmit();
+}, true);
+window.addEventListener("hashchange", () => memoryStopAudio());
+window.addEventListener("pagehide", () => memoryStopAudio());
+document.addEventListener("visibilitychange", () => {
+  if (document.hidden) memoryStopAudio("已停止后台播放，回到页面后可重新听。");
+});
 ;
 (() => {
   var _a2;
@@ -10213,6 +11020,26 @@ if (serialAboutButton) {
       throw error;
     });
   };
+  window.ensurePhraseData = function() {
+    function valid() {
+      return typeof WORDSCENE_PHRASE_DATA_REVISION !== "undefined" && WORDSCENE_PHRASE_DATA_REVISION === WORDSCENE_PHRASE_REVISION && typeof WORDSCENE_PHRASES !== "undefined" && Array.isArray(WORDSCENE_PHRASES) && WORDSCENE_PHRASES.length === WORDSCENE_PHRASE_META.length && WORDSCENE_PHRASE_META.every(function(meta) {
+        return WORDSCENE_PHRASES.some(function(row) {
+          return row.id === meta.id && row.word === meta.word && typeof row.prep === "string" && row.transfer && typeof row.transfer.prefix === "string" && typeof row.transfer.suffix === "string" && Array.isArray(row.transfer.distractors) && row.transfer.distractors.length === 3 && Array.isArray(row.refs) && row.refs.length && row.refs.every(function(ref) {
+            return meta.chapters.includes(ref.chapter) && Number.isInteger(ref.paragraph) && ref.paragraph >= 0 && typeof ref.marked === "string";
+          });
+        });
+      });
+    }
+    if (valid()) {
+      buildPhraseIndex();
+      return Promise.resolve();
+    }
+    showDataLoading("正在打开搭配练习…");
+    return loadScriptRetry("phrase-data.js", valid).then(function() {
+      buildPhraseIndex();
+      hideDataLoading();
+    });
+  };
   window.ensureStoryData = function(storyId) {
     var story = typeof getStory === "function" ? getStory(storyId) : STORY_INDEX.get(storyId);
     var category2 = story && story.category;
@@ -10345,6 +11172,15 @@ if (serialAboutButton) {
         chain = ensureSerialChapter(parts[2]);
       } else if (route === "practice" && section === "journey" && !hasIndex) {
         chain = ensureSerialIndex();
+      } else if (route === "practice" && section === "replay") {
+        var reference = parts[2] && parts[2] !== "done" && replayRouteChapter(parts[2]);
+        if (reference) chain = ensureSerialChapter(reference.id);
+      } else if (route === "practice" && section === "phrases") {
+        chain = ensurePhraseData().then(function() {
+          if (generation !== routeGeneration || location.hash !== requestedHash) return;
+          var chapterId = parts[2] && parts[2] !== "done" && phraseRouteChapter(parts[2]);
+          if (chapterId) return ensureSerialChapter(chapterId);
+        });
       } else if (route === "practice" && section) {
         if (section !== "journey") chain = ensureTrainingData();
       } else if (route === "practice" && !hasIndex) {
@@ -10385,7 +11221,7 @@ if (serialAboutButton) {
       var requestedHash = location.hash;
       if (typeof SERIAL_CHAPTER_INDEX !== "undefined" && SERIAL_CHAPTER_INDEX.has(id)) {
         return ensureSerialChapter(id).then(function() {
-          if (location.hash === requestedHash) originalReader(id);
+          if (location.hash === requestedHash) serialRead(id, location.hash.split("/")[3] || serialReadView);
         });
       }
       return ensureCatalogData().then(function() {
