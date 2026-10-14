@@ -110,7 +110,7 @@ for(let index=0;index<64;index++)await writeFile(dist('dictionary-parts/'+index+
 
 const runtimeFiles=[
   'serial-index.js','vocabulary-core.js','phrase-index.js','compatibility.js','chapters.js','data.js','app.js','learning.js','skills.js','cloze.js',
-  'listening.js','listening-practice.js','practice-training.js','serial.js','novel-study.js','memory-tools.js','mobile.js','chapter-cache.js','loader.js'
+  'listening.js','listening-practice.js','practice-training.js','serial.js','novel-study.js','memory-tools.js','diy-novels.js','mobile.js','chapter-cache.js','loader.js'
 ];
 const phrasePack=await buildPhrasePack();
 const source=(await Promise.all(runtimeFiles.map(file=>readFile(dist(file),'utf8')))).join('\n;\n');
