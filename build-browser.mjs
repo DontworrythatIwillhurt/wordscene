@@ -2,6 +2,7 @@ import {readFile,writeFile,mkdir,readdir,unlink} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
 import {transform} from 'esbuild';
 import vm from 'node:vm';
+import {buildPhrasePack} from './build-phrase-pack.mjs';
 
 const dist=file=>new URL('./dist/'+file,import.meta.url);
 const sha12=buffer=>createHash('sha256').update(buffer).digest('hex').slice(0,12);
@@ -108,9 +109,10 @@ await mkdir(dist('dictionary-parts/'),{recursive:true});
 for(let index=0;index<64;index++)await writeFile(dist('dictionary-parts/'+index+'.js'),'applyWordsceneDictionaryPayload('+JSON.stringify({bucket:index,words:buckets[index]})+');\n');
 
 const runtimeFiles=[
-  'serial-index.js','vocabulary-core.js','compatibility.js','chapters.js','data.js','app.js','learning.js','skills.js','cloze.js',
-  'listening.js','listening-practice.js','practice-training.js','serial.js','mobile.js','chapter-cache.js','loader.js'
+  'serial-index.js','vocabulary-core.js','phrase-index.js','compatibility.js','chapters.js','data.js','app.js','learning.js','skills.js','cloze.js',
+  'listening.js','listening-practice.js','practice-training.js','serial.js','novel-study.js','memory-tools.js','mobile.js','chapter-cache.js','loader.js'
 ];
+const phrasePack=await buildPhrasePack();
 const source=(await Promise.all(runtimeFiles.map(file=>readFile(dist(file),'utf8')))).join('\n;\n');
 const result=await transform(source,{target:['es2017','chrome60'],charset:'utf8',minifyWhitespace:false,minifyIdentifiers:false,minifySyntax:false,legalComments:'inline'});
 if(result.warnings.length)throw Error(result.warnings.map(w=>w.text).join('\n'));
@@ -118,7 +120,7 @@ await writeFile(dist('wordscene.compat.js'),result.code);
 
 const hashedFiles=[
   'wordscene.compat.js','serial-index.js','serial-data.js','catalog.js','dictionary.js',
-  'startup.js','app.css','listening-questions.js','training-data.js',
+  'startup.js','app.css','listening-questions.js','training-data.js','phrase-data.js',
   'expanded-stories.js','cloze-stories.js'
 ];
 const versions={};
@@ -143,3 +145,4 @@ console.log('Compatible browser bundle: '+versions['wordscene.compat.js']+' ('+B
 console.log('Serial index: '+versions['serial-index.js']+' ('+serialIndex.bytes+' bytes, '+serialIndex.meta.chapters+' chapters, '+serialIndex.meta.words+' words)');
 console.log('Serial chapters: '+serialChapters.count+' files, '+serialChapters.bytes+' bytes, maxLine '+serialChapters.maxLine);
 console.log('Concatenated CSS: '+versions['app.css']+' ('+Buffer.byteLength(appCss)+' bytes)');
+console.log('Phrase pack: '+phrasePack.phrases+' groups in '+phrasePack.chapters+' chapters ('+phrasePack.bytes+' bytes)');

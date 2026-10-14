@@ -204,6 +204,13 @@
     });
   };
 
+  window.ensurePhraseData=function(){
+    function valid(){return typeof WORDSCENE_PHRASE_DATA_REVISION!=='undefined'&&WORDSCENE_PHRASE_DATA_REVISION===WORDSCENE_PHRASE_REVISION&&typeof WORDSCENE_PHRASES!=='undefined'&&Array.isArray(WORDSCENE_PHRASES)&&WORDSCENE_PHRASES.length===WORDSCENE_PHRASE_META.length&&WORDSCENE_PHRASE_META.every(function(meta){return WORDSCENE_PHRASES.some(function(row){return row.id===meta.id&&row.word===meta.word&&typeof row.prep==='string'&&row.transfer&&typeof row.transfer.prefix==='string'&&typeof row.transfer.suffix==='string'&&Array.isArray(row.transfer.distractors)&&row.transfer.distractors.length===3&&Array.isArray(row.refs)&&row.refs.length&&row.refs.every(function(ref){return meta.chapters.includes(ref.chapter)&&Number.isInteger(ref.paragraph)&&ref.paragraph>=0&&typeof ref.marked==='string';});});});}
+    if(valid()){buildPhraseIndex();return Promise.resolve();}
+    showDataLoading('正在打开搭配练习…');
+    return loadScriptRetry('phrase-data.js',valid).then(function(){buildPhraseIndex();hideDataLoading();});
+  };
+
   window.ensureStoryData=function(storyId){
     var story=typeof getStory==='function'?getStory(storyId):STORY_INDEX.get(storyId);
     var category=story&&story.category;
@@ -325,6 +332,11 @@
         chain=ensureSerialChapter(parts[2]);
       }else if(route==='practice'&&section==='journey'&&!hasIndex){
         chain=ensureSerialIndex();
+      }else if(route==='practice'&&section==='replay'){
+        var reference=parts[2]&&parts[2]!=='done'&&replayRouteChapter(parts[2]);
+        if(reference)chain=ensureSerialChapter(reference.id);
+      }else if(route==='practice'&&section==='phrases'){
+        chain=ensurePhraseData().then(function(){if(generation!==routeGeneration||location.hash!==requestedHash)return;var chapterId=parts[2]&&parts[2]!=='done'&&phraseRouteChapter(parts[2]);if(chapterId)return ensureSerialChapter(chapterId);});
       }else if(route==='practice'&&section){
         if(section!=='journey')chain=ensureTrainingData();
       }else if(route==='practice'&&!hasIndex){
@@ -355,7 +367,7 @@
     window.reader=function(id){
       var requestedHash=location.hash;
       if(typeof SERIAL_CHAPTER_INDEX!=='undefined'&&SERIAL_CHAPTER_INDEX.has(id)){
-        return ensureSerialChapter(id).then(function(){if(location.hash===requestedHash)originalReader(id);});
+        return ensureSerialChapter(id).then(function(){if(location.hash===requestedHash)serialRead(id,location.hash.split('/')[3]||serialReadView);});
       }
       return ensureCatalogData().then(function(){return ensureStoryData(id);}).then(function(){if(location.hash===requestedHash)originalReader(id);});
     };

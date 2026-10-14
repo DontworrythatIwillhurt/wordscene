@@ -219,13 +219,13 @@ updateNav=function(){updateNavBeforeSerial();const route=location.hash.split('/'
 const renderBeforeSerial=render;
 render=function(){
   if(!main)return;
-  const [route,book,id]=location.hash.slice(1).split('/');serialStopAudio();delete main.dataset.view;
+  const [route,book,id,view]=location.hash.slice(1).split('/');serialStopAudio();delete main.dataset.view;
   if(!route||route==='library'||route==='serial'||route==='archive'||route==='practice'&&book==='journey'){
     clearInterval(trainingClock);if(typeof listeningStop==='function')listeningStop();if(wordDialog&&wordDialog.close)wordDialog.close();if(utilityDialog&&utilityDialog.close)utilityDialog.close();document.body.classList.remove('focus-mode');
     if(!route||route==='library')library();
-    else if(route==='serial'){const c=SERIAL_CHAPTER_INDEX.get(id);if(id){if(c?.book.id===book)serialRead(id);else serialNotFound();}else serialBookPage(book);}
+    else if(route==='serial'){const c=SERIAL_CHAPTER_INDEX.get(id);if(id){if(c?.book.id===book)serialRead(id,view);else serialNotFound();}else serialBookPage(book);}
     else if(route==='archive'){libraryBeforeSerial();const heroTitle=main.querySelector('.hero h1'),heroCopy=main.querySelector('.hero p'),shelf=main.querySelector('#shelf-heading');if(heroTitle)heroTitle.innerHTML='熟悉的词，<br>再遇见<em>新语境。</em>';if(heroCopy)heroCopy.innerHTML='这里保留完整词汇覆盖的短篇语境。<br>连续主线小说在故事书架，旧学习记录可以继续使用。';if(shelf)shelf.textContent='拓展语境';}
-    else serialGamePage(id);
+    else if(id)serialGamePage(id);else novelStudyHub();
     updateNav();return;
   }renderBeforeSerial();if(route==='units')serialEnhanceVocabularyLinks();
 };
@@ -261,7 +261,7 @@ renderWordList=function(){const query=notebookSearch;if(query.trim().toLowerCase
 document.addEventListener('click',event=>{
   const b=event.target.closest('[data-serial-action],[data-serial-view],[data-serial-start],[data-serial-answer],[data-serial-speak]');if(!b)return;
   event.preventDefault();event.stopImmediatePropagation();
-  if(b.dataset.serialView){serialStopAudio();serialRead(serialReadId,b.dataset.serialView);scrollTrainingStart();return;}
+  if(b.dataset.serialView){serialStopAudio();if(typeof listeningStop==='function')listeningStop();const c=SERIAL_CHAPTER_INDEX.get(serialReadId),hash=novelStudyUrl(c,b.dataset.serialView);if(location.hash===hash)serialRead(serialReadId,b.dataset.serialView);else location.hash=hash;scrollTrainingStart();return;}
   if(b.dataset.serialStart){serialGameStart(b.dataset.serialId,b.dataset.serialStart);return;}
   if(b.dataset.serialAnswer){serialGameAnswer(b.dataset.serialAnswer);return;}
   if(b.dataset.serialSpeak!==undefined){const chapter=SERIAL_CHAPTER_INDEX.get(b.dataset.serialId);serialSpeak(chapter.en[Number(b.dataset.serialSpeak)]);return;}

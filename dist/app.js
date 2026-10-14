@@ -29,7 +29,7 @@ let storageAvailable=true,state;
 try{state=cleanState(JSON.parse(localStorage.getItem(KEY)||localStorage.getItem('wordscene-v1')));}catch{state=fresh();storageAvailable=false;}
 const allWords=()=>[...BUILTIN_WORDS,...state.custom];
 const getWord=id=>BUILTIN_INDEX.get(id)||state.custom.find(w=>w.id===id);
-const getStory=id=>STORY_INDEX.get(id);
+let getStory=id=>STORY_INDEX.get(id);
 let category='全部',search='',sortUnread=false,notebookFilter='all',notebookSearch='',notebookLimit=40,quiz=null,selectedWord=null,toastTimer,activeSpeech=null;
 const main=document.getElementById('main'),wordDialog=document.getElementById('word-dialog'),utilityDialog=document.getElementById('utility-dialog');
 
