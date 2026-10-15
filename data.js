@@ -210,6 +210,19 @@ let COVERAGE={reference:0,contextual:0,storyUnique:0,total:0,coveredTotal:0};
 const WORDSCENE_DATA_STATE={dictionary:false,cultivation:false,mystery:false,shell:false};
 const WORDSCENE_CORE_WORDS=(typeof WORDSCENE_CORE_VOCAB!=='undefined'?WORDSCENE_CORE_VOCAB:[]).map(([id,pos,meaning,hasDictionary,levelMask])=>({id,word:id,pos,meaning,dictionaryMeaning:meaning,hasDictionary,levels:[...(levelMask&1?['四级基础']:[]),...(levelMask&2?['六级']:[])],phrase:'',example:'',source:hasDictionary?'六级词库':'小说补充词'}));
 const WORDSCENE_CORE_INDEX=new Map(WORDSCENE_CORE_WORDS.map(w=>[w.id,w]));
+var WORDSCENE_CORE_MEANINGS_READY=typeof WORDSCENE_CORE_REVISION==='undefined';
+function applyWordsceneCoreMeanings(revision,meanings){
+  if(typeof WORDSCENE_CORE_REVISION==='undefined'||revision!==WORDSCENE_CORE_REVISION||!Array.isArray(meanings)||meanings.length!==WORDSCENE_CORE_WORDS.length||meanings.some(m=>typeof m!=='string'||!m.length))return false;
+  WORDSCENE_CORE_WORDS.forEach((word,i)=>{
+    word.meaning=meanings[i];word.dictionaryMeaning=meanings[i];
+    const current=BUILTIN_INDEX.get(word.id);
+    if(current){if(!current.meaning)current.meaning=word.meaning;current.dictionaryMeaning=word.dictionaryMeaning;}
+  });
+  for(const word of STORY_WORDS){const core=WORDSCENE_CORE_INDEX.get(word.id);if(core){if(!word.meaning)word.meaning=core.meaning;word.dictionaryMeaning=core.dictionaryMeaning;}}
+  WORDSCENE_CORE_MEANINGS_READY=true;
+  if(typeof refreshWordIndex==='function')refreshWordIndex();
+  return true;
+}
 const WORDSCENE_KNOWN_STORIES=new Set(typeof WORDSCENE_OLD_STORY_IDS!=='undefined'?WORDSCENE_OLD_STORY_IDS:[]);
 function isKnownWordsceneStory(id){return STORY_INDEX.has(id)||WORDSCENE_KNOWN_STORIES.has(id);}
 const WORDSCENE_DICTIONARY_PARTS=new Map();
