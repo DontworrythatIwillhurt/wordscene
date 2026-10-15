@@ -125,6 +125,12 @@
     });
   };
 
+  window.ensureCoreMeanings=function(){
+    if(WORDSCENE_CORE_MEANINGS_READY)return Promise.resolve();
+    showDataLoading('正在准备本页词汇…');
+    return loadScriptRetry('vocabulary-meanings.js',function(){return WORDSCENE_CORE_MEANINGS_READY;});
+  };
+
   window.ensureSerialIndex=function(){
     if(typeof SERIAL_INDEX!=='undefined'&&SERIAL_INDEX&&SERIAL_INDEX.length){
       if(typeof buildSerialIndexes==='function')buildSerialIndexes();
@@ -348,8 +354,15 @@
       }else if(route==='notebook'||route==='units'||route==='review'||route==='quiz'||route==='progress'){
         chain=ensureCatalogData();
       }
+      // Reading has its own exact contextual glosses; it must not wait for the
+      // whole vocabulary pack. Practice and the dictionary need full meanings.
+      var readingOnly=route==='serial'&&(!parts[2]||!parts[3]||parts[3]==='read');
+      if(!WORDSCENE_CORE_MEANINGS_READY&&route!=='library'&&route!==''&&!readingOnly){
+        chain=Promise.all([chain,ensureCoreMeanings()]);
+      }
       return chain.then(function(){
         if(generation!==routeGeneration||location.hash!==requestedHash)return;
+        hideDataLoading();
         try{originalRender();}catch(error){console.error(error);throw error;}
         document.getElementById('main').dataset.loadedRoute=requestedHash;
         markReady();
@@ -416,6 +429,9 @@
       wrapAsyncRoute();
       markReady();
       window.render();
+      if('serviceWorker' in navigator){
+        navigator.serviceWorker.register('service-worker.js').catch(function(){/* Reading never depends on offline support. */});
+      }
     }catch(error){
       console.error(error);
       showDataLoading('内容加载失败');

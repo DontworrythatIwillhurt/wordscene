@@ -7,7 +7,7 @@
     if(!element||shown)return;
     shown=true;
     element.querySelector('h1').textContent='内容暂时没能加载';
-    element.querySelector('p').textContent='请重试加载。若仍无法显示，请更新浏览器，或复制网址到最新版 Chrome、Edge 打开。学习记录不会被清除。';
+    element.querySelector('p').textContent='网络连接可能不稳定，学习功能没有加载完整。可重试加载，或稍后换一个网络再打开。已保存的学习记录不会被清除。';
     var details=element.querySelector('details');
     details.hidden=false;
     details.querySelector('pre').textContent=failure||'加载等待时间较长，请检查网络后重试。';
