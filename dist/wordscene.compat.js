@@ -1,47 +1,78 @@
 var __defProp=Object.defineProperty,__defProps=Object.defineProperties;var __getOwnPropDescs=Object.getOwnPropertyDescriptors;var __getOwnPropSymbols=Object.getOwnPropertySymbols;var __hasOwnProp=Object.prototype.hasOwnProperty,__propIsEnum=Object.prototype.propertyIsEnumerable;var __defNormalProp=(obj,key,value)=>key in obj?__defProp(obj,key,{enumerable:!0,configurable:!0,writable:!0,value}):obj[key]=value,__spreadValues=(a,b)=>{for(var prop in b||(b={}))
 __hasOwnProp.call(b,prop)&&__defNormalProp(a,prop,b[prop]);if(__getOwnPropSymbols)for(var prop of __getOwnPropSymbols(b))__propIsEnum.call(b,prop)&&__defNormalProp(a,prop,b[prop]);
-return a},__spreadProps=(a,b)=>__defProps(a,__getOwnPropDescs(b));var _a,SERIAL_INDEX=[{id:"mountain-ledger",title:"山契",category:"修仙志",subtitle:"十二日，一份旧账，整座山的水",synopsis:"沈砚为了保住母亲留下的药田，掀开被删改的旧账。新山契刚立，下游断供又逼他走\
-上盐路。他与罗清、顾衡从山谷走到孤城，一次次在粮药、旧债和人命之间付出代价，终于明白，一纸契约要靠怎样的人守住。",characters:[
-{name:"沈砚",description:"入门三年的年轻弟子。擅长记账与辨认药草，做事冷静，希望保住母亲留下的药田。"},{name:"罗清",description:"山下医馆的年轻医师。\
-因病人喝了浑水而上山查问，愿意帮助沈砚，但要求事情留下凭据。"},{name:"顾衡",description:"曾在入门考核里阻拦沈砚的师兄。家人在山下，既想保住门中地位，也无法对断水置身事外。"},
-{name:"周伯",description:"旧水渠的守渠人。参与过十二年前的分水，保存着被删改账册的另一半。"},{name:"韩长老",description:"掌管山中水口与修炼石台的长老。以守护门派为名\
-维持独占，也曾被旧日的灾难改变。"}],volumes:[{number:1,title:"山契"},{number:2,title:"渠外税约"},{number:3,title:"盐路关河"},{number:4,title:"孤城疫灯"},
-{number:5,title:"钟声归山"}],chapters:[{id:"serial-cultivation-01",title:"第一章：第三声钟",volume:1,summary:"药田断水，沈砚带着旧契站上大殿，第三声钟催来一道限期。",
-recap:"沈砚靠母亲留下的药田求学。南坡忽然断水，他只能向山门讨一个说法。",wordIds:["disciple","spiritual","trial","proof","signature","clause","assig\
-nment","permit","formidable","conceal","provoke","restraint","investigate","trace","suspicion","motive","inscription","ancient","discern","deadline"]},{id:"serial-cultivation-02",title:"\
-第二章：被改掉的二",volume:1,summary:"新灰遮住旧水位，渠底的断印把沈砚引向山腹。",recap:"沈砚拿到限期查水的文书，与罗清发现分水碑上的二被改成了零。",
-wordIds:["accuse","proportion","fracture","underground","symmetrical","interpret","calculate","erase","counterfeit","fragment","comparison","possession","mechanism","alignment","ou\
-tlet","echo","witness","orient","arrange","recover"]},{id:"serial-cultivation-03",title:"第三章：水下的账",volume:1,summary:"夜船载回一份旧账，守渠人却还捏着最后一页。",
-recap:"山腹里有人断绳封井。沈砚与罗清带着残账逃出，赶往东渡口找周伯。",wordIds:["assurance","pledge","oar","rely","relic","confess","genuine","chroni\
-cle","quota","treaty","supervise","custom","lash","remedy","verify","escort","conceal","alternative","dread","vow"]},{id:"serial-cultivation-04",title:"第四章：不能白受的伤",
-volume:1,summary:"一场山隘伏击伤了沈砚，遗下的药包却指向库房。",recap:"周伯带回旧账与铜匙，仍保留记着死者的末页。三人正赶往罗清的医馆。",
-wordIds:["trap","spear","capture","negotiate","thrust","endure","dodge","withstand","generous","counterfeit","ingredient","suppress","injury","guarantee","account","compensation","\
-conclude","evidence","debt","ally"]},{id:"serial-cultivation-05",title:"第五章：先写下价钱",volume:1,summary:"库房钥匙能换来什么，沈砚与顾衡都要先写清楚。",
-recap:"沈砚左掌受伤。假药与改渠漆料来自同一药铺，领药单上却是顾衡的签字。",wordIds:["instruction","profit","liability","difficulty","betray","relea\
-se","contract","compromise","restriction","obligation","promise","alliance","tribute","beneficiary","greedy","essential","origin","access","approval","responsibility"]},{id:"serial\
--cultivation-06",title:"第六章：两把钥匙",volume:1,summary:"两把钥匙打开外门，里面却是不能停转的水车与病人。",recap:"沈砚、顾衡订下查账救人的契约。旧图说明银扣与铜匙只开外门，主闸\
-须听三声钟。",wordIds:["procedure","outcry","penetrate","damp","murmur","erupt","isolate","cooperate","tension","diagram","equilibrium","activate","resource","potential","tem\
-ptation","register","lessen","setback","realm","assess"]},{id:"serial-cultivation-07",title:"第七章：雨没有落下来",volume:1,summary:"木槽只能引来一点水，争抢的人先要学会站在同一张账前。",
-recap:"十五名工人获救，顾峦仍病着。沈砚耗去部分修为，铜匙被夺，主闸尚未开启。",wordIds:["distribute","quarrel","forbid","restore","priority","sac\
-rifice","object","insufficient","confront","construct","divert","fragile","endanger","hazard","proposal","uncertainty","queue","regulate","compromise","relief"]},{id:"serial-cultiv\
-ation-08",title:"第八章：价钱又变了",volume:1,summary:"粮单摆上夜里的账桌，顾衡却先收到一封要他交扣救人的信。",recap:"两村试守缓冲水池，许庭只肯放一车粮。沈砚继续耗力供水\
-，主闸仍关着。",wordIds:["footstep","provided","mutual","respond","acknowledge","statement","traitor","amends","prudent","rescue","anticipate","consistent","identify","decei\
-ve","manipulate","instinct","seize","bargain","shame","restore"]},{id:"serial-cultivation-09",title:"第九章：母亲的名字",volume:1,summary:"血染的账末出现三个名字，沈砚必须决定要不要把母亲那一行也读出来。",
-recap:"两村在钟楼下点灯，逼韩长老公开谈放人。顾衡归还银扣，周伯仍保着旧账末页。",wordIds:["condition","representative","handwriting","grief","pe\
-rish","version","justification","decision","conceal","assessment","reputation","claim","harvest","guilt","silence","responsibility","testify","inspect","truth","revenge"]},{id:"ser\
-ial-cultivation-10",title:"第十章：钟楼前的账桌",volume:1,summary:"钟楼前的账桌刚摆齐，山腹的一声闷响迫使众人先决定谁来承担开闸的价钱。",
-recap:"旧账说明沈母调水救人也造成三人死亡。沈砚同意公开全账，铜匙由村民收存。",wordIds:["assembly","summarize","procedure","reliable","verify","c\
-onfirm","privilege","record","erode","suspend","danger","risk","undertake","precedent","authorize","commitment","collapse","dilemma","preserve","decisive"]},{id:"serial-cultivation\
--11",title:"第十一章：把水放下山",volume:1,summary:"三声钟让水下山，旧银扣与沈砚的修为却留在了代价里。",recap:"三方共同签下开闸安排，确认放开旧泄道会毁去蓄气阵，必须分担后果。",
-wordIds:["evacuate","coordinate","abandon","retain","descend","turbulent","concentrate","circulate","lever","loosen","contribution","transform","dissipate","reinforce","forgive","e\
-merge","replacement","triumph","sustain","prospect"]},{id:"serial-cultivation-12",title:"第十二章：新的山契",volume:1,summary:"新契写下赔付与轮值，沈砚仍要从受伤的手和欠下的账重新开始。",
-recap:"三声钟开通两路水，沈砚失去修为，银扣断裂。工人改建普通木闸，尚待重修田渠。",wordIds:["revenue","settlement","harvest","compensation","ap\
-prove","supervision","trust","performance","knowledge","revise","heritage","warning","extension","cultivate","recovery","installment","invincible","resolve","perseverance","mastery"]},
-{id:"serial-cultivation-13",title:"渠外来的空车",volume:2,summary:"新苗刚站稳，送盐的车却带回一封要求重交水权的信。",recap:"新山契生效一个月，木闸已由三方轮管，沈砚仍在偿还医馆\
-欠款。",wordIds:["peer","salary","exposure","explosive","sake","commission","kettle","temper","govern","costly","carriage","wreck","fatal","authority","liberal","remote","stock",
-"ridge","chill","consultant","manner","outlook","faithful","persistent","extra","peak","cancel","harm","combat","offense","provocation","audience","maintenance","fountain","umbrell\
-a","pill","convict","stereotype","loyalty","competent","budget","channel","draught","twist","vote","legislation","pine","scratch","merit","lane"]},{id:"serial-cultivation-14",title:"\
-税牌背后的胶",volume:2,summary:"市场仍在卖粮，唯独通往山村的牌子被换成了红色。",recap:"沈砚与罗清获三方授权赴外埠，留顾衡修车守闸，带上断供信与受损车轴的记录。",
+return a},__spreadProps=(a,b)=>__defProps(a,__getOwnPropDescs(b));var _a;(function(){function esc2(value){return String(value==null?"":value).replace(/[&<>"']/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]})}function art(mystery){
+return'<svg class="archive-landscape" viewBox="0 0 620 380" aria-hidden="true" focusable="false"><defs><pattern id="'+(mystery?"harbor":"mountain")+'-lines" width="9" height="9" pa\
+tternUnits="userSpaceOnUse"><path d="M0 9L9 0" stroke="currentColor" opacity=".07"/></pattern></defs><path fill="url(#'+(mystery?"harbor":"mountain")+'-lines)" d="M0 0h620v380H0z"/\
+>'+(mystery?'<circle cx="445" cy="110" r="45" fill="none" stroke="currentColor" opacity=".42"/><path d="M50 287H590M90 270V225H350V270M166 225V195H284V225M214 195V155H237V195M320 2\
+20L510 123V287M475 141V249M500 129V245M510 123L553 160M420 180V245M382 201V250" fill="none" stroke="currentColor" stroke-width="2"/><path d="M48 306Q150 294 253 306T470 306T610 306\
+M90 327Q190 314 290 327T510 327M170 350Q270 339 370 350T580 350" fill="none" stroke="currentColor" opacity=".3"/>':'<circle cx="463" cy="104" r="39" fill="none" stroke="currentColo\
+r" opacity=".45"/><path d="M0 327L140 140L226 247L321 64L505 315L571 214L620 283V380H0Z" fill="currentColor" opacity=".08"/><path d="M0 327L140 140L226 247L321 64L505 315L571 214L6\
+20 283M140 140L151 253L186 293M321 64L307 177L342 197L383 266M257 199L281 231L315 215M0 347Q170 313 324 340T620 329M0 367Q190 339 361 360T620 351" fill="none" stroke="currentColor"\
+ stroke-width="1.6"/><path d="M70 320v-36m-12 18l12-18 12 18m-17-9l5-15 5 15M112 325v-47m-14 25l14-25 14 25" fill="none" stroke="currentColor" opacity=".55"/>')+"</svg>"}function continueChapter(book,serial){
+var done=serial.completed||[];return book.chapters.filter(function(c){return done.indexOf(c.id)<0})[0]||book.chapters[0]}function card(book,index,serial){serial=serial||{};var done=(serial.
+completed||[]).filter(function(id){return book.chapters.some(function(c){return c.id===id})}).length,next=continueChapter(book,serial),mystery=index===1;return'<article class="seri\
+al-book archive-book '+(mystery?"archive-harbor":"archive-mountain")+'"><a class="serial-book-cover" href="#serial/'+book.id+'"><div class="archive-cover-top"><span>藏书 '+(mystery?
+"002":"001")+"</span><span>"+esc2(book.category)+"</span></div>"+art(mystery)+'<div class="archive-cover-title"><small>'+(mystery?"THE SEVENTH WHARF":"THE MOUNTAIN COVENANT")+"</sm\
+all><h2>"+esc2(book.title)+"</h2><p>"+esc2(book.subtitle)+'</p></div><span class="archive-cover-bottom">WORDSCENE ORIGINAL · '+book.chapters.length+' CHAPTERS <b>↗</b></span></a><\
+div class="serial-book-body"><div class="serial-book-meta"><span>'+book.volumes.length+" 卷 / "+book.chapters.length+" 章</span><span>"+done+" 章已读</span></div><p>"+esc2(book.
+synopsis)+'</p><div class="serial-route-progress"><i style="width:'+done/book.chapters.length*100+'%"></i></div><div class="hero-actions"><a class="button" href="#serial/'+book.id+
+"/"+next.id+'">'+(done?"继续这段故事":"翻开第一章")+' <span>↗</span></a><a class="text-link" href="#serial/'+book.id+'">全书目录 →</a></div></div></article>'}function home(books,serial){
+serial=serial||{};var book=books[0],chapter=book.chapters[0];return books.forEach(function(b){b.chapters.forEach(function(c){c.id===serial.lastChapter&&(book=b,chapter=c)})}),'<sec\
+tion class="serial-hero archive-hero"><div class="archive-hero-line"><span>为你精选</span><span>READ. REMEMBER. REPEAT.</span></div><div class="archive-hero-main"><h1>读个好故事。<br>记住<span\
+>新单词。</span></h1><p>山中有旧契，港口有迷雾。<br>把难记的英文，交给忘不掉的剧情。</p></div></section><a class="archive-resume" href="#serial/'+book.
+id+"/"+chapter.id+'"><span class="archive-resume-symbol" aria-hidden="true">↳</span><span><small>'+(serial.lastChapter?"上次读到":"从这里启程")+"</small><strong>"+esc2(book.
+title)+" <em>· "+esc2(chapter.title)+'</em></strong></span><b>继续阅读 ↗</b></a><div class="serial-section-title archive-section-heading"><div><span class="serial-kicker">YOUR LIBRARY\
+</span><h2>你的故事书架</h2></div><span>01 — 02</span></div><section class="serial-shelf">'+books.map(function(b,i){return card(b,i,serial)}).join("")+'</section><section c\
+lass="serial-rewards" aria-label="学习概览"><div><strong>02</strong><span>部长篇小说</span></div><div><strong>140</strong><span>章连贯剧情</span></div><div><strong>6,164</strong><span>个语境词</span\
+></div></section><section class="archive-study-path"><div class="archive-section-heading"><div><span class="serial-kicker">READ. RECALL. REMEMBER.</span><h2>读过的故事，换种方式记。</h2></div>\
+</div><div class="archive-tool-list"><a href="#serial/'+book.id+"/"+chapter.id+'/exercise"><small>01 / RECALL</small><strong>剧情填空</strong><span>把关键动作填回故事</span><b>↗</b></a><a href=\
+"#serial/'+book.id+"/"+chapter.id+'/listen"><small>02 / LISTEN</small><strong>故事听力</strong><span>让词汇有声音，也有画面</span><b>↗</b></a><a href="#serial/'+book.
+id+"/"+chapter.id+'/points"><small>03 / EXAM</small><strong>六级考点</strong><span>从这一章，读懂考试表达</span><b>↗</b></a><a href="#my-novels"><small>04 / CREATE</small><strong>我的写作室</strong><s\
+pan>写自己的剧情，让单词加入</span><b>↗</b></a></div></section><section class="serial-archive-note"><span class="serial-kicker">MADE FOR YOUR LEARNING</span><h2>故事往前走，单词不再零散。</h2><p>两部长篇以主线剧情及\
+对应英文覆盖 6164 / 6164 词（100.0%）。阅读进度与词汇掌握分别记录。</p><a class="text-link" href="#notebook">查看完整词库 →</a> <a class="text-link" href="#archive">拓展短篇 →</a></section>'}
+window.WordsceneDesign={escape:esc2,art,card,home}})();var SERIAL_INDEX=[{id:"mountain-ledger",title:"山契",category:"修仙志",subtitle:"十二日，一份旧账，整座山的水",
+synopsis:"沈砚为了保住母亲留下的药田，掀开被删改的旧账。新山契刚立，下游断供又逼他走上盐路。他与罗清、顾衡从山谷走到孤城，一次次在粮药、旧债和人命之间付出代价，终于明白，一纸契约要靠怎样的人守住。",
+characters:[{name:"沈砚",description:"入门三年的年轻弟子。擅长记账与辨认药草，做事冷静，希望保住母亲留下的药田。"},{name:"罗清",description:"\
+山下医馆的年轻医师。因病人喝了浑水而上山查问，愿意帮助沈砚，但要求事情留下凭据。"},{name:"顾衡",description:"曾在入门考核里阻拦沈砚的师兄。家人在山下，既想保住门中地位\
+，也无法对断水置身事外。"},{name:"周伯",description:"旧水渠的守渠人。参与过十二年前的分水，保存着被删改账册的另一半。"},{name:"韩长老",
+description:"掌管山中水口与修炼石台的长老。以守护门派为名维持独占，也曾被旧日的灾难改变。"}],volumes:[{number:1,title:"山契"},{number:2,title:"\
+渠外税约"},{number:3,title:"盐路关河"},{number:4,title:"孤城疫灯"},{number:5,title:"钟声归山"}],chapters:[{id:"serial-cultivation-01",title:"第一章：第三声钟",
+volume:1,summary:"药田断水，沈砚带着旧契站上大殿，第三声钟催来一道限期。",recap:"沈砚靠母亲留下的药田求学。南坡忽然断水，他只能向山门讨一个说法。",
+wordIds:["disciple","spiritual","trial","proof","signature","clause","assignment","permit","formidable","conceal","provoke","restraint","investigate","trace","suspicion","motive","\
+inscription","ancient","discern","deadline"]},{id:"serial-cultivation-02",title:"第二章：被改掉的二",volume:1,summary:"新灰遮住旧水位，渠底的断印把沈砚引向山腹。",
+recap:"沈砚拿到限期查水的文书，与罗清发现分水碑上的二被改成了零。",wordIds:["accuse","proportion","fracture","underground","symmetrical","interpret","c\
+alculate","erase","counterfeit","fragment","comparison","possession","mechanism","alignment","outlet","echo","witness","orient","arrange","recover"]},{id:"serial-cultivation-03",title:"\
+第三章：水下的账",volume:1,summary:"夜船载回一份旧账，守渠人却还捏着最后一页。",recap:"山腹里有人断绳封井。沈砚与罗清带着残账逃出，赶往东渡口找周伯。",
+wordIds:["assurance","pledge","oar","rely","relic","confess","genuine","chronicle","quota","treaty","supervise","custom","lash","remedy","verify","escort","conceal","alternative","\
+dread","vow"]},{id:"serial-cultivation-04",title:"第四章：不能白受的伤",volume:1,summary:"一场山隘伏击伤了沈砚，遗下的药包却指向库房。",recap:"周伯带回旧\
+账与铜匙，仍保留记着死者的末页。三人正赶往罗清的医馆。",wordIds:["trap","spear","capture","negotiate","thrust","endure","dodge","withstand","generous","c\
+ounterfeit","ingredient","suppress","injury","guarantee","account","compensation","conclude","evidence","debt","ally"]},{id:"serial-cultivation-05",title:"第五章：先写下价钱",
+volume:1,summary:"库房钥匙能换来什么，沈砚与顾衡都要先写清楚。",recap:"沈砚左掌受伤。假药与改渠漆料来自同一药铺，领药单上却是顾衡的签字。",
+wordIds:["instruction","profit","liability","difficulty","betray","release","contract","compromise","restriction","obligation","promise","alliance","tribute","beneficiary","greedy",
+"essential","origin","access","approval","responsibility"]},{id:"serial-cultivation-06",title:"第六章：两把钥匙",volume:1,summary:"两把钥匙打开外门，里面却是不能停转的水车与病人。",
+recap:"沈砚、顾衡订下查账救人的契约。旧图说明银扣与铜匙只开外门，主闸须听三声钟。",wordIds:["procedure","outcry","penetrate","damp","murmur","e\
+rupt","isolate","cooperate","tension","diagram","equilibrium","activate","resource","potential","temptation","register","lessen","setback","realm","assess"]},{id:"serial-cultivatio\
+n-07",title:"第七章：雨没有落下来",volume:1,summary:"木槽只能引来一点水，争抢的人先要学会站在同一张账前。",recap:"十五名工人获救，顾峦仍病着。沈砚耗去部分修为，铜匙被夺，主闸\
+尚未开启。",wordIds:["distribute","quarrel","forbid","restore","priority","sacrifice","object","insufficient","confront","construct","divert","fragile","endanger","hazard","pr\
+oposal","uncertainty","queue","regulate","compromise","relief"]},{id:"serial-cultivation-08",title:"第八章：价钱又变了",volume:1,summary:"粮单摆上夜里的账桌，顾衡却先收到一封要他交扣救人的信。",
+recap:"两村试守缓冲水池，许庭只肯放一车粮。沈砚继续耗力供水，主闸仍关着。",wordIds:["footstep","provided","mutual","respond","acknowledge","stateme\
+nt","traitor","amends","prudent","rescue","anticipate","consistent","identify","deceive","manipulate","instinct","seize","bargain","shame","restore"]},{id:"serial-cultivation-09",title:"\
+第九章：母亲的名字",volume:1,summary:"血染的账末出现三个名字，沈砚必须决定要不要把母亲那一行也读出来。",recap:"两村在钟楼下点灯，逼韩长老公开谈放人。顾衡归还银扣，周伯\
+仍保着旧账末页。",wordIds:["condition","representative","handwriting","grief","perish","version","justification","decision","conceal","assessment","reputation","claim","har\
+vest","guilt","silence","responsibility","testify","inspect","truth","revenge"]},{id:"serial-cultivation-10",title:"第十章：钟楼前的账桌",volume:1,summary:"钟楼前的账桌刚摆齐，山腹的一\
+声闷响迫使众人先决定谁来承担开闸的价钱。",recap:"旧账说明沈母调水救人也造成三人死亡。沈砚同意公开全账，铜匙由村民收存。",wordIds:[
+"assembly","summarize","procedure","reliable","verify","confirm","privilege","record","erode","suspend","danger","risk","undertake","precedent","authorize","commitment","collapse",
+"dilemma","preserve","decisive"]},{id:"serial-cultivation-11",title:"第十一章：把水放下山",volume:1,summary:"三声钟让水下山，旧银扣与沈砚的修为却留在了代价里。",
+recap:"三方共同签下开闸安排，确认放开旧泄道会毁去蓄气阵，必须分担后果。",wordIds:["evacuate","coordinate","abandon","retain","descend","turbulent","\
+concentrate","circulate","lever","loosen","contribution","transform","dissipate","reinforce","forgive","emerge","replacement","triumph","sustain","prospect"]},{id:"serial-cultivati\
+on-12",title:"第十二章：新的山契",volume:1,summary:"新契写下赔付与轮值，沈砚仍要从受伤的手和欠下的账重新开始。",recap:"三声钟开通两路水，沈砚失去修为，银扣断裂。工人\
+改建普通木闸，尚待重修田渠。",wordIds:["revenue","settlement","harvest","compensation","approve","supervision","trust","performance","knowledge","revise","heritage","\
+warning","extension","cultivate","recovery","installment","invincible","resolve","perseverance","mastery"]},{id:"serial-cultivation-13",title:"渠外来的空车",volume:2,summary:"\
+新苗刚站稳，送盐的车却带回一封要求重交水权的信。",recap:"新山契生效一个月，木闸已由三方轮管，沈砚仍在偿还医馆欠款。",wordIds:["\
+peer","salary","exposure","explosive","sake","commission","kettle","temper","govern","costly","carriage","wreck","fatal","authority","liberal","remote","stock","ridge","chill","con\
+sultant","manner","outlook","faithful","persistent","extra","peak","cancel","harm","combat","offense","provocation","audience","maintenance","fountain","umbrella","pill","convict",
+"stereotype","loyalty","competent","budget","channel","draught","twist","vote","legislation","pine","scratch","merit","lane"]},{id:"serial-cultivation-14",title:"税牌背后的胶",
+volume:2,summary:"市场仍在卖粮，唯独通往山村的牌子被换成了红色。",recap:"沈砚与罗清获三方授权赴外埠，留顾衡修车守闸，带上断供信与受损车轴的记录。",
 wordIds:["daylight","offend","critical","controversial","hostile","require","grocer","canal","gum","starve","compete","means","tutor","click","quotation","source","scenery","diseas\
 e","finally","appointment","confidential","multicultural","consume","avenue","stable","ambulance","conviction","process","intimate","result","consult","dam","harness","rigid","idea\
 l","bind","tragedy","selfish","evaluation","bucket","declaration","bloody","finding","court","domestic","editorial","venture","volcano","polish","chop"]},{id:"serial-cultivation-15",
@@ -2577,67 +2608,46 @@ number).padStart(2,"0"),"</span><div><h3>").concat(esc(c.title)," ").concat(stat
 const current=serialContinue(book);return serialVolumes(book).map(volume=>'<details class="serial-volume" data-volume="'.concat(volume.number,'" ').concat((current.volume||1)===volume.
 number?"open":"","><summary><span>第 ").concat(volume.number," 卷 · ").concat(esc(volume.title),"</span><small>").concat(volume.chapters[0].number,"—").concat(volume.chapters[volume.
 chapters.length-1].number," 章 · ").concat(volume.chapters.filter(c=>state.serial.completed.includes(c.id)).length,"/").concat(volume.chapters.length,' 已读</small></summary><div c\
-lass="serial-volume-chapters">').concat(serialChapterRows(book,volume.chapters,journey),"</div></details>")).join("")}function serialBookCard(book,index){const completed=book.chapters.
-filter(c=>state.serial.completed.includes(c.id)).length,chapter=serialContinue(book);return'<article class="serial-book"><a class="serial-book-cover" href="#serial/'.concat(book.id,
-'"><div class="serial-book-no">NOVEL ').concat(String(index+1).padStart(2,"0")," · ").concat(esc(book.category),"</div><h2>").concat(esc(book.title),"</h2><p>").concat(esc(book.subtitle),
-'</p><span class="serial-seal" aria-hidden="true">').concat(index?"谜":"契",'</span><span class="serial-spine">WORDSCENE ORIGINAL</span></a><div class="serial-book-body"><div cla\
-ss="serial-book-meta"><span>').concat(serialVolumes(book).length," 卷 · ").concat(book.chapters.length," 章</span><span>已读 ").concat(completed," / ").concat(book.chapters.length,
-"</span></div><p>").concat(esc(book.synopsis),'</p><div class="serial-route-progress" role="img" aria-label="已读 ').concat(completed," 章，共").concat(book.chapters.length,'章\
-"><i style="width:').concat(completed/book.chapters.length*100,'%"></i></div><div class="hero-actions"><a class="button" href="#serial/').concat(book.id,"/").concat(chapter.id,'">').
-concat(completed?"继续阅读":"翻开第一章",' ↗</a><a class="text-link" href="#serial/').concat(book.id,'">分卷目录 →</a></div></div></article>')}const libraryBeforeSerial=library;
-library=function(){if(!main)return;const books=serialBooks();if(!books.length){main.dataset.view="serial",main.innerHTML='<section class="startup-panel"><h1>正在打开故事书架…</h1><p>目录还在加载\
-，请稍候。</p></section>',applyPreferences();return}const chapter=SERIAL_CHAPTER_INDEX.get(state.serial.lastChapter)||SERIAL_CHAPTER_INDEX.get(books[0].chapters[0].id),coreWords=new Set(
-serialFlatten(books,b=>serialFlatten(b.chapters,c=>serialTerms(c).map(t=>t.id)))),totalWords=typeof SERIAL_INDEX_META!="undefined"&&SERIAL_INDEX_META.words||COVERAGE.total||BUILTIN_WORDS.
-length||coreWords.size;main.dataset.view="serial",main.innerHTML='<section class="serial-hero"><div><div class="serial-kicker">WORDSCENE · A STORY TO REMEMBER</div><h1>读到下一章，<br>也记\
-住<em>下一个词。</em></h1><p>一纸山契，牵出被藏起的旧账。<br>一张船票，带你走进第七码头的雨夜。<br>让人物、线索和转折，成为单词的记忆。</p><div class="hero-actions"><a class="button" href="#serial/'.
-concat(chapter.book.id,"/").concat(chapter.id,'">').concat(state.serial.lastChapter?"接着上次的剧情":"开始我的故事",' <span>↗</span></a><a class="text-link" href="#pra\
-ctice">去剧情闯关 →</a></div></div><div class="serial-art" aria-hidden="true"><small>THE WORDSCENE COLLECTION</small><strong>山契<br><span>第七码头</span></strong><div class="serial-seal">词间<\
-/div><p>故事有下一章<br>记忆有回响</p><span class="serial-spine">READ · RECALL · RETURN</span></div></section><section class="serial-rewards" aria-label="学习概览"><div><strong>02</strong><span>原\
-创连续小说</span></div><div><strong>').concat(SERIAL_TOTAL_CHAPTERS,"</strong><span>剧情章节</span></div><div><strong>").concat(state.serial.completed.length,'</strong><sp\
-an>已经读完的章节</span></div></section><div class="serial-section-title"><div class="serial-kicker">CHOOSE YOUR STORY</div><h2>今夜，翻开哪一本？</h2><p>同一组人物，同一条主线。按顺序读，伏笔才有回声。</p></div><section\
- class="serial-shelf">').concat(books.map(serialBookCard).join(""),'</section><section class="serial-entry"><div><div class="serial-kicker">RECALL IN THE SCENE</div><h2>记住线索，再往前走。<\
-/h2><p>认出关键词、填回关键动作，或听英文找线索。每次八个词，不设倒计时。</p></div><a class="button secondary" href="#practice">进入剧情闯关 →</a></section><section class="serial-archive-note"><h2>跟着长篇，走过完整词库。</h2><p>长篇\
-正文覆盖 ').concat(coreWords.size," / ").concat(totalWords," 词（").concat(totalWords?(coreWords.size/totalWords*100).toFixed(1):"0","%）。").concat(coreWords.size===totalWords?
-"所有内置词都能在主线剧情及对应英文里找到。":"尚有词汇正在写入后续剧情。",'旧笔记、书签和学习记录继续保留；原短篇可作为额外语境阅读。</p><a class="text-link" href="#archive">打\
-开拓展语境 →</a> <a class="text-link" href="#notebook">查看完整词库 →</a></section>'),applyPreferences()};function serialBookPage(id){const book=SERIAL_BOOK_INDEX.get(
-id);if(!book){serialNotFound();return}const chapter=serialContinue(book);main.dataset.view="serial",main.innerHTML='<div class="reader-top"><a class="back-link" href="#library">← 回\
-到两本故事</a><a class="button secondary compact" href="#serial/'.concat(book.id,"/").concat(chapter.id,'">继续阅读 →</a></div><section class="page-heading"><div class="serial-kic\
-ker">').concat(esc(book.category)," · ").concat(serialVolumes(book).length," 卷 / ").concat(book.chapters.length," 章</div><h1>").concat(esc(book.title),"</h1><p>").concat(esc(book.
-synopsis),'</p></section><details class="serial-character-list"><summary>同行的人 · 人物介绍</summary><section class="serial-map">').concat(book.characters.map(c=>"<p><b>".
-concat(esc(c.name),"</b> ").concat(esc(c.description),"</p>")).join(""),'</section></details><div class="serial-section-title"><h2>分卷目录</h2><p>各卷承接前面的剧情；展开一卷，按章节顺序阅读。</p></div><sec\
-tion class="serial-chapters">').concat(serialVolumeDirectory(book),"</section>"),applyPreferences()}function serialNotFound(){main.innerHTML='<section class="empty-state"><h2>这一章还没\
-找到</h2><a class="button" href="#library">回到书架</a></section>'}let serialReadView="read",serialReadId="";function serialRead(id,view){const chapter=SERIAL_CHAPTER_INDEX.get(
-id);if(!chapter){serialNotFound();return}if(!Array.isArray(chapter.cn)||!chapter.cn.length){const load=typeof ensureSerialChapter=="function"?ensureSerialChapter:ensureSerialFullData;
-if(typeof load=="function"){load(id).then(()=>serialRead(id,view)).catch(()=>serialNotFound());return}serialNotFound();return}serialReadId!==id&&(serialReadId=id,serialReadView="re\
-ad"),view&&(serialReadView=view);const session=ensureCloze(chapter);clozeView=serialReadView;const exercise=serialReadView==="exercise";state.serial.lastChapter=id,save(),main.dataset.
-view="serial",clozeParagraph.index=0;const prev=chapter.book.chapters[chapter.index-1],next=chapter.book.chapters[chapter.index+1];main.innerHTML='<div class="reader-top"><a class=\
-"back-link" href="#serial/'.concat(chapter.book.id,'">← ').concat(esc(chapter.book.title),' · 目录</a><div class="reader-controls"><button class="button secondary compact" data-ser\
-ial-action="bookmark" data-serial-id="').concat(id,'">').concat(state.serial.bookmarks.includes(id)?"★ 已加书签":"☆ 留个书签",'</button><button class="button secondary \
-compact" data-serial-action="focus">').concat(document.body.classList.contains("focus-mode")?"退出专注":"专注阅读",'</button></div></div><div class="cloze-steps serial-read\
-ing-steps"><button data-serial-view="read" class="').concat(exercise?"":"active",'" aria-pressed="').concat(!exercise,'"><small>01 · READ</small>沉浸阅读</button><button data-serial-vi\
-ew="exercise" class="').concat(exercise?"active":"",'" aria-pressed="').concat(exercise,'"><small>02 · RECALL</small>剧情填空</button><a href="#practice/journey/').concat(id,'\
-"><small>03 · EXPLORE</small>线索闯关 ↗</a></div>').concat(readerTools(),'<article class="reader-paper webnovel-paper"><div class="serial-kicker">').concat(esc(chapter.book.
-title)," · 卷 ").concat(chapter.volume||1," · CHAPTER ").concat(String(chapter.number).padStart(2,"0")," / ").concat(chapter.book.chapters.length,"</div><h1>").concat(esc(chapter.
-title),'</h1><aside class="serial-recap"><b>').concat(chapter.index?"前情回顾":"故事开始之前","</b><p>").concat(esc(chapter.recap),'</p></aside><p class="practice-label">\
-原创故事 · ').concat(serialTerms(chapter).length," 个语境词 · 阅读进度与词汇掌握分别记录</p>").concat(exercise?'<div class="cloze-toolbar"><label><input id="\
-cloze-hints" type="checkbox" '.concat(session.hints?"checked":"",'> 首字母提示</label><span id="cloze-counter" role="status" aria-live="polite"></span></div>').concat(clozeResultSummary(),
-'<form id="cloze-form" novalidate><div class="webnovel-text">').concat(chapter.cn.map(p=>'<p class="webnovel-paragraph">'.concat(clozeParagraph(p,!0),"</p>")).join(""),'</div><div \
-class="cloze-actions">').concat(session.checked?'<button type="button" class="button" data-cloze-action="restart">重新填一遍</button>'.concat(!session.revealed&&session.results.
-includes("wrong")?'<button type="button" class="button secondary" data-cloze-action="retry">重练错词</button>':""):'<button type="submit" class="button">核对本章回忆 →</button><butto\
-n type="button" class="button secondary" data-cloze-action="reveal">查看参考答案</button>',"</div></form>"):'<div class="webnovel-text">'.concat(chapter.cn.map(p=>'<p class="\
-webnovel-paragraph">'.concat(clozeParagraph(p,!1),"</p>")).join(""),'</div><div class="cloze-actions"><button class="button" data-serial-view="exercise">把剧情里的词填回来 →</button><button\
- class="text-link" data-serial-action="complete" data-serial-id="').concat(id,'">').concat(state.serial.completed.includes(id)?"✓ 本章已读":"标记本章已读",'</button></d\
-iv><details class="story-original"><summary>读一遍对应英文</summary>').concat(chapter.en.map((p,i)=>'<section><p class="translation english-second" lang="en">'.concat(serialFormatEnglish(
-p),'</p><button class="text-link" data-serial-speak="').concat(i,'" data-serial-id="').concat(id,'">▷ 听这一段英文</button></section>')).join(""),'<p id="serial-speech-stat\
-us" role="status">朗读使用设备英语语音。</p><button class="text-link" data-serial-action="stop">停止朗读</button></details>'),'<div class="serial-entry"><div><h2>这章的\
-线索，记住了吗？</h2><p>八个词的小旅程，回到人物刚刚做出的决定。</p></div><a class="button secondary" href="#practice/journey/').concat(id,'">去线索闯关 →</a\
-></div><div class="chapter-nav">').concat(prev?'<a href="#serial/'.concat(chapter.book.id,"/").concat(prev.id,'">← ').concat(esc(prev.title),"</a>"):'<a href="#serial/'+chapter.book.
-id+'">回到目录</a>').concat(next?'<a href="#serial/'.concat(chapter.book.id,"/").concat(next.id,'">').concat(esc(next.title)," →</a>"):'<a href="#serial/'+chapter.book.id+'">\
-全书读完，回到目录 →</a>',"</div></article>"),updateClozeCounter(),applyPreferences()}const readerBeforeSerial=reader;reader=function(id){SERIAL_CHAPTER_INDEX.has(id)?(serialReadView=
-clozeView==="exercise"?"exercise":"read",serialRead(id,serialReadView)):(delete main.dataset.view,readerBeforeSerial(id))};const trainingHomeBeforeSerial=trainingHome;trainingHome=
-function(){return serialJourneyMenu()+'<details class="serial-exam-fold"><summary>选修：六级题型与写译练习</summary><p>准备考前训练时，再展开这里。</p>'.concat(
-trainingHomeBeforeSerial(),"</details>")};const trainingHeaderBeforeSerial=trainingHeader;trainingHeader=function(section){return section==="home"?'<div class="page-heading"><div c\
-lass="serial-kicker">WORDSCENE · RECALL THE STORY</div><h1>沿着线索，把词想起来。</h1><p>故事读过了，记忆也可以有一段旅程。</p></div>':trainingHeaderBeforeSerial(
+lass="serial-volume-chapters">').concat(serialChapterRows(book,volume.chapters,journey),"</div></details>")).join("")}function serialBookCard(book,index){return WordsceneDesign.card(
+book,index,state.serial)}const libraryBeforeSerial=library;library=function(){main&&(main.dataset.view="serial",main.innerHTML=WordsceneDesign.home(serialBooks(),state.serial),applyPreferences())};
+function serialBookPage(id){const book=SERIAL_BOOK_INDEX.get(id);if(!book){serialNotFound();return}const chapter=serialContinue(book);main.dataset.view="serial",main.innerHTML='<di\
+v class="reader-top"><a class="back-link" href="#library">← 回到两本故事</a><a class="button secondary compact" href="#serial/'.concat(book.id,"/").concat(chapter.id,'">继续阅\
+读 →</a></div><section class="page-heading"><div class="serial-kicker">').concat(esc(book.category)," · ").concat(serialVolumes(book).length," 卷 / ").concat(book.chapters.length,
+" 章</div><h1>").concat(esc(book.title),"</h1><p>").concat(esc(book.synopsis),'</p></section><details class="serial-character-list"><summary>同行的人 · 人物介绍</summary><section class="s\
+erial-map">').concat(book.characters.map(c=>"<p><b>".concat(esc(c.name),"</b> ").concat(esc(c.description),"</p>")).join(""),'</section></details><div class="serial-section-title">\
+<h2>分卷目录</h2><p>各卷承接前面的剧情；展开一卷，按章节顺序阅读。</p></div><section class="serial-chapters">').concat(serialVolumeDirectory(book),"</sec\
+tion>"),applyPreferences()}function serialNotFound(){main.innerHTML='<section class="empty-state"><h2>这一章还没找到</h2><a class="button" href="#library">回到书架</a></section>'}
+let serialReadView="read",serialReadId="";function serialRead(id,view){const chapter=SERIAL_CHAPTER_INDEX.get(id);if(!chapter){serialNotFound();return}if(!Array.isArray(chapter.cn)||
+!chapter.cn.length){const load=typeof ensureSerialChapter=="function"?ensureSerialChapter:ensureSerialFullData;if(typeof load=="function"){load(id).then(()=>serialRead(id,view)).catch(
+()=>serialNotFound());return}serialNotFound();return}serialReadId!==id&&(serialReadId=id,serialReadView="read"),view&&(serialReadView=view);const session=ensureCloze(chapter);clozeView=
+serialReadView;const exercise=serialReadView==="exercise";state.serial.lastChapter=id,save(),main.dataset.view="serial",clozeParagraph.index=0;const prev=chapter.book.chapters[chapter.
+index-1],next=chapter.book.chapters[chapter.index+1];main.innerHTML='<div class="reader-top"><a class="back-link" href="#serial/'.concat(chapter.book.id,'">← ').concat(esc(chapter.
+book.title),' · 目录</a><div class="reader-controls"><button class="button secondary compact" data-serial-action="bookmark" data-serial-id="').concat(id,'">').concat(state.serial.
+bookmarks.includes(id)?"★ 已加书签":"☆ 留个书签",'</button><button class="button secondary compact" data-serial-action="focus">').concat(document.body.classList.contains(
+"focus-mode")?"退出专注":"专注阅读",'</button></div></div><div class="cloze-steps serial-reading-steps"><button data-serial-view="read" class="').concat(exercise?"":"active",
+'" aria-pressed="').concat(!exercise,'"><small>01 · READ</small>沉浸阅读</button><button data-serial-view="exercise" class="').concat(exercise?"active":"",'" aria-pressed="').
+concat(exercise,'"><small>02 · RECALL</small>剧情填空</button><a href="#practice/journey/').concat(id,'"><small>03 · EXPLORE</small>线索闯关 ↗</a></div>').concat(readerTools(),
+'<article class="reader-paper webnovel-paper"><div class="serial-kicker">').concat(esc(chapter.book.title)," · 卷 ").concat(chapter.volume||1," · CHAPTER ").concat(String(chapter.
+number).padStart(2,"0")," / ").concat(chapter.book.chapters.length,"</div><h1>").concat(esc(chapter.title),'</h1><aside class="serial-recap"><b>').concat(chapter.index?"前情回顾":
+"故事开始之前","</b><p>").concat(esc(chapter.recap),'</p></aside><p class="practice-label">原创故事 · ').concat(serialTerms(chapter).length," 个语境词 · 阅读进度与词汇掌握分别记录</p>").
+concat(exercise?'<div class="cloze-toolbar"><label><input id="cloze-hints" type="checkbox" '.concat(session.hints?"checked":"",'> 首字母提示</label><span id="cloze-counter" role="status\
+" aria-live="polite"></span></div>').concat(clozeResultSummary(),'<form id="cloze-form" novalidate><div class="webnovel-text">').concat(chapter.cn.map(p=>'<p class="webnovel-paragr\
+aph">'.concat(clozeParagraph(p,!0),"</p>")).join(""),'</div><div class="cloze-actions">').concat(session.checked?'<button type="button" class="button" data-cloze-action="restart">重\
+新填一遍</button>'.concat(!session.revealed&&session.results.includes("wrong")?'<button type="button" class="button secondary" data-cloze-action="retry">重练错词</button>':
+""):'<button type="submit" class="button">核对本章回忆 →</button><button type="button" class="button secondary" data-cloze-action="reveal">查看参考答案</button>',"</d\
+iv></form>"):'<div class="webnovel-text">'.concat(chapter.cn.map(p=>'<p class="webnovel-paragraph">'.concat(clozeParagraph(p,!1),"</p>")).join(""),'</div><div class="cloze-actions"\
+><button class="button" data-serial-view="exercise">把剧情里的词填回来 →</button><button class="text-link" data-serial-action="complete" data-serial-id="').concat(id,'">').
+concat(state.serial.completed.includes(id)?"✓ 本章已读":"标记本章已读",'</button></div><details class="story-original"><summary>读一遍对应英文</summary>').concat(
+chapter.en.map((p,i)=>'<section><p class="translation english-second" lang="en">'.concat(serialFormatEnglish(p),'</p><button class="text-link" data-serial-speak="').concat(i,'" dat\
+a-serial-id="').concat(id,'">▷ 听这一段英文</button></section>')).join(""),'<p id="serial-speech-status" role="status">朗读使用设备英语语音。</p><button class="text-link" data-serial-\
+action="stop">停止朗读</button></details>'),'<div class="serial-entry"><div><h2>这章的线索，记住了吗？</h2><p>八个词的小旅程，回到人物刚刚做出的决定。</p></div><a class="button secondary" href="#practice/jou\
+rney/').concat(id,'">去线索闯关 →</a></div><div class="chapter-nav">').concat(prev?'<a href="#serial/'.concat(chapter.book.id,"/").concat(prev.id,'">← ').concat(esc(prev.title),
+"</a>"):'<a href="#serial/'+chapter.book.id+'">回到目录</a>').concat(next?'<a href="#serial/'.concat(chapter.book.id,"/").concat(next.id,'">').concat(esc(next.title)," →</a>"):
+'<a href="#serial/'+chapter.book.id+'">全书读完，回到目录 →</a>',"</div></article>"),updateClozeCounter(),applyPreferences()}const readerBeforeSerial=reader;reader=function(id){
+SERIAL_CHAPTER_INDEX.has(id)?(serialReadView=clozeView==="exercise"?"exercise":"read",serialRead(id,serialReadView)):(delete main.dataset.view,readerBeforeSerial(id))};const trainingHomeBeforeSerial=trainingHome;
+trainingHome=function(){return serialJourneyMenu()+'<details class="serial-exam-fold"><summary>选修：六级题型与写译练习</summary><p>准备考前训练时，再展开这里。</p>'.
+concat(trainingHomeBeforeSerial(),"</details>")};const trainingHeaderBeforeSerial=trainingHeader;trainingHeader=function(section){return section==="home"?'<div class="page-heading"\
+><div class="serial-kicker">WORDSCENE · RECALL THE STORY</div><h1>沿着线索，把词想起来。</h1><p>故事读过了，记忆也可以有一段旅程。</p></div>':trainingHeaderBeforeSerial(
 section)};function serialJourneyMenu(){const books=serialBooks();if(!books.length)return'<section class="startup-panel"><h1>正在打开剧情闯关…</h1><p>目录还在加载，请稍候。</p></section>';
 const last=SERIAL_CHAPTER_INDEX.get(state.serial.lastChapter)||SERIAL_CHAPTER_INDEX.get(books[0].chapters[0].id);return'<section class="serial-entry"><div><div class="serial-kicker\
 ">YOUR NEXT SCENE</div><h2>'.concat(esc(last.book.title)," · ").concat(esc(last.title),'</h2><p>认出线索 → 拼回动作 → 听出关键词。每轮八个词，答错可以再试，没有倒计时。</p></div><a class="button" href="#practice/\
@@ -3302,7 +3312,7 @@ querySelector(".word-table");table&&([...table.querySelectorAll("thead th")].for
 "tbody tr").forEach(row=>[...row.children].forEach((cell,index)=>cell.setAttribute("headers","word-column-"+index)))),syncNavigation()}const existingNav=updateNav;updateNav=function(){
 existingNav(),syncNavigation()};for(const method of["render","reader","quizPage","renderWordList"]){const existing=window[method];typeof existing=="function"&&(window[method]=function(...args){
 const result=existing.apply(this,args);return enhanceControls(),result})}const originalPreferences=applyPreferences;applyPreferences=function(){var _a3;originalPreferences(),(_a3=document.
-querySelector('meta[name="theme-color"]'))==null||_a3.setAttribute("content",state.preferences.night?"#192722":"#f4f0e8")};function syncDialogState(){document.body.classList.toggle(
+querySelector('meta[name="theme-color"]'))==null||_a3.setAttribute("content",state.preferences.night?"#161618":"#f2f9ff")};function syncDialogState(){document.body.classList.toggle(
 "dialog-open",!!(wordDialog&&wordDialog.open||utilityDialog&&utilityDialog.open))}if(typeof MutationObserver=="function"){const dialogObserver=new MutationObserver(syncDialogState);
 [wordDialog,utilityDialog].forEach(dialog=>{dialog&&dialogObserver.observe(dialog,{attributes:!0,attributeFilter:["open"]})})}let restingHeight=window.innerHeight;function syncKeyboard(){
 var _a3,_b;const editable=(_a3=document.activeElement)==null?void 0:_a3.matches('input:not([type="file"]),textarea'),visibleHeight=((_b=window.visualViewport)==null?void 0:_b.height)||
@@ -3394,11 +3404,12 @@ return ensureSerialChapter(chapterId)}}):route==="practice"&&section?section!=="
 "archive"?chain=ensureCatalogData():route==="story"&&id?chain=ensureCatalogData().then(function(){return ensureStoryData(id)}):(route==="notebook"||route==="units"||route==="review"||
 route==="quiz"||route==="progress")&&(chain=ensureCatalogData());var readingOnly=route==="serial"&&(!parts[2]||!parts[3]||parts[3]==="read");return!WORDSCENE_CORE_MEANINGS_READY&&route!==
 "library"&&route!==""&&!readingOnly&&(chain=Promise.all([chain,ensureCoreMeanings()])),chain.then(function(){if(!(generation!==routeGeneration||location.hash!==requestedHash)){hideDataLoading();
-try{originalRender()}catch(error){throw console.error(error),error}document.getElementById("main").dataset.loadedRoute=requestedHash,markReady()}}).catch(function(error){if(!(generation!==
-routeGeneration||location.hash!==requestedHash)){showDataLoading("内容加载失败");var el=document.getElementById("data-loading-panel");el&&(el.querySelector("p").textContent="\
-这次没有加载完整，请检查网络后重试。已读章节和学习记录仍保留。",el.querySelector("button").hidden=!1),window.WORDSCENE_LAST_LOAD_ERROR=error&&error.message,
-markReady()}})};var originalReader=window.reader;window.reader=function(id){var requestedHash=location.hash;return typeof SERIAL_CHAPTER_INDEX!="undefined"&&SERIAL_CHAPTER_INDEX.has(
-id)?ensureSerialChapter(id).then(function(){location.hash===requestedHash&&serialRead(id,location.hash.split("/")[3]||serialReadView)}):ensureCatalogData().then(function(){return ensureStoryData(
+try{originalRender()}catch(error){throw console.error(error),error}document.getElementById("main").dataset.loadedRoute=requestedHash,markReady();var handoff=window.WORDSCENE_READING_HANDOFF;
+handoff&&(window.WORDSCENE_READING_HANDOFF=null,handoff.hash===requestedHash&&requestAnimationFrame(function(){location.hash===requestedHash&&window.scrollTo(0,handoff.y)}))}}).catch(
+function(error){if(!(generation!==routeGeneration||location.hash!==requestedHash)){showDataLoading("内容加载失败");var el=document.getElementById("data-loading-panel");el&&(el.
+querySelector("p").textContent="这次没有加载完整，请检查网络后重试。已读章节和学习记录仍保留。",el.querySelector("button").hidden=!1),window.WORDSCENE_LAST_LOAD_ERROR=
+error&&error.message,markReady()}})};var originalReader=window.reader;window.reader=function(id){var requestedHash=location.hash;return typeof SERIAL_CHAPTER_INDEX!="undefined"&&SERIAL_CHAPTER_INDEX.
+has(id)?ensureSerialChapter(id).then(function(){location.hash===requestedHash&&serialRead(id,location.hash.split("/")[3]||serialReadView)}):ensureCatalogData().then(function(){return ensureStoryData(
 id)}).then(function(){location.hash===requestedHash&&originalReader(id)})};var originalWordModal=window.wordModal,originalListeningReader=window.listeningReader;window.listeningReader=
 function(story){if(originalListeningReader(story),!(listeningSession.mode!=="questions"||LISTENING_QUESTION_INDEX.has(story.id))){var session=listeningSession,hash=location.hash;ensureListeningQuestions().
 then(function(){location.hash===hash&&listeningSession===session&&clozeView==="listen"&&(session.comprehension=null,originalListeningReader(story))}).catch(function(){if(location.hash===
@@ -3411,6 +3422,6 @@ nary-detail]");if(button){for(var id=selectedWord,hash=location.hash,hashValue=0
 !0,button.textContent="正在读取释义…",loadScriptRetry("dictionary-parts/"+bucket+".js",function(){return WORDSCENE_DICTIONARY_PARTS.has(bucket)&&WORDSCENE_DETAIL_IDS.has(id)}).
 then(function(){selectedWord===id&&wordDialog.open&&location.hash===hash&&originalWordModal(id)}).catch(function(){button.isConnected&&(button.disabled=!1,button.textContent="释义没能加\
 载，点击重试")})}})}function boot(){if(!document.getElementById("main")){document.readyState==="loading"?document.addEventListener("DOMContentLoaded",boot):setTimeout(boot,0);
-return}try{wrapAsyncRoute(),markReady(),window.render(),"serviceWorker"in navigator&&navigator.serviceWorker.register("service-worker.js").catch(function(){})}catch(error){console.
-error(error),showDataLoading("内容加载失败");var el=document.getElementById("data-loading-panel");el&&(el.querySelector("p").textContent=error&&error.message||"请检查网络后重试，或点击顶部\
-重新加载。")}}document.readyState==="loading"?document.addEventListener("DOMContentLoaded",boot):boot()})();
+return}try{wrapAsyncRoute(),window.WORDSCENE_FULL_READY=!0,markReady(),window.render()}catch(error){console.error(error),showDataLoading("内容加载失败");var el=document.getElementById(
+"data-loading-panel");el&&(el.querySelector("p").textContent=error&&error.message||"请检查网络后重试，或点击顶部重新加载。")}}document.readyState==="loading"?document.
+addEventListener("DOMContentLoaded",boot):boot()})();

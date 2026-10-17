@@ -2,6 +2,9 @@
 var cacheName='wordscene-public-'+WORDSCENE_OFFLINE.revision;
 var siteBase=self.registration.scope;
 var indexKey=new URL('./',siteBase).href;
+self.addEventListener('message',function(event){
+  if(event.data&&event.data.type==='wordscene-cache-version'&&event.ports&&event.ports[0])event.ports[0].postMessage({revision:WORDSCENE_OFFLINE.revision,cache:cacheName});
+});
 function safePut(cache,key,response){
   if(!response||response.status!==200||response.type==='opaque')return Promise.resolve();
   return cache.put(key,response.clone()).catch(function(){});
@@ -30,19 +33,22 @@ self.addEventListener('fetch',function(event){
   var path=url.pathname.slice(scope.pathname.length);
   if(request.mode==='navigate'&&(path===''||path==='index.html')){
     event.respondWith(caches.open(cacheName).then(function(cache){
-      var network=fetch(request).then(function(response){
+      // Finish reading the saved page before starting a competing cache write.
+      return cache.match(indexKey).then(function(cached){
+      if(cached&&self.navigator.onLine===false)return cached;
+      var controller=typeof AbortController==='function'?new AbortController():null;
+      var network=fetch(request,controller?{signal:controller.signal}:{}).then(function(response){
         if(!response.ok)throw Error('Page unavailable');
         return safePut(cache,indexKey,response).then(function(){return response;});
       });
-      event.waitUntil(network.then(function(){},function(){}));
-      var cached=cache.match(indexKey);
       return new Promise(function(resolve,reject){
         var settled=false,timer=setTimeout(function(){
-          cached.then(function(response){if(response&&!settled){settled=true;resolve(response);}});
+          if(cached&&!settled){settled=true;resolve(cached);if(controller)controller.abort();}
         },3000);
         network.then(function(response){clearTimeout(timer);if(!settled){settled=true;resolve(response);}},function(error){
-          clearTimeout(timer);cached.then(function(response){if(!settled){settled=true;response?resolve(response):reject(error);}});
+          clearTimeout(timer);if(!settled){settled=true;cached?resolve(cached):reject(error);}
         });
+      });
       });
     }).catch(function(){return fetch(request);}));
     return;

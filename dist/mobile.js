@@ -50,7 +50,7 @@
   const originalPreferences=applyPreferences;
   applyPreferences=function(){
     originalPreferences();
-    document.querySelector('meta[name="theme-color"]')?.setAttribute('content',state.preferences.night?'#192722':'#f4f0e8');
+    document.querySelector('meta[name="theme-color"]')?.setAttribute('content',state.preferences.night?'#161618':'#f2f9ff');
   };
   function syncDialogState(){document.body.classList.toggle('dialog-open',Boolean((wordDialog&&wordDialog.open)||(utilityDialog&&utilityDialog.open)));}
   if(typeof MutationObserver==='function'){

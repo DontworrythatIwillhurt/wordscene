@@ -87,7 +87,7 @@ async function generateSerialChapters(novels){
   return {count,bytes,maxLine};
 }
 
-const cssFiles=['style.css','upgrade.css','mobile.css','cloze.css','listening.css','practice.css','training.css','premium.css'];
+const cssFiles=['style.css','upgrade.css','mobile.css','cloze.css','listening.css','practice.css','training.css','premium.css','apple.css'];
 const appCss=(await Promise.all(cssFiles.map(async file=>'/* '+file+' */\n'+await readFile(dist(file),'utf8')))).join('\n');
 await writeFile(dist('app.css'),appCss);
 
@@ -114,7 +114,7 @@ await mkdir(dist('dictionary-parts/'),{recursive:true});
 for(let index=0;index<64;index++)await writeFile(dist('dictionary-parts/'+index+'.js'),'applyWordsceneDictionaryPayload('+JSON.stringify({bucket:index,words:buckets[index]})+');\n');
 
 const runtimeFiles=[
-  'serial-index.js','vocabulary-ids.js','phrase-index.js','compatibility.js','chapters.js','data.js','app.js','learning.js','skills.js','cloze.js',
+  'archive-design.js','serial-index.js','vocabulary-ids.js','phrase-index.js','compatibility.js','chapters.js','data.js','app.js','learning.js','skills.js','cloze.js',
   'listening.js','listening-practice.js','practice-training.js','serial.js','novel-study.js','memory-tools.js','diy-novels.js','mobile.js','chapter-cache.js','loader.js'
 ];
 const phrasePack=await buildPhrasePack();
@@ -122,10 +122,17 @@ const source=(await Promise.all(runtimeFiles.map(file=>readFile(dist(file),'utf8
 const result=await transform(source,{target:['es2017','chrome60'],charset:'utf8',minifyWhitespace:true,minifyIdentifiers:false,minifySyntax:true,lineLimit:180,legalComments:'inline'});
 if(result.warnings.length)throw Error(result.warnings.map(w=>w.text).join('\n'));
 await writeFile(dist('wordscene.compat.js'),result.code);
+const readingIndex=novels.map(book=>({id:book.id,title:book.title,category:book.category,subtitle:book.subtitle,synopsis:book.synopsis,volumes:book.volumes.map(v=>({number:v.number||v.volume,title:v.title||v.name})),chapters:book.chapters.map(c=>({id:c.id,title:c.title,volume:c.volume||1}))}));
+const designSource=await readFile(dist('archive-design.js'),'utf8');
+const designBox={window:{}};
+vm.runInNewContext(designSource,designBox);
+const readingSource='var WORDSCENE_READING_INDEX='+JSON.stringify(readingIndex)+';\n'+designSource+'\n'+await readFile(dist('chapter-cache.js'),'utf8')+'\n'+await readFile(dist('reading-shell-source.js'),'utf8');
+const readingResult=await transform(readingSource,{target:['es2017','chrome60'],charset:'utf8',minifyWhitespace:true,minifyIdentifiers:false,minifySyntax:true,lineLimit:180,legalComments:'inline'});
+await writeFile(dist('reading-shell.js'),readingResult.code);
 
 const hashedFiles=[
   'wordscene.compat.js','serial-index.js','serial-data.js','catalog.js','dictionary.js',
-  'startup.js','app.css','listening-questions.js','training-data.js','phrase-data.js','vocabulary-meanings.js',
+  'startup.js','app.css','listening-questions.js','training-data.js','phrase-data.js','vocabulary-meanings.js','reading-shell.js',
   'expanded-stories.js','cloze-stories.js'
 ];
 const versions={};
@@ -145,22 +152,28 @@ for(const [file,version] of Object.entries(versions)){
   html=html.replace(new RegExp(file.replace(/\./g,'\\.')+'\\?v=[^"\\s]+','g'),file+'?v='+version);
 }
 html=html.replace('首次打开需要加载故事与词库，请稍候。','书架先打开，章节正文会在阅读时再下载。');
-const escapeHtml=value=>String(value||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const shelf='<div class="fast-shelf" aria-label="小说书架">'+novels.map(book=>'<article class="fast-book"><small>'+escapeHtml(book.category)+' · '+book.chapters.length+' 章</small><h2>'+escapeHtml(book.title)+'</h2><p>'+escapeHtml(book.synopsis)+'</p><a href="#serial/'+book.id+'/'+book.chapters[0].id+'">从第一章开始 →</a><details><summary>查看全书目录</summary><ol>'+book.chapters.map(c=>'<li><a href="#serial/'+book.id+'/'+c.id+'">'+escapeHtml(c.title)+'</a></li>').join('')+'</ol></details></article>').join('')+'</div>';
-html=html.replace(/<section id="startup-panel"[\s\S]*?<\/section>/,'<section id="startup-panel" class="startup-panel" aria-live="polite"><h1>把单词放进故事里</h1><p>先选一本小说。学习功能正在准备，已保存的记录会自动恢复。</p><button class="button" type="button" hidden>重新加载学习功能</button><details hidden><summary>查看加载信息</summary><pre></pre></details>'+shelf+'<noscript><p>阅读与练习需要允许 JavaScript；目录可先展开查看。</p></noscript></section>');
-const critical=':root{color-scheme:light}body{margin:0;background:#f4f0e8;color:#243c35;font-family:system-ui,sans-serif}a{color:inherit}header{padding:18px 5%;display:flex;align-items:center;justify-content:space-between;gap:16px}header svg{width:20px;height:20px}header nav{display:flex;gap:12px}main{max-width:1120px;margin:auto;padding:24px 5%}.fast-shelf{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;margin-top:24px;text-align:left}.fast-book{padding:24px;border:1px solid #d7d5ca;border-radius:18px;background:#faf8f1}.fast-book h2{font-family:serif;font-size:32px;margin:16px 0}.fast-book p{line-height:1.9}.fast-book> a{display:inline-block;padding:12px 0}.fast-book details{margin-top:18px}.fast-book li{padding:8px 0}.fast-book ol{padding-left:22px}.fast-book summary{cursor:pointer}dialog:not([open]){display:none}@media(max-width:600px){header nav,header .daily-pill{display:none}.fast-shelf{grid-template-columns:1fr}.fast-book{padding:22px}main{padding:20px 5%}}';
+html=html.replace(/<meta name="theme-color" content="[^"]*">/,'<meta name="theme-color" content="#f2f9ff">');
+const shelf=designBox.window.WordsceneDesign.home(readingIndex,{completed:[]});
+html=html.replace(/(<main id="main"[^>]*>)[\s\S]*?(<\/main>)/,'$1<section id="startup-panel" class="startup-panel" aria-live="polite"><h1>正在打开藏书室</h1><p>请选择一本小说。</p><button class="button" type="button" hidden>重试打开</button><details hidden><summary>查看加载信息</summary><pre></pre></details>'+shelf+'<noscript><p>互动阅读需要允许 JavaScript。</p></noscript></section>$2');
+const critical=await readFile(dist('apple.css'),'utf8');
 html=html.replace(/<style id="startup-critical">[\s\S]*?<\/style>\s*/,'');
 html=html.replace('</title>','</title>\n  <style id="startup-critical">'+critical+'</style>');
-html=html.replace(/<link rel="stylesheet" href="(app.css[^"]*)"(?:[^>]*)>(?:<noscript><link rel="stylesheet"[^>]*><\/noscript>)?/,'<link rel="stylesheet" href="$1" media="print" onload="this.media=\'all\'"><noscript><link rel="stylesheet" href="$1"></noscript>');
-html=html.replace(/<script src="(wordscene.compat.js[^"]*)"[^>]*><\/script>/,'<script src="$1" async></script>');
+html=html.replace(/\s*<link rel="preload" href="(?:app.css|wordscene.compat.js|reading-shell.js)[^"]*"[^>]*>/g,'');
+html=html.replace(/\s*<link rel="stylesheet" href="app.css[^"]*"[^>]*>(?:<noscript><link rel="stylesheet"[^>]*><\/noscript>)?/g,'');
+html=html.replace('</title>','</title>\n  <link rel="preload" href="reading-shell.js?v='+versions['reading-shell.js']+'" as="script">');
+html=html.replace(/<script src="((?:wordscene.compat.js|reading-shell.js)[^"]*)"[^>]*><\/script>/,'<script src="reading-shell.js?v='+versions['reading-shell.js']+'" async></script>');
+const startupGuard='<script id="startup-guard">'+await readFile(dist('startup.js'),'utf8')+'</script>';
+if(html.includes('id="startup-guard"'))html=html.replace(/<script id="startup-guard">[\s\S]*?<\/script>/,function(){return startupGuard;});
+else html=html.replace(/<script src="(startup.js[^"]*)"[^>]*><\/script>/,function(){return startupGuard;});
 await writeFile(dist('index.html'),html);
 
 // Optional cache: do not hold up startup if storage or service workers are unavailable.
 const offlineRevision=sha12(JSON.stringify(versions));
-const offlineConfig={revision:offlineRevision,versions,core:['./','app.css?v='+versions['app.css'],'startup.js?v='+versions['startup.js'],'wordscene.compat.js?v='+versions['wordscene.compat.js']]};
+const offlineConfig={revision:offlineRevision,versions,core:['./','reading-shell.js?v='+versions['reading-shell.js']]};
 await writeFile(dist('service-worker.js'),'var WORDSCENE_OFFLINE='+JSON.stringify(offlineConfig)+';\n'+await readFile(new URL('./offline-worker.js',import.meta.url),'utf8'));
 
 console.log('Compatible browser bundle: '+versions['wordscene.compat.js']+' ('+Buffer.byteLength(result.code)+' bytes)');
+console.log('Reading shell: '+versions['reading-shell.js']+' ('+Buffer.byteLength(readingResult.code)+' bytes)');
 console.log('Serial index: '+versions['serial-index.js']+' ('+serialIndex.bytes+' bytes, '+serialIndex.meta.chapters+' chapters, '+serialIndex.meta.words+' words)');
 console.log('Serial chapters: '+serialChapters.count+' files, '+serialChapters.bytes+' bytes, maxLine '+serialChapters.maxLine);
 console.log('Concatenated CSS: '+versions['app.css']+' ('+Buffer.byteLength(appCss)+' bytes)');
