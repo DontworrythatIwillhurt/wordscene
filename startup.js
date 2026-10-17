@@ -6,6 +6,7 @@
     var element=panel();
     if(!element||shown)return;
     shown=true;
+    element.classList.add('startup-failed');
     element.querySelector('h1').textContent='内容暂时没能加载';
     element.querySelector('p').textContent='网络连接可能不稳定，学习功能没有加载完整。可重试加载，或稍后换一个网络再打开。已保存的学习记录不会被清除。';
     var details=element.querySelector('details');
@@ -25,12 +26,12 @@
     if(element&&element.parentNode)element.remove();
   };
   window.addEventListener('error',function(event){
-    if(event.target&&event.target.tagName==='SCRIPT'&&/wordscene\.compat\.js/.test(event.target.src||'')&&mainRetries<2){
+    if(event.target&&event.target.tagName==='SCRIPT'&&/reading-shell\.js/.test(event.target.src||'')&&mainRetries<2){
       mainRetries++;
       if(event.target.parentNode)event.target.parentNode.removeChild(event.target);
       setTimeout(function(){
-        var script=document.createElement('script'),version=(window.WORDSCENE_ASSET_VERSIONS||{})['wordscene.compat.js'];
-        script.src='wordscene.compat.js?v='+version+'&attempt='+mainRetries+'-'+Date.now();script.async=true;document.body.appendChild(script);
+        var script=document.createElement('script'),version=(window.WORDSCENE_ASSET_VERSIONS||{})['reading-shell.js'];
+        script.src='reading-shell.js?v='+version+'&attempt='+mainRetries+'-'+Date.now();script.async=true;document.body.appendChild(script);
       },mainRetries*500);
       armFailure(45000);return;
     }

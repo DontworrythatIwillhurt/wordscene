@@ -98,22 +98,9 @@ function serialVolumeDirectory(book,journey=false){
   const current=serialContinue(book);
   return serialVolumes(book).map(volume=>`<details class="serial-volume" data-volume="${volume.number}" ${(current.volume||1)===volume.number?'open':''}><summary><span>第 ${volume.number} 卷 · ${esc(volume.title)}</span><small>${volume.chapters[0].number}—${volume.chapters[volume.chapters.length-1].number} 章 · ${volume.chapters.filter(c=>state.serial.completed.includes(c.id)).length}/${volume.chapters.length} 已读</small></summary><div class="serial-volume-chapters">${serialChapterRows(book,volume.chapters,journey)}</div></details>`).join('');
 }
-function serialBookCard(book,index){
-  const completed=book.chapters.filter(c=>state.serial.completed.includes(c.id)).length,chapter=serialContinue(book);
-  return `<article class="serial-book"><a class="serial-book-cover" href="#serial/${book.id}"><div class="serial-book-no">NOVEL ${String(index+1).padStart(2,'0')} · ${esc(book.category)}</div><h2>${esc(book.title)}</h2><p>${esc(book.subtitle)}</p><span class="serial-seal" aria-hidden="true">${index?'谜':'契'}</span><span class="serial-spine">WORDSCENE ORIGINAL</span></a><div class="serial-book-body"><div class="serial-book-meta"><span>${serialVolumes(book).length} 卷 · ${book.chapters.length} 章</span><span>已读 ${completed} / ${book.chapters.length}</span></div><p>${esc(book.synopsis)}</p><div class="serial-route-progress" role="img" aria-label="已读 ${completed} 章，共${book.chapters.length}章"><i style="width:${completed/book.chapters.length*100}%"></i></div><div class="hero-actions"><a class="button" href="#serial/${book.id}/${chapter.id}">${completed?'继续阅读':'翻开第一章'} ↗</a><a class="text-link" href="#serial/${book.id}">分卷目录 →</a></div></div></article>`;
-}
+function serialBookCard(book,index){return WordsceneDesign.card(book,index,state.serial);}
 const libraryBeforeSerial=library;
-library=function(){
-  if(!main)return;
-  const books=serialBooks();
-  if(!books.length){main.dataset.view='serial';main.innerHTML='<section class="startup-panel"><h1>正在打开故事书架…</h1><p>目录还在加载，请稍候。</p></section>';applyPreferences();return;}
-  const chapter=SERIAL_CHAPTER_INDEX.get(state.serial.lastChapter)||SERIAL_CHAPTER_INDEX.get(books[0].chapters[0].id);
-  const coreWords=new Set(serialFlatten(books,b=>serialFlatten(b.chapters,c=>serialTerms(c).map(t=>t.id))));
-  const totalWords=(typeof SERIAL_INDEX_META!=='undefined'&&SERIAL_INDEX_META.words)||COVERAGE.total||BUILTIN_WORDS.length||coreWords.size;
-  main.dataset.view='serial';
-  main.innerHTML=`<section class="serial-hero"><div><div class="serial-kicker">WORDSCENE · A STORY TO REMEMBER</div><h1>读到下一章，<br>也记住<em>下一个词。</em></h1><p>一纸山契，牵出被藏起的旧账。<br>一张船票，带你走进第七码头的雨夜。<br>让人物、线索和转折，成为单词的记忆。</p><div class="hero-actions"><a class="button" href="#serial/${chapter.book.id}/${chapter.id}">${state.serial.lastChapter?'接着上次的剧情':'开始我的故事'} <span>↗</span></a><a class="text-link" href="#practice">去剧情闯关 →</a></div></div><div class="serial-art" aria-hidden="true"><small>THE WORDSCENE COLLECTION</small><strong>山契<br><span>第七码头</span></strong><div class="serial-seal">词间</div><p>故事有下一章<br>记忆有回响</p><span class="serial-spine">READ · RECALL · RETURN</span></div></section><section class="serial-rewards" aria-label="学习概览"><div><strong>02</strong><span>原创连续小说</span></div><div><strong>${SERIAL_TOTAL_CHAPTERS}</strong><span>剧情章节</span></div><div><strong>${state.serial.completed.length}</strong><span>已经读完的章节</span></div></section><div class="serial-section-title"><div class="serial-kicker">CHOOSE YOUR STORY</div><h2>今夜，翻开哪一本？</h2><p>同一组人物，同一条主线。按顺序读，伏笔才有回声。</p></div><section class="serial-shelf">${books.map(serialBookCard).join('')}</section><section class="serial-entry"><div><div class="serial-kicker">RECALL IN THE SCENE</div><h2>记住线索，再往前走。</h2><p>认出关键词、填回关键动作，或听英文找线索。每次八个词，不设倒计时。</p></div><a class="button secondary" href="#practice">进入剧情闯关 →</a></section><section class="serial-archive-note"><h2>跟着长篇，走过完整词库。</h2><p>长篇正文覆盖 ${coreWords.size} / ${totalWords} 词（${totalWords?(coreWords.size / totalWords * 100).toFixed(1):'0'}%）。${coreWords.size===totalWords?'所有内置词都能在主线剧情及对应英文里找到。':'尚有词汇正在写入后续剧情。'}旧笔记、书签和学习记录继续保留；原短篇可作为额外语境阅读。</p><a class="text-link" href="#archive">打开拓展语境 →</a> <a class="text-link" href="#notebook">查看完整词库 →</a></section>`;
-  applyPreferences();
-};
+library=function(){if(!main)return;main.dataset.view='serial';main.innerHTML=WordsceneDesign.home(serialBooks(),state.serial);applyPreferences();};
 function serialBookPage(id){
   const book=SERIAL_BOOK_INDEX.get(id);if(!book){serialNotFound();return;}
   const chapter=serialContinue(book);main.dataset.view='serial';

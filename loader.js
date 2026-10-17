@@ -366,6 +366,8 @@
         try{originalRender();}catch(error){console.error(error);throw error;}
         document.getElementById('main').dataset.loadedRoute=requestedHash;
         markReady();
+        var handoff=window.WORDSCENE_READING_HANDOFF;
+        if(handoff){window.WORDSCENE_READING_HANDOFF=null;if(handoff.hash===requestedHash)requestAnimationFrame(function(){if(location.hash===requestedHash)window.scrollTo(0,handoff.y);});}
       }).catch(function(error){
         if(generation!==routeGeneration||location.hash!==requestedHash)return;
         showDataLoading('内容加载失败');
@@ -427,11 +429,9 @@
     }
     try{
       wrapAsyncRoute();
+      window.WORDSCENE_FULL_READY=true;
       markReady();
       window.render();
-      if('serviceWorker' in navigator){
-        navigator.serviceWorker.register('service-worker.js').catch(function(){/* Reading never depends on offline support. */});
-      }
     }catch(error){
       console.error(error);
       showDataLoading('内容加载失败');
